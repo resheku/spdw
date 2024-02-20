@@ -1,0 +1,51 @@
+name: sel
+on:
+    workflow_dispatch:
+
+jobs:
+  match-schedule:
+    runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.commit.outputs.changes }}
+    permissions:
+      contents: write
+    steps:
+      - name: checkout data-store
+        uses: actions/checkout@v4
+        with:
+          ref: data-store
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+      - name: Fetch schedule
+        run: bash main/scripts/schedule.sh
+      - name: Commit and push changes
+        id: commit
+        run: bash main/scripts/commit.sh
+
+  match-data:
+    runs-on: ubuntu-latest
+    permissions:
+        contents: write
+    needs: match-schedule
+    if: needs.match-schedule.outputs.changes == '1'
+    steps:
+      - name: checkout data-store
+        uses: actions/checkout@v4
+        with:
+          ref: data-store
+          fetch-depth: 0
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+      - name: diff changes
+        run: bash main/scripts/changes.sh
+      - name: get match data
+        run: bash main/scripts/match.sh
+      - name: Commit and push changes
+        id: commit
+        run: bash main/scripts/commit.sh
