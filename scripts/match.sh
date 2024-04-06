@@ -3,7 +3,7 @@ echo "process changes"
 while IFS= read -r line; do
     id=$(echo "$line" | jq -r '.id')
     season=$(echo "$line" | jq -r '.season')
-    url="https://ekstraliga.pl/mecz/$id"
+    url="https://ekstraliga.pl/se/mecz/$id"
     mkdir -p "data/sel/$season/match/html"
     echo "$url"
     curl -f --no-progress-meter "$url" -o "data/sel/$season/match/html/$id.html"
