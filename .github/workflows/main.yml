@@ -15,15 +15,32 @@ on:
         type: number
 
 jobs:
-  deploy:
+  schedules:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Deploy to environment
-      run: |
-        for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
-          mkdir -p data/sel/$i
-          echo "SEASON $i" > schedule
-        done
+      - name: checkout data-store
+        uses: actions/checkout@v4
+        with:
+          ref: data-store-test
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: actions-test
+          path: actions-test
+      - name: Fetch schedule
+        run: |
+          for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
+            mkdir -p data/sel/$i
+            echo "SEASON $i" > data/sel/$i/schedule
+          done
+      - name: Commit and push changes
+        id: commit
+        run: |
+          git config user.name "Automated"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          timestamp=$(date -u)
+          git commit -m "Latest data: ${timestamp}" && echo "changes=1" >> $GITHUB_OUTPUT
+          git push
