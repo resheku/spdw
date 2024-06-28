@@ -1,0 +1,23 @@
+name: Example Workflow with Dispatch Inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'production'
+      version:
+        description: 'Application version'
+        required: true
+        default: '1.0.0'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to environment
+      run: echo "Deploying to ${{ github.event.inputs.environment }} with version ${{ github.event.inputs.version }}"
