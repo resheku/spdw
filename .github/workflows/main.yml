@@ -27,7 +27,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: data-store-test
-      - run: git checkout data-store
       - name: checkout code
         uses: actions/checkout@v4
         with:
