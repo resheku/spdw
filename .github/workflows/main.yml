@@ -14,7 +14,7 @@ on:
         default: '2023'
         type: string
 env:
-  URL: https://ekstraliga.pl/se/terminarz-i-wyniki/pgee/
+  URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
 
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
         run: |
           for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
             mkdir -p data/sel/$i
-            curl -f --no-progress-meter $URL=$i -o data/sel/$i/schedule.html
+            curl -f --no-progress-meter $URL/$i -o data/sel/$i/schedule.html
           done
       - name: list files
         run: ls -lah data/sel/2023/schedule.html
