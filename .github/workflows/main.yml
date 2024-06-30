@@ -6,13 +6,16 @@ on:
       start:
         description: 'Start season'
         required: true
-        default: 2023
+        default: '2023'
         type: string
       end:
         description: 'Last season'
         required: true
-        default: 2023
+        default: '2023'
         type: string
+env:
+  URL: https://ekstraliga.pl/se/terminarz-i-wyniki/pgee/
+
 
 jobs:
   schedules:
@@ -20,10 +23,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: checkout data-store
+      - name: checkout data-store-test
         uses: actions/checkout@v4
         with:
           ref: data-store-test
+      - run: git checkout data-store
       - name: checkout code
         uses: actions/checkout@v4
         with:
@@ -33,8 +37,10 @@ jobs:
         run: |
           for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
             mkdir -p data/sel/$i
-            echo "SEASON $i" > data/sel/$i/schedule
+            curl -f --no-progress-meter $URL=$i -o data/sel/$i/schedule.html
           done
+      - name: list files
+        run: ls -lah data/sel/2023/schedule.html
       - name: Commit and push changes
         id: commit
         run: |
