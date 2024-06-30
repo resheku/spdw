@@ -13,6 +13,11 @@ on:
         required: true
         default: '2023'
         type: string
+      schedule_cache:
+        description: 'Use cached schedule'
+        required: true
+        default: false
+        type: boolean
 env:
   URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
 
@@ -33,6 +38,7 @@ jobs:
           ref: actions-test
           path: actions-test
       - name: Fetch schedule
+        if: ${{ github.event.inputs.schedule_cache }} == false
         run: |
           for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
             mkdir -p data/sel/$i
