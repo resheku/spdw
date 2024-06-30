@@ -7,12 +7,12 @@ on:
         description: 'Start season'
         required: true
         default: 2023
-        type: number
+        type: string
       end:
         description: 'Last season'
         required: true
         default: 2023
-        type: number
+        type: string
 
 jobs:
   schedules:
