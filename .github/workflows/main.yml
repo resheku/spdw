@@ -38,7 +38,7 @@ jobs:
           ref: actions-test
           path: actions-test
       - name: Fetch schedule
-        if: ${{ github.event.inputs.schedule_cache }} == false
+        if: ${{ !github.event.inputs.schedule_cache }}
         run: |
           for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
             mkdir -p data/sel/$i
