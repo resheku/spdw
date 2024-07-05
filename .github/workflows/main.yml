@@ -44,8 +44,12 @@ jobs:
             mkdir -p data/sel/$i
             curl -f --no-progress-meter $URL/$i -o data/sel/$i/schedule.html
           done
-      - name: list files
-        run: ls -lah actions-test
+      - name: process files
+        run: |
+          for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
+            python actions-test/main.py data/sel/$i/schedule.html
+            node actions-test/src/index.js data/sel/$i/schedule.html | tee data/sel/$i/schedule.json
+          done
       - name: Commit and push changes
         id: commit
         run: |
