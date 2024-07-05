@@ -65,7 +65,7 @@ jobs:
           timestamp=$(date -u)
           git commit -m "Latest data: ${timestamp}" 
           commit_status=$?
-          if [[ $commit_status -eq 0 ]] || [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+          if [[ $commit_status -eq 0 ]] || [[ ${{ github.event.inputs.force == 'true' }} ]]; then
             echo "changes=1" >> $GITHUB_OUTPUT
           fi
           git push
