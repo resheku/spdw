@@ -55,7 +55,7 @@ jobs:
       - name: process files
         run: |
           for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
-            node actions-test/src/index.js data/sel/$i/schedule.html | data/sel/$i/schedule.json
+            node actions-test/src/index.js data/sel/$i/schedule.html > data/sel/$i/schedule.json
           done
       - name: Commit and push changes
         id: commit
