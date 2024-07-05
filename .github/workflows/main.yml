@@ -24,7 +24,8 @@ on:
         default: false
         type: boolean
 env:
-  URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
+  SCHEDULE_URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
+  MATCH_URL: https://ekstraliga.pl/en/se/match
 
 
 jobs:
@@ -49,12 +50,12 @@ jobs:
         run: |
           for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
             mkdir -p data/sel/$i
-            curl -f --no-progress-meter $URL/$i -o data/sel/$i/schedule.html
+            curl -f --no-progress-meter $SCHEDULE_URL/$i -o data/sel/$i/schedule.html
           done
       - name: process files
         run: |
           for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
-            node actions-test/src/index.js data/sel/$i/schedule.html | tee data/sel/$i/schedule.json
+            node actions-test/src/index.js data/sel/$i/schedule.html | data/sel/$i/schedule.json
           done
       - name: Commit and push changes
         id: commit
@@ -63,12 +64,14 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data/
           timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" && echo "changes=1" >> $GITHUB_OUTPUT
+          git commit -m "Latest data: ${timestamp}" && echo "changes=1" > $GITHUB_OUTPUT
           # commit_status=$?
-          if [ "$github.event.inputs.force" == 'true' ]; then
+          if [ "$FORCE" = "true" ]; then
               echo "changes=1" > $GITHUB_OUTPUT
           fi
           git push
+        env:
+          FORCE: ${{ github.event.inputs.force }}
   match:
     runs-on: ubuntu-latest
     permissions:
@@ -98,10 +101,9 @@ jobs:
           while IFS= read -r line; do
             id=$(echo "$line" | jq -r '.id')
             season=$(echo "$line" | jq -r '.season')
-            url="https://ekstraliga.pl/se/mecz/$id"
             mkdir -p "data/sel/$season/match/html"
-            echo "$url"
-            curl -f --no-progress-meter "$url" -o "data/sel/$season/match/html/$id.html"
+            echo "$MATCH_URL/$id"
+            curl -f --no-progress-meter "$MATCH_URL/$id" -o "data/sel/$season/match/html/$id.html"
             # Generate a random number between  1 and  500 (to represent milliseconds)
             random_milliseconds=$(( RANDOM %  400 +  100  ))
             # Convert milliseconds to seconds and sleep
