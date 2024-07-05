@@ -45,7 +45,7 @@ jobs:
             curl -f --no-progress-meter $URL/$i -o data/sel/$i/schedule.html
           done
       - name: list files
-        run: ls -lah data/sel/2023/schedule.html
+        run: ls -lah actions-test
       - name: Commit and push changes
         id: commit
         run: |
