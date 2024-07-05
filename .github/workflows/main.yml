@@ -91,11 +91,13 @@ jobs:
           path: actions-test
       - name: diff changes
         run: |
-          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+          if [ "$FORCE" = "true" ]; then
             for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
               jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json | tee -a CHANGES;
             done
           fi
+        env:
+          FORCE: ${{ github.event.inputs.force }}
       - name: get match data
         run: |
           while IFS= read -r line; do
