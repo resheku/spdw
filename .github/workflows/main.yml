@@ -89,6 +89,20 @@ jobs:
         with:
           ref: actions-test
           path: actions-test
+      - name: debug
+        run: |
+          if [ "$FORCE" = "true" ]; then
+            echo "FORCE is true"
+          fi
+          for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
+            echo data/sel/$i/schedule.json
+            cat data/sel/$i/schedule.json
+            echo "_________________________"
+            jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json
+            jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json | tee -a CHANGES;
+            echo "_________________________"
+            cat CHANGES
+          done
       - name: diff changes
         run: |
           if [ "$FORCE" = "true" ]; then
