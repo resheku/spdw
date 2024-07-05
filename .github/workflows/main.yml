@@ -25,6 +25,8 @@ env:
 jobs:
   schedules:
     runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.commit.outputs.changes }}
     permissions:
       contents: write
     steps:
