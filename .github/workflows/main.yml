@@ -18,6 +18,11 @@ on:
         required: true
         default: false
         type: boolean
+      force:
+        description: 'Force recompute'
+        required: true
+        default: false
+        type: boolean
 env:
   URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
 
@@ -58,5 +63,57 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data/
           timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}" && echo "changes=1" >> $GITHUB_OUTPUT
+          git commit -m "Latest data: ${timestamp}" 
+          commit_status=$?
+          if [[ $commit_status -eq 0 ]] || [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+            echo "changes=1" >> $GITHUB_OUTPUT
+          fi
+          git push
+  match:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: schedules
+    if: needs.schedules.outputs.changes == '1'
+    steps:
+      - name: checkout data-store-test
+        uses: actions/checkout@v4
+        with:
+          ref: data-store-test
+          fetch-depth: 0
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: actions-test
+          path: actions-test
+      - name: diff changes
+        run: |
+          if [[ "${{ github.event.inputs.force }}" == "true" ]]; then
+            for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
+              jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json | tee -a CHANGES;
+            done
+          fi
+      - name: get match data
+        run: |
+          while IFS= read -r line; do
+            id=$(echo "$line" | jq -r '.id')
+            season=$(echo "$line" | jq -r '.season')
+            url="https://ekstraliga.pl/se/mecz/$id"
+            mkdir -p "data/sel/$season/match/html"
+            echo "$url"
+            curl -f --no-progress-meter "$url" -o "data/sel/$season/match/html/$id.html"
+            # Generate a random number between  1 and  500 (to represent milliseconds)
+            random_milliseconds=$(( RANDOM %  400 +  100  ))
+            # Convert milliseconds to seconds and sleep
+            sleep_seconds=$(echo "scale=2; $random_milliseconds /  1000" | bc)
+            sleep $sleep_seconds
+          done < CHANGES
+      - name: Commit and push changes
+        id: commit
+        run: |
+          git config user.name "Automated"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/
+          timestamp=$(date -u)
+          git commit -m "Latest data: ${timestamp}"
           git push
