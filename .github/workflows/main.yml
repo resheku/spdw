@@ -41,15 +41,15 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: checkout data-store-test
+      - name: checkout data-store
         uses: actions/checkout@v4
         with:
-          ref: data-store-test
+          ref: data-store
       - name: checkout code
         uses: actions/checkout@v4
         with:
-          ref: actions-test
-          path: actions-test
+          ref: main
+          path: main
       - name: fetch schedule
         if: ${{ github.event.inputs.schedule_cache == 'false' }}
         run: |
@@ -64,7 +64,7 @@ jobs:
       - name: process schedule files
         run: |
           for season in $(seq $START $END); do
-            node actions-test/src/index.js schedule data/sel/$season/schedule.html > data/sel/$season/schedule.json
+            node main/src/index.js schedule data/sel/$season/schedule.html > data/sel/$season/schedule.json
           done
         env:
           START: ${{ github.event.inputs.start }}
@@ -91,16 +91,16 @@ jobs:
     needs: schedules
     if: needs.schedules.outputs.changes == '1'
     steps:
-      - name: checkout data-store-test
+      - name: checkout data-store
         uses: actions/checkout@v4
         with:
-          ref: data-store-test
+          ref: data-store
           fetch-depth: 0
       - name: checkout code
         uses: actions/checkout@v4
         with:
-          ref: actions-test
-          path: actions-test
+          ref: main
+          path: main
       - name: schedule changes force
         if: ${{ github.event.inputs.force == 'true' }}
         run: |
@@ -155,7 +155,7 @@ jobs:
               id=$(echo "$line" | jq -r '.id')
               season=$(echo "$line" | jq -r '.season')
               mkdir -p "data/sel/$season/match/json"
-              node actions-test/src/index.js match "data/sel/$season/match/html/$id.html" > "data/sel/$season/match/json/$id.json"
+              node main/src/index.js match "data/sel/$season/match/html/$id.html" > "data/sel/$season/match/json/$id.json"
             done < CHANGES
           fi
       - name: commit changes
