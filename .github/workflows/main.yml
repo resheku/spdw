@@ -18,6 +18,11 @@ on:
         required: true
         default: false
         type: boolean
+      match_cache:
+        description: 'Use cached match'
+        required: true
+        default: false
+        type: boolean
       force:
         description: 'Force recompute'
         required: true
@@ -108,8 +113,9 @@ jobs:
             done
           fi
           echo "______________________"
-          cat CHANGES
-          jq -c
+          # cat CHANGES
+          jq --help
+          python -c 'import json,sys; [print(x, end="") for x in sys.stdin if json.loads(x)["id"]==5276]' < data/sel/2023/schedule.json
         env:
           START: ${{ github.event.inputs.start }}
           END: ${{ github.event.inputs.end }}
@@ -124,6 +130,7 @@ jobs:
       #   env:
       #     FORCE: ${{ github.event.inputs.force }}
       - name: get match data
+        if: ${{ github.event.inputs.match_cache == 'false' }}
         run: |
           while IFS= read -r line; do
             id=$(echo "$line" | jq -r '.id')
