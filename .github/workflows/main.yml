@@ -104,18 +104,20 @@ jobs:
         run: |
           if [ "$FORCE" = "true" ]; then
             echo "Forcing recompute"
-            for season in $(seq $START $END); do
-              echo $season
-              cat data/sel/$season/schedule.json | tail -n 1 | tee -a CHANGES;
-              # cat data/sel/$season/schedule.json | jq -c 'select(.status.id == 5276)'
-              # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json
-              # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json >> CHANGES;
-            done
+            # for season in $(seq $START $END); do
+            #   echo $season
+            #   cat data/sel/$season/schedule.json | tail -n 1 | tee -a CHANGES;
+            #   # cat data/sel/$season/schedule.json | jq -c 'select(.status.id == 5276)'
+            #   # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json
+            #   # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json >> CHANGES;
+            # done
+            jq -c 'select(.status.id == 5276)' data/sel/2023/schedule.json | tee -a CHANGES;
           fi
           echo "______________________"
-          # cat CHANGES
-          jq --help
-          python -c 'import json,sys; [print(x, end="") for x in sys.stdin if json.loads(x)["id"]==5276]' < data/sel/2023/schedule.json
+          cat CHANGES
+          echo "______________________"
+          # jq --help
+          # python -c 'import json,sys; [print(x, end="") for x in sys.stdin if json.loads(x)["id"]==5276]' < data/sel/2023/schedule.json
         env:
           START: ${{ github.event.inputs.start }}
           END: ${{ github.event.inputs.end }}
