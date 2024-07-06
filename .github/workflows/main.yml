@@ -110,25 +110,12 @@ jobs:
           ls -laqh data/sel/2023/
       - name: debug
         run: |
-          # if [ "$FORCE" = "true" ]; then
-          #   echo "Forcing recompute"
-          #   # for season in $(seq $START $END); do
-          #   #   echo $season
-          #   #   cat data/sel/$season/schedule.json | tail -n 1 | tee -a CHANGES;
-          #   #   # cat data/sel/$season/schedule.json | jq -c 'select(.status.id == 5276)'
-          #   #   # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json
-          #   #   # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json >> CHANGES;
-          #   # done
-          #   jq -c 'select(.status.id == 5276)' data/sel/2023/schedule.json | tee -a CHANGES;
-          # fi
-          echo "______________________"
-          ls -lah data/sel/2023/schedule.json
-          cat data/sel/2023/schedule.json | jq -c 'select(.status.id == 5276)' >> CHANGES;
-          ls -lah CHANGES
-          cat CHANGES
-          echo "______________________"
-          # jq --help
-          # python -c 'import json,sys; [print(x, end="") for x in sys.stdin if json.loads(x)["id"]==5276]' < data/sel/2023/schedule.json
+          if [ "$FORCE" = "true" ]; then
+            echo "Forcing recompute"
+            for season in $(seq $START $END); do
+              jq -c 'select(.id == 5276)' data/sel/$season/schedule.json | tee -a CHANGES;
+            done
+          fi
         env:
           START: ${{ github.event.inputs.start }}
           END: ${{ github.event.inputs.end }}
