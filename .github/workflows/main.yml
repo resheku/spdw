@@ -100,6 +100,14 @@ jobs:
         with:
           ref: actions-test
           path: actions-test
+      - name: Check file content
+        run: cat data/sel/2023/schedule.json
+      - name: Check jq installation
+        run: jq --version
+      - name: Print working directory
+        run: |
+          pwd
+          ls -laqh data/sel/2023/
       - name: debug
         run: |
           # if [ "$FORCE" = "true" ]; then
