@@ -95,7 +95,7 @@ jobs:
             echo "FORCE is true"
           fi
           echo "_________________________"
-          jq -version
+          jq --version
           python3 --version
           echo "_________________________"
           cat data/sel/2023/schedule.json
