@@ -130,12 +130,14 @@ jobs:
           done < CHANGES
       - name: process match files
         run: |
-          while IFS= read -r line; do
-            id=$(echo "$line" | jq -r '.id')
-            season=$(echo "$line" | jq -r '.season')
-            mkdir -p "data/sel/$season/match/json"
-            node actions-test/src/index.js match "data/sel/$season/match/html/$id.html" > "data/sel/$season/match/json/$id.json"
-          done < CHANGES
+          if [ -f CHANGES ]; then
+            while IFS= read -r line; do
+              id=$(echo "$line" | jq -r '.id')
+              season=$(echo "$line" | jq -r '.season')
+              mkdir -p "data/sel/$season/match/json"
+              node actions-test/src/index.js match "data/sel/$season/match/html/$id.html" > "data/sel/$season/match/json/$id.json"
+            done < CHANGES
+          fi
       - name: Commit and push changes
         id: commit
         run: |
