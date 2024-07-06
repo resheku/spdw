@@ -98,8 +98,10 @@ jobs:
       - name: debug
         run: |
           if [ "$FORCE" = "true" ]; then
+            echo "Forcing recompute"
             for i in $(seq $START $END); do
-              jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json | tee -a CHANGES;
+              jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json
+              jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json >> CHANGES;
             done
           fi
           echo "______________________"
