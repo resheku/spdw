@@ -14,7 +14,7 @@ function getMatchData(html) {
 				}
 			}
 		}
-		return null;
+		return "";
 	};
 	return findObject(extractDataFromScript(html), "data");
 }
