@@ -101,7 +101,7 @@ jobs:
             echo "Forcing recompute"
             for season in $(seq $START $END); do
               echo $season
-              cat data/sel/$season/schedule.json
+              cat data/sel/$season/schedule.json | jq -c 'select(.status.id == 5276)'
               # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json
               # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json >> CHANGES;
             done
