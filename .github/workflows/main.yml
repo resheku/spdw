@@ -100,20 +100,12 @@ jobs:
         with:
           ref: actions-test
           path: actions-test
-      - name: Check file content
-        run: cat data/sel/2023/schedule.json
-      - name: Check jq installation
-        run: jq --version
-      - name: Print working directory
-        run: |
-          pwd
-          ls -laqh data/sel/2023/
       - name: debug
         run: |
           if [ "$FORCE" = "true" ]; then
             echo "Forcing recompute"
             for season in $(seq $START $END); do
-              jq -c 'select(.id == 5276)' data/sel/$season/schedule.json | tee -a CHANGES;
+              jq -c 'select(.id == 3816)' data/sel/$season/schedule.json | tee -a CHANGES;
             done
           fi
         env:
