@@ -50,25 +50,26 @@ jobs:
         with:
           ref: actions-test
           path: actions-test
-      - name: Fetch schedule
+      - name: fetch schedule
         if: ${{ github.event.inputs.schedule_cache == 'false' }}
         run: |
-          for i in $(seq $START $END); do
-            mkdir -p data/sel/$i
-            curl -f --no-progress-meter $SCHEDULE_URL/$i -o data/sel/$i/schedule.html
+          for season in $(seq $START $END); do
+            mkdir -p data/sel/$season
+            echo "$SCHEDULE_URL/$season"
+            curl --fail --no-progress-meter $SCHEDULE_URL/$season -o data/sel/$season/schedule.html
           done
         env:
           START: ${{ github.event.inputs.start }}
           END: ${{ github.event.inputs.end }}
-      - name: process files
+      - name: process schedule files
         run: |
-          for i in $(seq $START $END); do
-            node actions-test/src/index.js schedule data/sel/$i/schedule.html > data/sel/$i/schedule.json
+          for season in $(seq $START $END); do
+            node actions-test/src/index.js schedule data/sel/$season/schedule.html > data/sel/$season/schedule.json
           done
         env:
           START: ${{ github.event.inputs.start }}
           END: ${{ github.event.inputs.end }}
-      - name: Commit and push changes
+      - name: commit changes
         id: commit
         run: |
           git config user.name "Automated"
@@ -140,7 +141,7 @@ jobs:
             season=$(echo "$line" | jq -r '.season')
             mkdir -p "data/sel/$season/match/html"
             echo "$MATCH_URL/$id"
-            curl -f --no-progress-meter "$MATCH_URL/$id" -o "data/sel/$season/match/html/$id.html"
+            curl --fail --no-progress-meter "$MATCH_URL/$id" -o "data/sel/$season/match/html/$id.html"
             # Generate a random number between  1 and  500 (to represent milliseconds)
             random_milliseconds=$(( RANDOM %  400 +  100  ))
             # Convert milliseconds to seconds and sleep
@@ -157,7 +158,7 @@ jobs:
               node actions-test/src/index.js match "data/sel/$season/match/html/$id.html" > "data/sel/$season/match/json/$id.json"
             done < CHANGES
           fi
-      - name: Commit and push changes
+      - name: commit changes
         id: commit
         run: |
           git config user.name "Automated"
