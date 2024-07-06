@@ -144,6 +144,19 @@ jobs:
             sleep_seconds=$(echo "scale=2; $random_milliseconds /  1000" | bc)
             sleep $sleep_seconds
           done < CHANGES
+      - name: process match files
+        run: |
+          # for every season in the range list the files in the directory and process them
+          for season in $(seq $START $END); do
+            mkdir -p "data/sel/$season/match/json"
+            for file in data/sel/$season/match/html/*.html; do
+              echo $file
+              # node actions-test/src/match.js $file > data/sel/$season/match/json/$(basename $file .html).json
+            done
+          done
+        env:
+          START: ${{ github.event.inputs.start }}
+          END: ${{ github.event.inputs.end }}
       - name: Commit and push changes
         id: commit
         run: |
