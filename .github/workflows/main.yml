@@ -95,18 +95,20 @@ jobs:
             echo "FORCE is true"
           fi
           echo "_________________________"
-          jq -c 'select(.status.id == 5276)' data/sel/2023/schedule.json
+          jq -version
+          python3 --version
           echo "_________________________"
+          cat data/sel/2023/schedule.json
           cat data/sel/2023/schedule.json | python3 -c 'import json,sys; [print(x) for x in sys.stdin if json.loads(x)["id"]==5276]'
-          for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
-            echo data/sel/$i/schedule.json
-            # cat data/sel/$i/schedule.json
-            echo "_________________________"
-            jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json
-            jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json | tee -a CHANGES;
-            echo "_________________________"
-            cat CHANGES
-          done
+          # for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
+          #   echo data/sel/$i/schedule.json
+          #   # cat data/sel/$i/schedule.json
+          #   echo "_________________________"
+          #   jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json
+          #   jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json | tee -a CHANGES;
+          #   echo "_________________________"
+          #   cat CHANGES
+          # done
       - name: diff changes
         run: |
           if [ "$FORCE" = "true" ]; then
