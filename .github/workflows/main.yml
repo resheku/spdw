@@ -100,19 +100,16 @@ jobs:
         with:
           ref: actions-test
           path: actions-test
-      - name: debug
+      - name: schedule changes force
+        if: ${{ github.event.inputs.force == 'true' }}
         run: |
-          if [ "$FORCE" = "true" ]; then
-            echo "Forcing recompute"
-            for season in $(seq $START $END); do
-              jq -c 'select(.id == 3816)' data/sel/$season/schedule.json | tee -a CHANGES;
-            done
-          fi
+          for season in $(seq $START $END); do
+            jq -c 'select(.id == 3817)' data/sel/$season/schedule.json | tee -a CHANGES;
+          done
         env:
           START: ${{ github.event.inputs.start }}
           END: ${{ github.event.inputs.end }}
-          FORCE: ${{ github.event.inputs.force }}
-      # - name: diff changes
+      # - name: diff schedule changes
       #   run: |
       #     if [ "$FORCE" = "true" ]; then
       #       for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
