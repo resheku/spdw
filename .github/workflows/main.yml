@@ -104,20 +104,15 @@ jobs:
         if: ${{ github.event.inputs.force == 'true' }}
         run: |
           for season in $(seq $START $END); do
-            jq -c 'select(.id == 3817)' data/sel/$season/schedule.json | tee -a CHANGES;
+            jq -c 'select(.status.id == 1)' data/sel/$season/schedule.json | tee -a CHANGES;
           done
         env:
           START: ${{ github.event.inputs.start }}
           END: ${{ github.event.inputs.end }}
-      # - name: diff schedule changes
-      #   run: |
-      #     if [ "$FORCE" = "true" ]; then
-      #       for i in {${{ github.event.inputs.start }}..${{ github.event.inputs.end }}}; do
-      #         jq -c 'select(.status.id == 5276)' data/sel/$i/schedule.json | tee -a CHANGES;
-      #       done
-      #     fi
-      #   env:
-      #     FORCE: ${{ github.event.inputs.force }}
+      - name: schedule changes
+        if: ${{ github.event.inputs.force == 'false' }}
+        run: |
+          # Get the changes between the last and the current schedule
       - name: get match data
         if: ${{ github.event.inputs.match_cache == 'false' }}
         run: |
@@ -148,5 +143,5 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add data/
           timestamp=$(date -u)
-          git commit -m "Latest data: ${timestamp}"
+          git commit -m "Latest data: ${timestamp}" || true
           git push
