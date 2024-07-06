@@ -112,7 +112,26 @@ jobs:
       - name: schedule changes
         if: ${{ github.event.inputs.force == 'false' }}
         run: |
-          # Get the changes between the last and the current schedule
+          echo "CHANGED FILES"
+          for file in $(git diff --name-only --diff-filter=M HEAD^ HEAD); do
+              # check if the file exists and is a json file
+              if [[ -e "$file" && "$file" == *schedule.json ]]; then
+                  echo $file;
+                  # get the hashes of the commits that modified the file excet the most recent one
+                  hash=$(git log -n 2 --pretty=format:%h -- $file | tail -n 1);
+                  diff -e <(git show "$hash:$file" | jq -c 'select(.status.id == 1)') \
+                  <(jq -c 'select(.status.id == 1)' $file) \
+                  | sed '1d;$d' | tee -a CHANGES;
+              fi
+          done
+
+          echo "ADDED FILES"
+          for file in $(git diff --name-only --diff-filter=A HEAD^ HEAD); do
+              if [[ -e "$file" && "$file" == *schedule.json ]]; then
+                  echo $file;
+                  jq -c 'select(.status.id == 1)' $file | tee -a CHANGES;
+              fi;
+          done
       - name: get match data
         if: ${{ github.event.inputs.match_cache == 'false' }}
         run: |
