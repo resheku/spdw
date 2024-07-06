@@ -102,18 +102,21 @@ jobs:
           path: actions-test
       - name: debug
         run: |
-          if [ "$FORCE" = "true" ]; then
-            echo "Forcing recompute"
-            # for season in $(seq $START $END); do
-            #   echo $season
-            #   cat data/sel/$season/schedule.json | tail -n 1 | tee -a CHANGES;
-            #   # cat data/sel/$season/schedule.json | jq -c 'select(.status.id == 5276)'
-            #   # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json
-            #   # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json >> CHANGES;
-            # done
-            jq -c 'select(.status.id == 5276)' data/sel/2023/schedule.json | tee -a CHANGES;
-          fi
+          # if [ "$FORCE" = "true" ]; then
+          #   echo "Forcing recompute"
+          #   # for season in $(seq $START $END); do
+          #   #   echo $season
+          #   #   cat data/sel/$season/schedule.json | tail -n 1 | tee -a CHANGES;
+          #   #   # cat data/sel/$season/schedule.json | jq -c 'select(.status.id == 5276)'
+          #   #   # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json
+          #   #   # jq -c 'select(.status.id == 5276)' data/sel/$season/schedule.json >> CHANGES;
+          #   # done
+          #   jq -c 'select(.status.id == 5276)' data/sel/2023/schedule.json | tee -a CHANGES;
+          # fi
           echo "______________________"
+          ls -lah data/sel/2023/schedule.json
+          cat data/sel/2023/schedule.json | jq -c 'select(.status.id == 5276)' >> CHANGES;
+          ls -lah CHANGES
           cat CHANGES
           echo "______________________"
           # jq --help
