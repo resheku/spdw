@@ -122,7 +122,7 @@ jobs:
                   hash=$(git log -n 2 --pretty=format:%h -- $file | tail -n 1);
                   diff -e <(git show "$hash:$file" | jq -c 'select(.status.id == 1)') \
                   <(jq -c 'select(.status.id == 1)' $file) \
-                  | sed '1d;$d' | tee -a CHANGES;
+                  | grep '^{' | tee -a CHANGES;
               fi
           done
 
