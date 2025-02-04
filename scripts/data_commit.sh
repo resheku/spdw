@@ -13,5 +13,5 @@ if [ -z "$json_changes" ]; then
 fi
 
 timestamp=$(date -u)
-git commit -m "Schedule: ${timestamp}" && echo "changes=1" >"$GITHUB_OUTPUT"
+git commit -m "Data: ${timestamp}" && echo "changes=1" >"$GITHUB_OUTPUT"
 git push
