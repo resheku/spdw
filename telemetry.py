@@ -107,8 +107,8 @@ if __name__ == "__main__":
         "output_path",
         type=str,
         nargs="?",
-        default=os.path.join(os.getcwd(), "data/matches.jsonl"),
-        help="Path to output JSONL file (default: data/matches.jsonl)",
+        default=os.path.join(os.getcwd(), "data/sel/matches.jsonl"),
+        help="Path to output JSONL file (default: data/sel/matches.jsonl)",
     )
     args = parser.parse_args()
     # read all json files in data/sel/*/match/json/*.json

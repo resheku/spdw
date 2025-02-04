@@ -1,7 +1,7 @@
 
 attach 'sel.db' as sel;
 
-create table matches as(select * from read_json_auto('data/matches.jsonl'));
+create table matches as(select * from read_json_auto('data/sel/matches.jsonl'));
 
 -- matches
 --   card_teams
