@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 env:
   DATA_BRANCH: data-store-test
-  CODE_BRANCH: workflow
+  CODE_BRANCH: main
 
 jobs:
   process_data:

@@ -11,5 +11,4 @@ while IFS= read -r line; do
     # Convert milliseconds to seconds and sleep
     sleep_seconds=$(echo "scale=2; $random_milliseconds /  1000" | bc)
     sleep "$sleep_seconds"
-    break
 done <CHANGES
