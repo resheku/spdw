@@ -33,6 +33,6 @@ jobs:
       - name: data linkage
         run: python3 $CODE_BRANCH/telemetry.py
       - name: create database sel.db
-        run: duckdb < $CODE_BRANCH/queries/sel_init.sql
+        run: rm -f sel.db && duckdb < $CODE_BRANCH/queries/sel_init.sql
       - name: data commit
         run: bash $CODE_BRANCH/scripts/data_commit.sh
