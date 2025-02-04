@@ -31,8 +31,8 @@ on:
 env:
   SCHEDULE_URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
   MATCH_URL: https://ekstraliga.pl/en/se/match
-  DATA_BRANCH: data-store
-  CODE_BRANCH: main
+  DATA_BRANCH: data-store-test
+  CODE_BRANCH: workflow
 
 jobs:
   schedules:
