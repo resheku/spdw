@@ -11,7 +11,7 @@ env:
   CODE_BRANCH: workflow
 
 jobs:
-  process:
+  process_data:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,4 +31,4 @@ jobs:
       - name: data linkage
         run: python3 $CODE_BRANCH/telemetry.py
       - name: data db
-        run: duckdb db.duckdb < $CODE_BRANCH/queries/init_db.sql
+        run: duckdb db.duckdb < $CODE_BRANCH/queries/sel_init.sql
