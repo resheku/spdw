@@ -1,0 +1,103 @@
+name: sel
+
+on:
+  workflow_dispatch:
+    inputs:
+      start:
+        description: 'Start season'
+        required: true
+        default: '2025'
+        type: string
+      end:
+        description: 'Last season'
+        required: true
+        default: '2025'
+        type: string
+      schedule_cache:
+        description: 'Use cached schedule'
+        required: true
+        default: false
+        type: boolean
+      match_cache:
+        description: 'Use cached match'
+        required: true
+        default: false
+        type: boolean
+      force:
+        description: 'Force recompute'
+        required: true
+        default: false
+        type: boolean
+env:
+  SCHEDULE_URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
+  MATCH_URL: https://ekstraliga.pl/en/se/match
+  DATA_BRANCH: data-store
+  CODE_BRANCH: main
+
+jobs:
+  schedules:
+    runs-on: ubuntu-latest
+    outputs:
+      changes: ${{ steps.commit.outputs.changes }}
+    permissions:
+      contents: write
+    steps:
+      - name: checkout data branch
+        uses: actions/checkout@v4
+        with:
+          ref: $DATA_BRANCH
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: $CODE_BRANCH
+          path: $CODE_BRANCH
+      - name: schedule fetch
+        if: ${{ github.event.inputs.schedule_cache == 'false' }}
+        run: bash $CODE_BRANCH/scripts/schedule_fetch.sh
+        env:
+          START: ${{ github.event.inputs.start }}
+          END: ${{ github.event.inputs.end }}
+      - name: schedule process
+        run: bash $CODE_BRANCH/scripts/schedule_process.sh
+        env:
+          START: ${{ github.event.inputs.start }}
+          END: ${{ github.event.inputs.end }}
+      - name: schedule commit
+        id: commit
+        run: bash $CODE_BRANCH/scripts/schedule_commit.sh
+        env:
+          FORCE: ${{ github.event.inputs.force }}
+  match:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: schedules
+    if: needs.schedules.outputs.changes == '1'
+    steps:
+      - name: checkout data-store
+        uses: actions/checkout@v4
+        with:
+          ref: data-store
+          fetch-depth: 0
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+      - name: schedule force changes
+        if: ${{ github.event.inputs.force == 'true' }}
+        run: bash $CODE_BRANCH/scripts/schedule_force_changes.sh
+        env:
+          START: ${{ github.event.inputs.start }}
+          END: ${{ github.event.inputs.end }}
+      - name: schedule changes
+        if: ${{ github.event.inputs.force == 'false' }}
+        run: bash $CODE_BRANCH/scripts/schedule_changes.sh
+      - name: match fetch
+        if: ${{ github.event.inputs.match_cache == 'false' }}
+        run: bash $CODE_BRANCH/scripts/match_fetch.sh
+      - name: match process
+        run: bash $CODE_BRANCH/scripts/match_process.sh
+      - name: match commit
+        id: commit
+        run: bash $CODE_BRANCH/scripts/match_commit.sh
