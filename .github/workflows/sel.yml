@@ -45,12 +45,12 @@ jobs:
       - name: checkout data branch
         uses: actions/checkout@v4
         with:
-          ref: $DATA_BRANCH
+          ref: ${{ env.DATA_BRANCH }}
       - name: checkout code
         uses: actions/checkout@v4
         with:
-          ref: $CODE_BRANCH
-          path: $CODE_BRANCH
+          ref: ${{ env.CODE_BRANCH }}
+          path: ${{ env.CODE_BRANCH }}
       - name: schedule fetch
         if: ${{ github.event.inputs.schedule_cache == 'false' }}
         run: bash $CODE_BRANCH/scripts/schedule_fetch.sh
