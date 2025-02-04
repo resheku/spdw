@@ -13,9 +13,11 @@ if [ -z "$json_changes" ]; then
 fi
 
 timestamp=$(date -u)
-git commit -m "Schedule: ${timestamp}" && echo "changes=0" >"$GITHUB_OUTPUT"
+git commit -m "Schedule: ${timestamp}" && echo "changes=1" >"$GITHUB_OUTPUT"
 # commit_status=$?
+
 if [ "$FORCE" = "true" ]; then
+    echo "Force schedule"
     echo "changes=1" >>"$GITHUB_OUTPUT"
 fi
 git push
