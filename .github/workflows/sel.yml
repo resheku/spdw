@@ -77,13 +77,13 @@ jobs:
       - name: checkout data-store
         uses: actions/checkout@v4
         with:
-          ref: data-store
+          ref: ${{ env.DATA_BRANCH }}
           fetch-depth: 0
       - name: checkout code
         uses: actions/checkout@v4
         with:
-          ref: main
-          path: main
+          ref: ${{ env.CODE_BRANCH }}
+          path: ${{ env.CODE_BRANCH }}
       - name: schedule force changes
         if: ${{ github.event.inputs.force == 'true' }}
         run: bash $CODE_BRANCH/scripts/schedule_force_changes.sh
