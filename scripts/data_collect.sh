@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm data/schedules.jsonl
+rm -f data/schedules.jsonl
 for file in data/sel/*/schedule.jsonl; do
     cat "$file" >>data/schedules.jsonl
 done
