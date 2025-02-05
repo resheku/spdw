@@ -2,7 +2,7 @@
 
 git config user.name "Automated"
 git config user.email "actions@users.noreply.github.com"
-git add sel.db data/
+git add sel.db sel/
 
 # Check for changes in match JSON files
 json_changes=$(git diff --cached --name-only --diff-filter=ACM | grep 'matches.jsonl$')

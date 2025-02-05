@@ -24,12 +24,12 @@ expected = match_data
 @pytest.mark.parametrize(
     "match_data, expected",
     [
-        ("data/sel/2024/match/json/4852.json", "tests/data/4852.json"),
-        ("data/sel/2023/match/json/3855.json", "tests/data/3855.json"),
-        ("data/sel/2021/match/json/2843.json", "tests/data/2843.json"),
-        ("data/sel/2024/match/json/4804.json", "tests/data/4804.json"),
-        ("data/sel/2024/match/json/5520.json", "tests/data/5520.json"),
-        ("data/sel/2024/match/json/5539.json", "tests/data/5539.json"),
+        ("sel/2024/match/json/4852.json", "tests/data/4852.json"),
+        ("sel/2023/match/json/3855.json", "tests/data/3855.json"),
+        ("sel/2021/match/json/2843.json", "tests/data/2843.json"),
+        ("sel/2024/match/json/4804.json", "tests/data/4804.json"),
+        ("sel/2024/match/json/5520.json", "tests/data/5520.json"),
+        ("sel/2024/match/json/5539.json", "tests/data/5539.json"),
     ],
     indirect=True,
 )

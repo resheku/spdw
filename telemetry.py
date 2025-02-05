@@ -100,18 +100,18 @@ if __name__ == "__main__":
         "input_path",
         type=str,
         nargs="?",
-        default="data/sel/*/match/json/*.json",
-        help="Path to input JSON files (default: data/sel/*/match/json/*.json)",
+        default="sel/*/match/json/*.json",
+        help="Path to input JSON files (default: sel/*/match/json/*.json)",
     )
     parser.add_argument(
         "output_path",
         type=str,
         nargs="?",
-        default=os.path.join(os.getcwd(), "data/sel/matches.jsonl"),
-        help="Path to output JSONL file (default: data/sel/matches.jsonl)",
+        default=os.path.join(os.getcwd(), "sel/matches.jsonl"),
+        help="Path to output JSONL file (default: sel/matches.jsonl)",
     )
     args = parser.parse_args()
-    # read all json files in data/sel/*/match/json/*.json
+    # read all json files in sel/*/match/json/*.json
 
     data = []
 
