@@ -1,0 +1,3302 @@
+{
+  "match": {
+    "id": 2112,
+    "attendance": 0,
+    "count_attendance": 0,
+    "card_type_id": 1,
+    "verified": 1,
+    "referee_id": 251,
+    "trackcommissioner_id": 284,
+    "broadcaster_schedule_id": 2,
+    "status_id": 1,
+    "season": 2020,
+    "match_type_id": 1,
+    "match_subtype_id": 6,
+    "track_id": 25,
+    "has_telemetry": 0,
+    "name": {
+      "pl": "BETARD SPARTA Wrocław - RM SOLAR FALUBAZ Zielona Góra",
+      "en": "BETARD SPARTA Wrocław - RM SOLAR FALUBAZ Zielona Góra"
+    },
+    "shortname": {
+      "pl": "WRO - ZIE",
+      "en": "WRO - ZIE"
+    },
+    "description": {
+      "pl": null,
+      "en": null
+    },
+    "datetime_schedule": 1602426600000,
+    "datetime_has_hour": 1,
+    "round": 18,
+    "city": null,
+    "card_teams": [
+      {
+        "no": 1,
+        "card_id": 2112,
+        "team_id": 3,
+        "match_score": 50,
+        "match_tlt_score": 82,
+        "position": null,
+        "team_manager_id": null,
+        "manager_id": null,
+        "coach_id": 641,
+        "team_shortcut": "WRO",
+        "team_title": "BETARD SPARTA Wrocław",
+        "coach": "Dariusz Śledź",
+        "manager": null,
+        "team_manager": null
+      },
+      {
+        "no": 2,
+        "card_id": 2112,
+        "team_id": 5,
+        "match_score": 40,
+        "match_tlt_score": 77,
+        "position": null,
+        "team_manager_id": null,
+        "manager_id": null,
+        "coach_id": null,
+        "team_shortcut": "ZIE",
+        "team_title": "RM SOLAR FALUBAZ Zielona Góra",
+        "coach": null,
+        "manager": null,
+        "team_manager": null
+      }
+    ],
+    "status": {
+      "id": 1,
+      "name": {
+        "pl": "Rozegrany",
+        "en": "Raced"
+      },
+      "shortname": {
+        "pl": "Rozegrany",
+        "en": "Raced"
+      }
+    },
+    "broadcaster_schedule": {
+      "id": 2,
+      "title": "Eleven Sports 1"
+    },
+    "match_type": {
+      "id": 1,
+      "shortname": {
+        "pl": "PGEE",
+        "en": "PGEE"
+      },
+      "name": {
+        "pl": "Ekstraliga",
+        "en": "Polish Speedway Extraleague"
+      },
+      "team_competition": 1,
+      "has_home_away": 1,
+      "has_rounds": 1
+    },
+    "match_subtype": {
+      "id": 6,
+      "name": {
+        "pl": "Część finałowa - Mecz o 3 miejsce",
+        "en": "3rd place match"
+      },
+      "shortname": {
+        "pl": "Mecz o 3 miejsce",
+        "en": "3rd place"
+      }
+    },
+    "postponed": null,
+    "postponed_first": null,
+    "track": {
+      "id": 25,
+      "city": "Wrocław",
+      "fullname": "Stadion Olimpijski we Wrocławiu"
+    },
+    "track_commissioner": {
+      "id": 284,
+      "name": "Arkadiusz",
+      "surname": "Kalwasiński"
+    },
+    "referee": {
+      "id": 251,
+      "name": "Paweł",
+      "surname": "Słupski"
+    }
+  },
+  "heats": [
+    {
+      "id": 27557,
+      "canceled": 0,
+      "no": 1,
+      "restart_id": null,
+      "home_heat_score": 4,
+      "away_heat_score": 2,
+      "home_match_score": 4,
+      "away_match_score": 2,
+      "results": [
+        {
+          "heat_id": 27557,
+          "rider_id": 98,
+          "rider_no": 1,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "b",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 98,
+            "name": "Michael",
+            "surname": "Jepsen Jensen"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27557,
+          "rider_id": 62,
+          "rider_no": 9,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "a",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 62,
+            "name": "Chris",
+            "surname": "Holder"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27557,
+          "rider_id": 1335,
+          "rider_no": 3,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "d",
+          "score": "2",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 1335,
+            "name": "Rohan",
+            "surname": "Tungate"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27557,
+          "rider_id": 102,
+          "rider_no": 11,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "c",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": 152,
+          "substitute_no": 12,
+          "warning": null,
+          "rider": {
+            "id": 102,
+            "name": "Tai",
+            "surname": "Woffinden"
+          },
+          "substitute": {
+            "id": 152,
+            "name": "Max",
+            "surname": "Fricke"
+          }
+        }
+      ]
+    },
+    {
+      "id": 27558,
+      "canceled": 0,
+      "no": 2,
+      "restart_id": null,
+      "home_heat_score": 2,
+      "away_heat_score": 4,
+      "home_match_score": 6,
+      "away_match_score": 6,
+      "results": [
+        {
+          "heat_id": 27558,
+          "rider_id": 1332,
+          "rider_no": 15,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "b",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 1332,
+            "name": "Michał",
+            "surname": "Curzytek"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27558,
+          "rider_id": 434,
+          "rider_no": 6,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "a",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 434,
+            "name": "Damian",
+            "surname": "Pawliczak"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27558,
+          "rider_id": 65,
+          "rider_no": 14,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "d",
+          "score": "2",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 65,
+            "name": "Gleb",
+            "surname": "Chugunov"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27558,
+          "rider_id": 554,
+          "rider_no": 7,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "c",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 554,
+            "name": "Mateusz",
+            "surname": "Tonder"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27559,
+      "canceled": 0,
+      "no": 3,
+      "restart_id": null,
+      "home_heat_score": 3,
+      "away_heat_score": 3,
+      "home_match_score": 9,
+      "away_match_score": 9,
+      "results": [
+        {
+          "heat_id": 27559,
+          "rider_id": 68,
+          "rider_no": 5,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "b",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 68,
+            "name": "Patryk",
+            "surname": "Dudek"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27559,
+          "rider_id": 152,
+          "rider_no": 12,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "a",
+          "score": "2",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 152,
+            "name": "Max",
+            "surname": "Fricke"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27559,
+          "rider_id": 58,
+          "rider_no": 2,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "d",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 58,
+            "name": "Martin",
+            "surname": "Vaculik"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27559,
+          "rider_id": 103,
+          "rider_no": 13,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "c",
+          "score": "1",
+          "bonus": 1,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 103,
+            "name": "Maciej",
+            "surname": "Janowski"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27560,
+      "canceled": 0,
+      "no": 4,
+      "restart_id": null,
+      "home_heat_score": 3,
+      "away_heat_score": 3,
+      "home_match_score": 12,
+      "away_match_score": 12,
+      "results": [
+        {
+          "heat_id": 27560,
+          "rider_id": 65,
+          "rider_no": 14,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "b",
+          "score": "1",
+          "bonus": 1,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 65,
+            "name": "Gleb",
+            "surname": "Chugunov"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27560,
+          "rider_id": 67,
+          "rider_no": 4,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "a",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 67,
+            "name": "Piotr",
+            "surname": "Protasiewicz"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27560,
+          "rider_id": 109,
+          "rider_no": 10,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "d",
+          "score": "2",
+          "bonus": 0,
+          "substitute_id": 1315,
+          "substitute_no": 16,
+          "warning": null,
+          "rider": {
+            "id": 109,
+            "name": "Przemysław",
+            "surname": "Liszka"
+          },
+          "substitute": {
+            "id": 1315,
+            "name": "Daniel",
+            "surname": "Bewley"
+          }
+        },
+        {
+          "heat_id": 27560,
+          "rider_id": 434,
+          "rider_no": 6,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "c",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 434,
+            "name": "Damian",
+            "surname": "Pawliczak"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27561,
+      "canceled": 0,
+      "no": 5,
+      "restart_id": null,
+      "home_heat_score": 5,
+      "away_heat_score": 1,
+      "home_match_score": 17,
+      "away_match_score": 13,
+      "results": [
+        {
+          "heat_id": 27561,
+          "rider_id": 102,
+          "rider_no": 11,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "b",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": 62,
+          "substitute_no": 9,
+          "warning": null,
+          "rider": {
+            "id": 102,
+            "name": "Tai",
+            "surname": "Woffinden"
+          },
+          "substitute": {
+            "id": 62,
+            "name": "Chris",
+            "surname": "Holder"
+          }
+        },
+        {
+          "heat_id": 27561,
+          "rider_id": 1335,
+          "rider_no": 3,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "a",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 1335,
+            "name": "Rohan",
+            "surname": "Tungate"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27561,
+          "rider_id": 152,
+          "rider_no": 12,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "d",
+          "score": "2",
+          "bonus": 1,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 152,
+            "name": "Max",
+            "surname": "Fricke"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27561,
+          "rider_id": 67,
+          "rider_no": 4,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "c",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": 1,
+          "rider": {
+            "id": 67,
+            "name": "Piotr",
+            "surname": "Protasiewicz"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27562,
+      "canceled": 0,
+      "no": 6,
+      "restart_id": null,
+      "home_heat_score": 2,
+      "away_heat_score": 4,
+      "home_match_score": 19,
+      "away_match_score": 17,
+      "results": [
+        {
+          "heat_id": 27562,
+          "rider_id": 103,
+          "rider_no": 13,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "b",
+          "score": "2",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 103,
+            "name": "Maciej",
+            "surname": "Janowski"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27562,
+          "rider_id": 58,
+          "rider_no": 2,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "a",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 58,
+            "name": "Martin",
+            "surname": "Vaculik"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27562,
+          "rider_id": 1332,
+          "rider_no": 15,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "d",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 1332,
+            "name": "Michał",
+            "surname": "Curzytek"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27562,
+          "rider_id": 98,
+          "rider_no": 1,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "c",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 98,
+            "name": "Michael",
+            "surname": "Jepsen Jensen"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27563,
+      "canceled": 0,
+      "no": 7,
+      "restart_id": null,
+      "home_heat_score": 5,
+      "away_heat_score": 1,
+      "home_match_score": 24,
+      "away_match_score": 18,
+      "results": [
+        {
+          "heat_id": 27563,
+          "rider_id": 554,
+          "rider_no": 7,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "b",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 554,
+            "name": "Mateusz",
+            "surname": "Tonder"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27563,
+          "rider_id": 109,
+          "rider_no": 10,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "a",
+          "score": "2",
+          "bonus": 1,
+          "substitute_id": 1315,
+          "substitute_no": 16,
+          "warning": null,
+          "rider": {
+            "id": 109,
+            "name": "Przemysław",
+            "surname": "Liszka"
+          },
+          "substitute": {
+            "id": 1315,
+            "name": "Daniel",
+            "surname": "Bewley"
+          }
+        },
+        {
+          "heat_id": 27563,
+          "rider_id": 68,
+          "rider_no": 5,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "d",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 68,
+            "name": "Patryk",
+            "surname": "Dudek"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27563,
+          "rider_id": 62,
+          "rider_no": 9,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "c",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 62,
+            "name": "Chris",
+            "surname": "Holder"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27564,
+      "canceled": 0,
+      "no": 8,
+      "restart_id": null,
+      "home_heat_score": 3,
+      "away_heat_score": 3,
+      "home_match_score": 27,
+      "away_match_score": 21,
+      "results": [
+        {
+          "heat_id": 27564,
+          "rider_id": 1335,
+          "rider_no": 3,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "b",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": 58,
+          "substitute_no": 2,
+          "warning": null,
+          "rider": {
+            "id": 1335,
+            "name": "Rohan",
+            "surname": "Tungate"
+          },
+          "substitute": {
+            "id": 58,
+            "name": "Martin",
+            "surname": "Vaculik"
+          }
+        },
+        {
+          "heat_id": 27564,
+          "rider_id": 103,
+          "rider_no": 13,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "a",
+          "score": "1",
+          "bonus": 1,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 103,
+            "name": "Maciej",
+            "surname": "Janowski"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27564,
+          "rider_id": 67,
+          "rider_no": 4,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "d",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 67,
+            "name": "Piotr",
+            "surname": "Protasiewicz"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27564,
+          "rider_id": 65,
+          "rider_no": 14,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "c",
+          "score": "2",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 65,
+            "name": "Gleb",
+            "surname": "Chugunov"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27565,
+      "canceled": 0,
+      "no": 9,
+      "restart_id": null,
+      "home_heat_score": 3,
+      "away_heat_score": 3,
+      "home_match_score": 30,
+      "away_match_score": 24,
+      "results": [
+        {
+          "heat_id": 27565,
+          "rider_id": 62,
+          "rider_no": 9,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "b",
+          "score": "2",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 62,
+            "name": "Chris",
+            "surname": "Holder"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27565,
+          "rider_id": 98,
+          "rider_no": 1,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "a",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 98,
+            "name": "Michael",
+            "surname": "Jepsen Jensen"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27565,
+          "rider_id": 109,
+          "rider_no": 10,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "d",
+          "score": "1",
+          "bonus": 1,
+          "substitute_id": 1315,
+          "substitute_no": 16,
+          "warning": null,
+          "rider": {
+            "id": 109,
+            "name": "Przemysław",
+            "surname": "Liszka"
+          },
+          "substitute": {
+            "id": 1315,
+            "name": "Daniel",
+            "surname": "Bewley"
+          }
+        },
+        {
+          "heat_id": 27565,
+          "rider_id": 58,
+          "rider_no": 2,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "c",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 58,
+            "name": "Martin",
+            "surname": "Vaculik"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27566,
+      "canceled": 0,
+      "no": 10,
+      "restart_id": null,
+      "home_heat_score": 5,
+      "away_heat_score": 1,
+      "home_match_score": 35,
+      "away_match_score": 25,
+      "results": [
+        {
+          "heat_id": 27566,
+          "rider_id": 434,
+          "rider_no": 6,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "b",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 434,
+            "name": "Damian",
+            "surname": "Pawliczak"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27566,
+          "rider_id": 102,
+          "rider_no": 11,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "a",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": 103,
+          "substitute_no": 13,
+          "warning": null,
+          "rider": {
+            "id": 102,
+            "name": "Tai",
+            "surname": "Woffinden"
+          },
+          "substitute": {
+            "id": 103,
+            "name": "Maciej",
+            "surname": "Janowski"
+          }
+        },
+        {
+          "heat_id": 27566,
+          "rider_id": 68,
+          "rider_no": 5,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "d",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 68,
+            "name": "Patryk",
+            "surname": "Dudek"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27566,
+          "rider_id": 152,
+          "rider_no": 12,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "c",
+          "score": "2",
+          "bonus": 1,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 152,
+            "name": "Max",
+            "surname": "Fricke"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27567,
+      "canceled": 0,
+      "no": 11,
+      "restart_id": null,
+      "home_heat_score": 5,
+      "away_heat_score": 1,
+      "home_match_score": 40,
+      "away_match_score": 26,
+      "results": [
+        {
+          "heat_id": 27567,
+          "rider_id": 152,
+          "rider_no": 12,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "b",
+          "score": "2",
+          "bonus": 1,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 152,
+            "name": "Max",
+            "surname": "Fricke"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27567,
+          "rider_id": 67,
+          "rider_no": 4,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "a",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 67,
+            "name": "Piotr",
+            "surname": "Protasiewicz"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27567,
+          "rider_id": 62,
+          "rider_no": 9,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "d",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 62,
+            "name": "Chris",
+            "surname": "Holder"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27567,
+          "rider_id": 98,
+          "rider_no": 1,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "c",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": 1335,
+          "substitute_no": 3,
+          "warning": null,
+          "rider": {
+            "id": 98,
+            "name": "Michael",
+            "surname": "Jepsen Jensen"
+          },
+          "substitute": {
+            "id": 1335,
+            "name": "Rohan",
+            "surname": "Tungate"
+          }
+        }
+      ]
+    },
+    {
+      "id": 27568,
+      "canceled": 1,
+      "no": 12,
+      "restart_id": null,
+      "home_heat_score": 0,
+      "away_heat_score": 0,
+      "home_match_score": null,
+      "away_match_score": null,
+      "results": [
+        {
+          "heat_id": 27568,
+          "rider_id": 58,
+          "rider_no": 2,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "b",
+          "score": null,
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": 1,
+          "rider": {
+            "id": 58,
+            "name": "Martin",
+            "surname": "Vaculik"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27568,
+          "rider_id": 1332,
+          "rider_no": 15,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "a",
+          "score": null,
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 1332,
+            "name": "Michał",
+            "surname": "Curzytek"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27568,
+          "rider_id": 554,
+          "rider_no": 7,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "d",
+          "score": null,
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 554,
+            "name": "Mateusz",
+            "surname": "Tonder"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27568,
+          "rider_id": 102,
+          "rider_no": 11,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "c",
+          "score": null,
+          "bonus": 0,
+          "substitute_id": 65,
+          "substitute_no": 14,
+          "warning": null,
+          "rider": {
+            "id": 102,
+            "name": "Tai",
+            "surname": "Woffinden"
+          },
+          "substitute": {
+            "id": 65,
+            "name": "Gleb",
+            "surname": "Chugunov"
+          }
+        }
+      ]
+    },
+    {
+      "id": 27587,
+      "canceled": 0,
+      "no": 12,
+      "restart_id": 27568,
+      "home_heat_score": 2,
+      "away_heat_score": 4,
+      "home_match_score": 42,
+      "away_match_score": 30,
+      "results": [
+        {
+          "heat_id": 27587,
+          "rider_id": 58,
+          "rider_no": 2,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "b",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": 0,
+          "rider": {
+            "id": 58,
+            "name": "Martin",
+            "surname": "Vaculik"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27587,
+          "rider_id": 1332,
+          "rider_no": 15,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "a",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": 0,
+          "rider": {
+            "id": 1332,
+            "name": "Michał",
+            "surname": "Curzytek"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27587,
+          "rider_id": 554,
+          "rider_no": 7,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "d",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": 0,
+          "rider": {
+            "id": 554,
+            "name": "Mateusz",
+            "surname": "Tonder"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27587,
+          "rider_id": 102,
+          "rider_no": 11,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "c",
+          "score": "2",
+          "bonus": 0,
+          "substitute_id": 65,
+          "substitute_no": 14,
+          "warning": 0,
+          "rider": {
+            "id": 102,
+            "name": "Tai",
+            "surname": "Woffinden"
+          },
+          "substitute": {
+            "id": 65,
+            "name": "Gleb",
+            "surname": "Chugunov"
+          }
+        }
+      ]
+    },
+    {
+      "id": 27569,
+      "canceled": 0,
+      "no": 13,
+      "restart_id": null,
+      "home_heat_score": 5,
+      "away_heat_score": 1,
+      "home_match_score": 47,
+      "away_match_score": 31,
+      "results": [
+        {
+          "heat_id": 27569,
+          "rider_id": 109,
+          "rider_no": 10,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "b",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": 1315,
+          "substitute_no": 16,
+          "warning": null,
+          "rider": {
+            "id": 109,
+            "name": "Przemysław",
+            "surname": "Liszka"
+          },
+          "substitute": {
+            "id": 1315,
+            "name": "Daniel",
+            "surname": "Bewley"
+          }
+        },
+        {
+          "heat_id": 27569,
+          "rider_id": 68,
+          "rider_no": 5,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "a",
+          "score": "D",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 68,
+            "name": "Patryk",
+            "surname": "Dudek"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27569,
+          "rider_id": 103,
+          "rider_no": 13,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "d",
+          "score": "2",
+          "bonus": 1,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 103,
+            "name": "Maciej",
+            "surname": "Janowski"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27569,
+          "rider_id": 1335,
+          "rider_no": 3,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "c",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 1335,
+            "name": "Rohan",
+            "surname": "Tungate"
+          },
+          "substitute": null
+        }
+      ]
+    },
+    {
+      "id": 27570,
+      "canceled": 0,
+      "no": 14,
+      "restart_id": null,
+      "home_heat_score": 2,
+      "away_heat_score": 4,
+      "home_match_score": 49,
+      "away_match_score": 35,
+      "results": [
+        {
+          "heat_id": 27570,
+          "rider_id": 68,
+          "rider_no": 5,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "b",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": 554,
+          "substitute_no": 7,
+          "warning": null,
+          "rider": {
+            "id": 68,
+            "name": "Patryk",
+            "surname": "Dudek"
+          },
+          "substitute": {
+            "id": 554,
+            "name": "Mateusz",
+            "surname": "Tonder"
+          }
+        },
+        {
+          "heat_id": 27570,
+          "rider_id": 103,
+          "rider_no": 13,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "a",
+          "score": "2",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 103,
+            "name": "Maciej",
+            "surname": "Janowski"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27570,
+          "rider_id": 98,
+          "rider_no": 1,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "d",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": 434,
+          "substitute_no": 6,
+          "warning": null,
+          "rider": {
+            "id": 98,
+            "name": "Michael",
+            "surname": "Jepsen Jensen"
+          },
+          "substitute": {
+            "id": 434,
+            "name": "Damian",
+            "surname": "Pawliczak"
+          }
+        },
+        {
+          "heat_id": 27570,
+          "rider_id": 109,
+          "rider_no": 10,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "c",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": 1315,
+          "substitute_no": 16,
+          "warning": null,
+          "rider": {
+            "id": 109,
+            "name": "Przemysław",
+            "surname": "Liszka"
+          },
+          "substitute": {
+            "id": 1315,
+            "name": "Daniel",
+            "surname": "Bewley"
+          }
+        }
+      ]
+    },
+    {
+      "id": 27571,
+      "canceled": 0,
+      "no": 15,
+      "restart_id": null,
+      "home_heat_score": 1,
+      "away_heat_score": 5,
+      "home_match_score": 50,
+      "away_match_score": 40,
+      "results": [
+        {
+          "heat_id": 27571,
+          "rider_id": 62,
+          "rider_no": 9,
+          "helmet": "red",
+          "joker": 0,
+          "gate": "b",
+          "score": "0",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 62,
+            "name": "Chris",
+            "surname": "Holder"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27571,
+          "rider_id": 58,
+          "rider_no": 2,
+          "helmet": "yellow",
+          "joker": 0,
+          "gate": "a",
+          "score": "3",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 58,
+            "name": "Martin",
+            "surname": "Vaculik"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27571,
+          "rider_id": 152,
+          "rider_no": 12,
+          "helmet": "blue",
+          "joker": 0,
+          "gate": "d",
+          "score": "1",
+          "bonus": 0,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 152,
+            "name": "Max",
+            "surname": "Fricke"
+          },
+          "substitute": null
+        },
+        {
+          "heat_id": 27571,
+          "rider_id": 67,
+          "rider_no": 4,
+          "helmet": "white",
+          "joker": 0,
+          "gate": "c",
+          "score": "2",
+          "bonus": 1,
+          "substitute_id": null,
+          "substitute_no": null,
+          "warning": null,
+          "rider": {
+            "id": 67,
+            "name": "Piotr",
+            "surname": "Protasiewicz"
+          },
+          "substitute": null
+        }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "message": {
+        "pl": "https://www.facebook.com/FalubazZielonaGora/photos/a.167792913236050/4000424806639489/?type=3&theater",
+        "en": "https://www.facebook.com/FalubazZielonaGora/photos/a.167792913236050/4000424806639489/?type=3&theater"
+      },
+      "heat_id": null,
+      "created_at": "2020-10-11T12:03:29.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://www.facebook.com/wtssparta/photos/a.830720480326985/3422055877860086/?type=3&theater",
+        "en": "https://www.facebook.com/wtssparta/photos/a.830720480326985/3422055877860086/?type=3&theater"
+      },
+      "heat_id": null,
+      "created_at": "2020-10-11T12:05:32.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Brązowe medale DMP.",
+        "en": "Brązowe medale DMP."
+      },
+      "heat_id": null,
+      "created_at": "2020-10-11T13:35:13.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/speedway24h/status/1315254159680167938?s=20",
+        "en": "https://twitter.com/speedway24h/status/1315254159680167938?s=20"
+      },
+      "heat_id": null,
+      "created_at": "2020-10-11T13:52:02.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Kibice stawiają na gospodarzy. Przekonamy się już za nieco ponad pół godziny! \n\nhttps://twitter.com/EkstraligaTV/status/1315269735743922176?s=20",
+        "en": "Kibice stawiają na gospodarzy. Przekonamy się już za nieco ponad pół godziny! \n\nhttps://twitter.com/EkstraligaTV/status/1315269735743922176?s=20"
+      },
+      "heat_id": null,
+      "created_at": "2020-10-11T13:53:26.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://www.facebook.com/watch/?v=2818720301785405",
+        "en": "https://www.facebook.com/watch/?v=2818720301785405"
+      },
+      "heat_id": null,
+      "created_at": "2020-10-11T14:06:29.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/EkstraligaTV/status/1315294834702217218/photo/1",
+        "en": "https://twitter.com/EkstraligaTV/status/1315294834702217218/photo/1"
+      },
+      "heat_id": null,
+      "created_at": "2020-10-11T14:16:37.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/maras150/status/1315296775037743107?s=20",
+        "en": "https://twitter.com/maras150/status/1315296775037743107?s=20"
+      },
+      "heat_id": null,
+      "created_at": "2020-10-11T14:25:31.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Max Fricke jako ZZ za Taia Woffindena.",
+        "en": "Max Fricke jako ZZ za Taia Woffindena."
+      },
+      "heat_id": 27557,
+      "created_at": "2020-10-11T14:30:06.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Czas 2 minut ruszył, zaczynamy ostatnie zawody we Wrocławiu w sezonie 2020!",
+        "en": "Czas 2 minut ruszył, zaczynamy ostatnie zawody we Wrocławiu w sezonie 2020!"
+      },
+      "heat_id": null,
+      "created_at": "2020-10-11T14:31:31.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Pierwszy bieg i już świetne ściganie! Najlepiej ze startu Chris Holder, jednak cała czwórka jechała w kontakcie. Rohan Tungate mocno naciskał Holdera, lecz ten skutecznie się obronił. Max Fricke na ostatnim okrążeniu minął Michaela Jepsena Jensena i BETARD Sparta wygrywa 4:2.",
+        "en": "Pierwszy bieg i już świetne ściganie! Najlepiej ze startu Chris Holder, jednak cała czwórka jechała w kontakcie. Rohan Tungate mocno naciskał Holdera, lecz ten skutecznie się obronił. Max Fricke na ostatnim okrążeniu minął Michaela Jepsena Jensena i BETARD Sparta wygrywa 4:2."
+      },
+      "heat_id": 27557,
+      "created_at": "2020-10-11T14:35:51.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Błyskawiczna odpowiedź gości. Damian Pawliczak dobrze ze startu i choć atakował go zaciekle Gleb Chugunov, to nie przyniosło to efektu. Mateusz Tonder szybko poradził sobie z Michałem Curzytkiem i mamy remis.",
+        "en": "Błyskawiczna odpowiedź gości. Damian Pawliczak dobrze ze startu i choć atakował go zaciekle Gleb Chugunov, to nie przyniosło to efektu. Mateusz Tonder szybko poradził sobie z Michałem Curzytkiem i mamy remis."
+      },
+      "heat_id": 27558,
+      "created_at": "2020-10-11T14:39:11.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Max Fricke popisał się dobrym refleksem na starcie, lecz na wyjściu z pierwszego łuku Australijczyka pociągnęło i spadł na 3 pozycję. To wykorzystał Martin Vaculik, który nie miał problemów z dowiezieniem zwycięstwa. Maciej Janowski trzymał się wewnętrznej, Fricke napędzał po zewnętrznej, lecz na Słowaka to nie wystarczyło.",
+        "en": "Max Fricke popisał się dobrym refleksem na starcie, lecz na wyjściu z pierwszego łuku Australijczyka pociągnęło i spadł na 3 pozycję. To wykorzystał Martin Vaculik, który nie miał problemów z dowiezieniem zwycięstwa. Maciej Janowski trzymał się wewnętrznej, Fricke napędzał po zewnętrznej, lecz na Słowaka to nie wystarczyło."
+      },
+      "heat_id": 27559,
+      "created_at": "2020-10-11T14:43:42.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Na zakończenie pierwszej serii kolejny remis. Piotr Protasiewicz z pola A wyszedł na prowadzenie i choć atakował go Daniel Bewley, to nie okazało się to skuteczne.",
+        "en": "Na zakończenie pierwszej serii kolejny remis. Piotr Protasiewicz z pola A wyszedł na prowadzenie i choć atakował go Daniel Bewley, to nie okazało się to skuteczne."
+      },
+      "heat_id": 27560,
+      "created_at": "2020-10-11T14:48:02.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/EkstraligaTV/status/1315303241668853762?s=20",
+        "en": "https://twitter.com/EkstraligaTV/status/1315303241668853762?s=20"
+      },
+      "heat_id": 27560,
+      "created_at": "2020-10-11T14:49:03.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/przemospeedway/status/1315303412662177793?s=20",
+        "en": "https://twitter.com/przemospeedway/status/1315303412662177793?s=20"
+      },
+      "heat_id": 27560,
+      "created_at": "2020-10-11T14:51:37.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/FalubazZG/status/1315303690387980291?s=20",
+        "en": "https://twitter.com/FalubazZG/status/1315303690387980291?s=20"
+      },
+      "heat_id": 27560,
+      "created_at": "2020-10-11T14:53:33.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Atomowy start Chrisa Holdera, który założył Rohana Tungate'a i pomknął do mety na pierwszym miejscu. Znakomitą akcję wykonał jednak Max Fricke, który wszedł pod łokieć Tungate'a i awansował na drugie miejsce. Na czwartym okrążeniu zbliżył się do niego Piotr Protasiewicz, ale nie zdołał minąć Fricke'a. Podwójne zwycięstwo gospodarzy!",
+        "en": "Atomowy start Chrisa Holdera, który założył Rohana Tungate'a i pomknął do mety na pierwszym miejscu. Znakomitą akcję wykonał jednak Max Fricke, który wszedł pod łokieć Tungate'a i awansował na drugie miejsce. Na czwartym okrążeniu zbliżył się do niego Piotr Protasiewicz, ale nie zdołał minąć Fricke'a. Podwójne zwycięstwo gospodarzy!"
+      },
+      "heat_id": 27561,
+      "created_at": "2020-10-11T14:58:17.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Ostrzeżenie dla Piotra Protasiewicza",
+        "en": "Ostrzeżenie dla Piotra Protasiewicza"
+      },
+      "heat_id": 27561,
+      "created_at": "2020-10-11T14:59:51.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Martin Vaculik najlepiej ze startu, a tuż za nim Maciej Janowski. Polak szukał różnych ścieżek, ale nie był w stanie pokonać Słowaka. Michał Curzytek daleko z tyłu.",
+        "en": "Martin Vaculik najlepiej ze startu, a tuż za nim Maciej Janowski. Polak szukał różnych ścieżek, ale nie był w stanie pokonać Słowaka. Michał Curzytek daleko z tyłu."
+      },
+      "heat_id": 27562,
+      "created_at": "2020-10-11T15:02:54.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Świetny start wrocławskiej pary, która wywiozła Patryka Dudka. Polak próbował się napędzać i zbliżał się do drugiego Daniela Bewleya, ale wyprzedzić go nie zdołał. BETARD Sparta na prowadzeniu w dwumeczu!",
+        "en": "Świetny start wrocławskiej pary, która wywiozła Patryka Dudka. Polak próbował się napędzać i zbliżał się do drugiego Daniela Bewleya, ale wyprzedzić go nie zdołał. BETARD Sparta na prowadzeniu w dwumeczu!"
+      },
+      "heat_id": 27563,
+      "created_at": "2020-10-11T15:06:58.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/StacjaWino/status/1315307956695597066?s=20",
+        "en": "https://twitter.com/StacjaWino/status/1315307956695597066?s=20"
+      },
+      "heat_id": 27563,
+      "created_at": "2020-10-11T15:08:35.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/przemospeedway/status/1315307950806888449?s=20",
+        "en": "https://twitter.com/przemospeedway/status/1315307950806888449?s=20"
+      },
+      "heat_id": 27563,
+      "created_at": "2020-10-11T15:08:43.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/EkstraligaTV/status/1315308298002890754?s=20",
+        "en": "https://twitter.com/EkstraligaTV/status/1315308298002890754?s=20"
+      },
+      "heat_id": 27563,
+      "created_at": "2020-10-11T15:11:05.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Goście reagują. Martin Vaculik w miejsce Rohana Tungate'a jako rezerwa taktyczna.",
+        "en": "Goście reagują. Martin Vaculik w miejsce Rohana Tungate'a jako rezerwa taktyczna."
+      },
+      "heat_id": 27564,
+      "created_at": "2020-10-11T15:12:19.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/EkstraligaTV/status/1315309761605316614?s=20",
+        "en": "https://twitter.com/EkstraligaTV/status/1315309761605316614?s=20"
+      },
+      "heat_id": 27563,
+      "created_at": "2020-10-11T15:15:04.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/ZakBSTV/status/1315309745528549376?s=20",
+        "en": "https://twitter.com/ZakBSTV/status/1315309745528549376?s=20"
+      },
+      "heat_id": 27563,
+      "created_at": "2020-10-11T15:15:19.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Błyszczy na wrocławskim owalu Martin Vaculik. Spod taśmy znów żużlowiec RM SOLAR Falubazu wystartował najlepiej i bezpiecznie dojechał na pierwszym miejscu. Za jego plecami para wrocławska, a z tyłu został Piotr Protasiewicz.",
+        "en": "Błyszczy na wrocławskim owalu Martin Vaculik. Spod taśmy znów żużlowiec RM SOLAR Falubazu wystartował najlepiej i bezpiecznie dojechał na pierwszym miejscu. Za jego plecami para wrocławska, a z tyłu został Piotr Protasiewicz."
+      },
+      "heat_id": 27564,
+      "created_at": "2020-10-11T15:18:32.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Dwie minuty przerwy dla Martina Vaculika, który jedzie bieg po biegu.",
+        "en": "Dwie minuty przerwy dla Martina Vaculika, który jedzie bieg po biegu."
+      },
+      "heat_id": 27565,
+      "created_at": "2020-10-11T15:19:00.000000Z"
+    },
+    {
+      "message": {
+        "pl": "W biegu nr 9 spotkanie dwóch niepokonanych dziś żużlowców - Martina Vaculika i Chrisa Holdera.",
+        "en": "W biegu nr 9 spotkanie dwóch niepokonanych dziś żużlowców - Martina Vaculika i Chrisa Holdera."
+      },
+      "heat_id": 27565,
+      "created_at": "2020-10-11T15:19:26.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Chris Holder dobrze na starcie, ale w niesamowitym gazie jest Martin Vaculik. Słowak uciekł nękającej go wrocławskiej parze i zdobył czwartą trójkę. Michael Jepsen Jensen daleko z tyłu.",
+        "en": "Chris Holder dobrze na starcie, ale w niesamowitym gazie jest Martin Vaculik. Słowak uciekł nękającej go wrocławskiej parze i zdobył czwartą trójkę. Michael Jepsen Jensen daleko z tyłu."
+      },
+      "heat_id": 27565,
+      "created_at": "2020-10-11T15:24:17.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Maciej Janowski jako ZZ za Taia Woffindena.",
+        "en": "Maciej Janowski jako ZZ za Taia Woffindena."
+      },
+      "heat_id": 27566,
+      "created_at": "2020-10-11T15:25:03.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Nie jest to dzień Patryka Dudka. Polak przegrał moment startowy z Maxem Fricke. A że stawce przewodził już Maciej Janowski, to BETARD Sparta wyszła na prowadzenie 5:1, którego do końca już nie oddała.",
+        "en": "Nie jest to dzień Patryka Dudka. Polak przegrał moment startowy z Maxem Fricke. A że stawce przewodził już Maciej Janowski, to BETARD Sparta wyszła na prowadzenie 5:1, którego do końca już nie oddała."
+      },
+      "heat_id": 27566,
+      "created_at": "2020-10-11T15:28:54.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/EkstraligaTV/status/1315313655685230600?s=20",
+        "en": "https://twitter.com/EkstraligaTV/status/1315313655685230600?s=20"
+      },
+      "heat_id": 27566,
+      "created_at": "2020-10-11T15:30:46.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Rohan Tungate jako rezerwa taktyczna za Jepsena Jensena.",
+        "en": "Rohan Tungate jako rezerwa taktyczna za Jepsena Jensena."
+      },
+      "heat_id": 27567,
+      "created_at": "2020-10-11T15:31:36.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/JacoWZL/status/1315313413015384072?s=20",
+        "en": "https://twitter.com/JacoWZL/status/1315313413015384072?s=20"
+      },
+      "heat_id": 27566,
+      "created_at": "2020-10-11T15:31:50.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://www.facebook.com/wtssparta/photos/a.830720480326985/3423056594426681/",
+        "en": "https://www.facebook.com/wtssparta/photos/a.830720480326985/3423056594426681/"
+      },
+      "heat_id": 27566,
+      "created_at": "2020-10-11T15:32:18.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://www.instagram.com/p/CGNSqN-hgK2/?utm_source=ig_web_copy_link",
+        "en": "https://www.instagram.com/p/CGNSqN-hgK2/?utm_source=ig_web_copy_link"
+      },
+      "heat_id": 27566,
+      "created_at": "2020-10-11T15:34:26.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/EkstraligaTV/status/1315314437042167808?s=20",
+        "en": "https://twitter.com/EkstraligaTV/status/1315314437042167808?s=20"
+      },
+      "heat_id": 27566,
+      "created_at": "2020-10-11T15:35:03.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Znakomity start Wrocławian, którzy szybko znaleźli się na prowadzeniu. Maxa Fricke'a kąsał przez 2 okrążenia Piotr Protasiewicz, lecz ten nic nie wskórał. Podwójne zwycięstwo gospodarzy, którzy zbliżają się do brązowego medalu!",
+        "en": "Znakomity start Wrocławian, którzy szybko znaleźli się na prowadzeniu. Maxa Fricke'a kąsał przez 2 okrążenia Piotr Protasiewicz, lecz ten nic nie wskórał. Podwójne zwycięstwo gospodarzy, którzy zbliżają się do brązowego medalu!"
+      },
+      "heat_id": 27567,
+      "created_at": "2020-10-11T15:41:07.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Gleb Chugunov jako ZZ za Taia Woffindena.",
+        "en": "Gleb Chugunov jako ZZ za Taia Woffindena."
+      },
+      "heat_id": 27568,
+      "created_at": "2020-10-11T15:42:10.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Ostrzeżenie dla Martina Vaculika",
+        "en": "Ostrzeżenie dla Martina Vaculika"
+      },
+      "heat_id": 27568,
+      "created_at": "2020-10-11T15:45:45.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Martin Vaculik już na starcie nie zostawił złudzeń swoim rywalom. Mocno atakował go Gleb Chugunov, któremu jednak niewiele zabrakło do minięcia Vaculika. Na dystansie Tonder minął Curzytka i RM SOLAR Falubaz odrabia dwa punkty.",
+        "en": "Martin Vaculik już na starcie nie zostawił złudzeń swoim rywalom. Mocno atakował go Gleb Chugunov, któremu jednak niewiele zabrakło do minięcia Vaculika. Na dystansie Tonder minął Curzytka i RM SOLAR Falubaz odrabia dwa punkty."
+      },
+      "heat_id": 27587,
+      "created_at": "2020-10-11T15:49:37.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Defekt już na starcie Patryka Dudka. Wrocławianie tymczasem błyskawicznie odjechali Rohanowi Tungate'owi i dowożą pięć punktów, które dają BETARD Sparcie brązowy medal!",
+        "en": "Defekt już na starcie Patryka Dudka. Wrocławianie tymczasem błyskawicznie odjechali Rohanowi Tungate'owi i dowożą pięć punktów, które dają BETARD Sparcie brązowy medal!"
+      },
+      "heat_id": 27569,
+      "created_at": "2020-10-11T15:53:33.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/przemospeedway/status/1315319798155313154?s=20",
+        "en": "https://twitter.com/przemospeedway/status/1315319798155313154?s=20"
+      },
+      "heat_id": 27569,
+      "created_at": "2020-10-11T15:54:50.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/FalubazZG/status/1315319827817541633/photo/1",
+        "en": "https://twitter.com/FalubazZG/status/1315319827817541633/photo/1"
+      },
+      "heat_id": 27569,
+      "created_at": "2020-10-11T15:55:55.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/EkstraligaTV/status/1315320233037574144/photo/1",
+        "en": "https://twitter.com/EkstraligaTV/status/1315320233037574144/photo/1"
+      },
+      "heat_id": 27569,
+      "created_at": "2020-10-11T15:56:22.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://www.facebook.com/wtssparta/posts/3423113594420981",
+        "en": "https://www.facebook.com/wtssparta/posts/3423113594420981"
+      },
+      "heat_id": 27569,
+      "created_at": "2020-10-11T15:56:48.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/JuliaPozarlik97/status/1315320356966670336?s=20",
+        "en": "https://twitter.com/JuliaPozarlik97/status/1315320356966670336?s=20"
+      },
+      "heat_id": 27569,
+      "created_at": "2020-10-11T15:58:30.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/TSW_1_9_0_6/status/1315321243642535937?s=20",
+        "en": "https://twitter.com/TSW_1_9_0_6/status/1315321243642535937?s=20"
+      },
+      "heat_id": 27569,
+      "created_at": "2020-10-11T16:03:01.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Sensacyjne rozstrzygnięcie w pierwszy biegu nominowanym. Młodzieżowa para gości wyszła na prowadzenie i poradziła sobie zarówno z Janowskim, jak i Bewleyem. Kapitan Wrocławian szedł na \"noże\" z Pawliczakiem i ostatecznie poradził sobie z juniorem gości. Świetny bieg!",
+        "en": "Sensacyjne rozstrzygnięcie w pierwszy biegu nominowanym. Młodzieżowa para gości wyszła na prowadzenie i poradziła sobie zarówno z Janowskim, jak i Bewleyem. Kapitan Wrocławian szedł na \"noże\" z Pawliczakiem i ostatecznie poradził sobie z juniorem gości. Świetny bieg!"
+      },
+      "heat_id": 27570,
+      "created_at": "2020-10-11T16:05:54.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/ZakBSTV/status/1315322753109635072?s=20",
+        "en": "https://twitter.com/ZakBSTV/status/1315322753109635072?s=20"
+      },
+      "heat_id": 27570,
+      "created_at": "2020-10-11T16:06:28.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/KubSanzg/status/1315322602227933184?s=20",
+        "en": "https://twitter.com/KubSanzg/status/1315322602227933184?s=20"
+      },
+      "heat_id": 27570,
+      "created_at": "2020-10-11T16:06:38.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/CzesnikKarol/status/1315322572716810240?s=20",
+        "en": "https://twitter.com/CzesnikKarol/status/1315322572716810240?s=20"
+      },
+      "heat_id": 27570,
+      "created_at": "2020-10-11T16:06:45.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Niesamowity dzień Martina Vaculika, który zdobywa komplet 18 punktów! Za jego plecami tym razem Piotr Protasiewicz po świetnej walce z Maxem Fricke. Chris Holder ostatni na mecie i to pierwsze podwójne zwycięstwo gości w tym meczu.",
+        "en": "Niesamowity dzień Martina Vaculika, który zdobywa komplet 18 punktów! Za jego plecami tym razem Piotr Protasiewicz po świetnej walce z Maxem Fricke. Chris Holder ostatni na mecie i to pierwsze podwójne zwycięstwo gości w tym meczu."
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:10:02.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Kończymy sezon we Wrocławiu! BETARD Sparta Wrocław okazała się lepsza od RM SOLAR Falubazu Zielona Góra w dwumeczu i zdobywa brązowy medal w sezonie 2020.",
+        "en": "Kończymy sezon we Wrocławiu! BETARD Sparta Wrocław okazała się lepsza od RM SOLAR Falubazu Zielona Góra w dwumeczu i zdobywa brązowy medal w sezonie 2020."
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:11:12.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/ToTenKuba_/status/1315323829628141570?s=20",
+        "en": "https://twitter.com/ToTenKuba_/status/1315323829628141570?s=20"
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:11:28.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://www.facebook.com/wtssparta/posts/3423157361083271",
+        "en": "https://www.facebook.com/wtssparta/posts/3423157361083271"
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:13:00.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/Mich_Mit/status/1315324508153229320?s=20",
+        "en": "https://twitter.com/Mich_Mit/status/1315324508153229320?s=20"
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:13:59.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/EkstraligaTV/status/1315324301332099073/photo/1",
+        "en": "https://twitter.com/EkstraligaTV/status/1315324301332099073/photo/1"
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:14:16.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/TJaniszewski24/status/1315325132173443072?s=20",
+        "en": "https://twitter.com/TJaniszewski24/status/1315325132173443072?s=20"
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:16:37.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Żużlowcy i sztab BETARD Sparty zaraz odbiorą brązowe medale.",
+        "en": "Żużlowcy i sztab BETARD Sparty zaraz odbiorą brązowe medale."
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:25:46.000000Z"
+    },
+    {
+      "message": {
+        "pl": "https://twitter.com/Kowolinho/status/1315328958347587584?s=20",
+        "en": "https://twitter.com/Kowolinho/status/1315328958347587584?s=20"
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:31:06.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Po sesji zdjęciowej przemawia kapitan, Maciej Janowski.",
+        "en": "Po sesji zdjęciowej przemawia kapitan, Maciej Janowski."
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:32:48.000000Z"
+    },
+    {
+      "message": {
+        "pl": "Kibice skandują nazwisko nieobecnego Maksyma Drabika.",
+        "en": "Kibice skandują nazwisko nieobecnego Maksyma Drabika."
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:34:06.000000Z"
+    },
+    {
+      "message": {
+        "pl": "To już koniec relacji z meczu o 3. miejsce. BETARD Sparta Wrocław z brązowym medalem w sezonie 2020. Za relację i cały sezon dziękuje Błażej Kowol.",
+        "en": "To już koniec relacji z meczu o 3. miejsce. BETARD Sparta Wrocław z brązowym medalem w sezonie 2020. Za relację i cały sezon dziękuje Błażej Kowol."
+      },
+      "heat_id": 27571,
+      "created_at": "2020-10-11T16:36:34.000000Z"
+    }
+  ],
+  "lineups": [
+    {
+      "id": 21014,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 9,
+      "type": 1,
+      "team_id": 3,
+      "user_id": 62,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 1,
+      "points": 14,
+      "points_regular": 14,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 6,
+      "starts_regular": 6,
+      "starts_additional": 0,
+      "rider": {
+        "id": 62,
+        "name": "Chris",
+        "surname": "Holder"
+      },
+      "scores_regular": [
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21014
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21014
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21014
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21014
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21014
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21014
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21015,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 10,
+      "type": 1,
+      "team_id": 3,
+      "user_id": 109,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 2,
+      "points": null,
+      "points_regular": null,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 0,
+      "starts_regular": 0,
+      "starts_additional": 0,
+      "rider": {
+        "id": 109,
+        "name": "Przemysław",
+        "surname": "Liszka"
+      },
+      "scores_regular": [
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21015
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21015
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21015
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21015
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21015
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21016,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 11,
+      "type": 1,
+      "team_id": 3,
+      "user_id": 102,
+      "rider_replacement": 1,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 3,
+      "points": null,
+      "points_regular": null,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 0,
+      "starts_regular": 0,
+      "starts_additional": 0,
+      "rider": {
+        "id": 102,
+        "name": "Tai",
+        "surname": "Woffinden"
+      },
+      "scores_regular": [
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21016
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21016
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21016
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21016
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21017,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 12,
+      "type": 1,
+      "team_id": 3,
+      "user_id": 152,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 4,
+      "points": 10,
+      "points_regular": 10,
+      "bonuses": 3,
+      "bonuses_regular": 3,
+      "starts": 6,
+      "starts_regular": 6,
+      "starts_additional": 0,
+      "rider": {
+        "id": 152,
+        "name": "Max",
+        "surname": "Fricke"
+      },
+      "scores_regular": [
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21017
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21017
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21017
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21017
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21017
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21017
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21018,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 13,
+      "type": 1,
+      "team_id": 3,
+      "user_id": 103,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 5,
+      "points": 11,
+      "points_regular": 11,
+      "bonuses": 3,
+      "bonuses_regular": 3,
+      "starts": 6,
+      "starts_regular": 6,
+      "starts_additional": 0,
+      "rider": {
+        "id": 103,
+        "name": "Maciej",
+        "surname": "Janowski"
+      },
+      "scores_regular": [
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21018
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21018
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21018
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21018
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21018
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21018
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21019,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 14,
+      "type": 1,
+      "team_id": 3,
+      "user_id": 65,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 6,
+      "points": 7,
+      "points_regular": 7,
+      "bonuses": 1,
+      "bonuses_regular": 1,
+      "starts": 4,
+      "starts_regular": 4,
+      "starts_additional": 0,
+      "rider": {
+        "id": 65,
+        "name": "Gleb",
+        "surname": "Chugunov"
+      },
+      "scores_regular": [
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21019
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21019
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21019
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21019
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21020,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 15,
+      "type": 1,
+      "team_id": 3,
+      "user_id": 1332,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 7,
+      "points": 0,
+      "points_regular": 0,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 3,
+      "starts_regular": 3,
+      "starts_additional": 0,
+      "rider": {
+        "id": 1332,
+        "name": "Michał",
+        "surname": "Curzytek"
+      },
+      "scores_regular": [
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21020
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21020
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21020
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21021,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 16,
+      "type": 1,
+      "team_id": 3,
+      "user_id": 1315,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 8,
+      "points": 8,
+      "points_regular": 8,
+      "bonuses": 2,
+      "bonuses_regular": 2,
+      "starts": 5,
+      "starts_regular": 5,
+      "starts_additional": 0,
+      "rider": {
+        "id": 1315,
+        "name": "Daniel",
+        "surname": "Bewley"
+      },
+      "scores_regular": [
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21021
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21021
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21021
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21021
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21021
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21022,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 1,
+      "type": 2,
+      "team_id": 5,
+      "user_id": 98,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 1,
+      "points": 1,
+      "points_regular": 1,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 3,
+      "starts_regular": 3,
+      "starts_additional": 0,
+      "rider": {
+        "id": 98,
+        "name": "Michael",
+        "surname": "Jepsen Jensen"
+      },
+      "scores_regular": [
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21022
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21022
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21022
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21022
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21022
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21023,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 2,
+      "type": 2,
+      "team_id": 5,
+      "user_id": 58,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 2,
+      "points": 18,
+      "points_regular": 18,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 6,
+      "starts_regular": 6,
+      "starts_additional": 0,
+      "rider": {
+        "id": 58,
+        "name": "Martin",
+        "surname": "Vaculik"
+      },
+      "scores_regular": [
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21023
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21023
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21023
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21023
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21023
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21023
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21024,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 3,
+      "type": 2,
+      "team_id": 5,
+      "user_id": 1335,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 3,
+      "points": 3,
+      "points_regular": 3,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 4,
+      "starts_regular": 4,
+      "starts_additional": 0,
+      "rider": {
+        "id": 1335,
+        "name": "Rohan",
+        "surname": "Tungate"
+      },
+      "scores_regular": [
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21024
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21024
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21024
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21024
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21024
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21025,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 4,
+      "type": 2,
+      "team_id": 5,
+      "user_id": 67,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 4,
+      "points": 7,
+      "points_regular": 7,
+      "bonuses": 1,
+      "bonuses_regular": 1,
+      "starts": 5,
+      "starts_regular": 5,
+      "starts_additional": 0,
+      "rider": {
+        "id": 67,
+        "name": "Piotr",
+        "surname": "Protasiewicz"
+      },
+      "scores_regular": [
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21025
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21025
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21025
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21025
+        },
+        {
+          "score": "2",
+          "joker": 0,
+          "bonus": 1,
+          "lineup_id": 21025
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21026,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 5,
+      "type": 2,
+      "team_id": 5,
+      "user_id": 68,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 5,
+      "points": 2,
+      "points_regular": 2,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 4,
+      "starts_regular": 4,
+      "starts_additional": 0,
+      "rider": {
+        "id": 68,
+        "name": "Patryk",
+        "surname": "Dudek"
+      },
+      "scores_regular": [
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21026
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21026
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21026
+        },
+        {
+          "score": "D",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21026
+        },
+        {
+          "score": "-",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21026
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21027,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 6,
+      "type": 2,
+      "team_id": 5,
+      "user_id": 434,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 6,
+      "points": 4,
+      "points_regular": 4,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 4,
+      "starts_regular": 4,
+      "starts_additional": 0,
+      "rider": {
+        "id": 434,
+        "name": "Damian",
+        "surname": "Pawliczak"
+      },
+      "scores_regular": [
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21027
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21027
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21027
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21027
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21028,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 7,
+      "type": 2,
+      "team_id": 5,
+      "user_id": 554,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 7,
+      "points": 5,
+      "points_regular": 5,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 4,
+      "starts_regular": 4,
+      "starts_additional": 0,
+      "rider": {
+        "id": 554,
+        "name": "Mateusz",
+        "surname": "Tonder"
+      },
+      "scores_regular": [
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21028
+        },
+        {
+          "score": "0",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21028
+        },
+        {
+          "score": "1",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21028
+        },
+        {
+          "score": "3",
+          "joker": 0,
+          "bonus": 0,
+          "lineup_id": 21028
+        }
+      ],
+      "scores_additional": []
+    },
+    {
+      "id": 21029,
+      "protocol_id": 1214,
+      "card_id": 2112,
+      "no": 8,
+      "type": 2,
+      "team_id": 5,
+      "user_id": 841,
+      "rider_replacement": 0,
+      "average_order": null,
+      "warning_heat_order": null,
+      "position": null,
+      "status": null,
+      "team_no": 8,
+      "points": null,
+      "points_regular": null,
+      "bonuses": 0,
+      "bonuses_regular": 0,
+      "starts": 0,
+      "starts_regular": 0,
+      "starts_additional": 0,
+      "rider": {
+        "id": 841,
+        "name": "Fabian",
+        "surname": "Ragus"
+      },
+      "scores_regular": [],
+      "scores_additional": []
+    }
+  ],
+  "telemetry": [
+    {
+      "general": {
+        "rider_id": 98,
+        "no": 1,
+        "name": "Michael",
+        "surname": "Jepsen Jensen",
+        "team_shortcut": "ZIE",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 58,
+        "no": 2,
+        "name": "Martin",
+        "surname": "Vaculik",
+        "team_shortcut": "ZIE",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 1335,
+        "no": 3,
+        "name": "Rohan",
+        "surname": "Tungate",
+        "team_shortcut": "ZIE",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 67,
+        "no": 4,
+        "name": "Piotr",
+        "surname": "Protasiewicz",
+        "team_shortcut": "ZIE",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 68,
+        "no": 5,
+        "name": "Patryk",
+        "surname": "Dudek",
+        "team_shortcut": "ZIE",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 434,
+        "no": 6,
+        "name": "Damian",
+        "surname": "Pawliczak",
+        "team_shortcut": "ZIE",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 554,
+        "no": 7,
+        "name": "Mateusz",
+        "surname": "Tonder",
+        "team_shortcut": "ZIE",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 841,
+        "no": 8,
+        "name": "Fabian",
+        "surname": "Ragus",
+        "team_shortcut": "ZIE",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 62,
+        "no": 9,
+        "name": "Chris",
+        "surname": "Holder",
+        "team_shortcut": "WRO",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 109,
+        "no": 10,
+        "name": "Przemysław",
+        "surname": "Liszka",
+        "team_shortcut": "WRO",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 102,
+        "no": 11,
+        "name": "Tai",
+        "surname": "Woffinden",
+        "team_shortcut": "WRO",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 152,
+        "no": 12,
+        "name": "Max",
+        "surname": "Fricke",
+        "team_shortcut": "WRO",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 103,
+        "no": 13,
+        "name": "Maciej",
+        "surname": "Janowski",
+        "team_shortcut": "WRO",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 65,
+        "no": 14,
+        "name": "Gleb",
+        "surname": "Chugunov",
+        "team_shortcut": "WRO",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 1332,
+        "no": 15,
+        "name": "Michał",
+        "surname": "Curzytek",
+        "team_shortcut": "WRO",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    },
+    {
+      "general": {
+        "rider_id": 1315,
+        "no": 16,
+        "name": "Daniel",
+        "surname": "Bewley",
+        "team_shortcut": "WRO",
+        "best_reaction": null,
+        "best_reaction_heat_no": null,
+        "best_time": null,
+        "best_time_heat_no": null,
+        "best_max_speed": null,
+        "best_max_speed_heat_no": null
+      },
+      "details": []
+    }
+  ],
+  "attempts": {
+    "regular": 6,
+    "additional": 0
+  }
+}
