@@ -1,8 +1,19 @@
-
 attach 'sel.db' as sel;
 
+create table schedule as(select * from read_json_auto('sel/schedules.jsonl'));
 create table matches as(select * from read_json_auto('sel/matches.jsonl'));
 
+-- schedule
+CREATE TABLE sel.schedule AS (
+    SELECT
+        id,
+        status_id,
+        season,
+        verified,
+        schedule->>'$.name.en' as name,
+        schedule->>'$.status.name.en' as status_name
+    FROM schedule
+);
 -- matches
 --   card_teams
 --       no
