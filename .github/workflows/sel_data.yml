@@ -6,6 +6,12 @@ on:
     types:
       - completed
   workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force commit'
+        required: true
+        default: false
+        type: boolean
 env:
   DATA_BRANCH: sel
   CODE_BRANCH: main
@@ -15,7 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - name: checkout data branch
         uses: actions/checkout@v4
@@ -36,3 +41,5 @@ jobs:
         run: rm -f sel.db && duckdb < $CODE_BRANCH/queries/sel_init.sql
       - name: data commit
         run: bash $CODE_BRANCH/scripts/data_commit.sh
+        env:
+          FORCE: ${{ github.event.inputs.force }}
