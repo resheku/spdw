@@ -43,3 +43,5 @@ jobs:
         run: bash $CODE_BRANCH/scripts/data_commit.sh
         env:
           FORCE: ${{ github.event.inputs.force }}
+      - name: data check
+        run: duckdb sel.db -echo -column -f queries/test.sql
