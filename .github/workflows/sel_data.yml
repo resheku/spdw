@@ -44,4 +44,4 @@ jobs:
         env:
           FORCE: ${{ github.event.inputs.force }}
       - name: data check
-        run: duckdb sel.db -echo -column -f queries/test.sql
+        run: duckdb sel.db -echo -column -f $CODE_BRANCH/queries/test.sql
