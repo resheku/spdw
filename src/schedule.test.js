@@ -17,7 +17,7 @@ describe("Test extracting schedule", () => {
 		"Schedule %p should have first event id %p and total events %p",
 		async (fileName, firstId, noEvents) => {
 			const html = fs.readFileSync(
-				`test/data/schedule/${fileName}.html`,
+				`tests/data/schedule/${fileName}.html`,
 				"utf8",
 			);
 			const data = processSchedules(html);
@@ -35,14 +35,14 @@ describe("Test extracting schedule", () => {
 	});
 
 	test("error finding key in script tags", () => {
-		const html = fs.readFileSync("test/data/schedule/schedule_x1.html", "utf8");
+		const html = fs.readFileSync("tests/data/schedule/schedule_x1.html", "utf8");
 		expect(() => processSchedules(html)).toThrowError(
 			"'count_attendance' not found in script tags!",
 		);
 	});
 
 	test("Schedule main page", () => {
-		const html = fs.readFileSync("test/data/schedule/se.html", "utf8");
+		const html = fs.readFileSync("tests/data/schedule/se.html", "utf8");
 		const data = extractDataFromScript(html);
 		expect(data).toBeInstanceOf(Object);
 		const { events } = data[7][3];

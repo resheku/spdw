@@ -12,11 +12,11 @@ describe("Test extracting match", () => {
 	test.each(cases)(
 		"Match %p should have id %p season %p and total heats %p",
 		async (fileName, matchId, season, noHeats) => {
-			const html = fs.readFileSync(`test/data/match/${fileName}`, "utf8");
+			const html = fs.readFileSync(`tests/data/match/${fileName}`, "utf8");
 			const data = getMatchData(html);
 			// write to json file
 			fs.writeFileSync(
-				`test/data/match/${matchId}.json`,
+				`tests/data/match/${matchId}.json`,
 				JSON.stringify(data, null, 2),
 			);
 			expect(data).toBeInstanceOf(Object);
