@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from telemetry import update_heat_id_in_telemetry
+from sel_telemetry import update_heat_id_in_telemetry
 
 
 @pytest.fixture

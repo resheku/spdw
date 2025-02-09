@@ -36,7 +36,7 @@ jobs:
       - name: data collect
         run: bash $CODE_BRANCH/scripts/data_collect.sh
       - name: data linkage
-        run: python3 $CODE_BRANCH/telemetry.py
+        run: python3 $CODE_BRANCH/sel_telemetry.py
       - name: create database sel.db
         run: rm -f sel.db && duckdb < $CODE_BRANCH/queries/sel_init.sql
       - name: data commit
