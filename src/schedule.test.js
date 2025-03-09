@@ -5,6 +5,7 @@ import { extractDataFromScript } from "./utils.js";
 
 describe("Test extracting schedule", () => {
 	const cases = [
+		["se2024_new", 4804, 70],
 		["se2023", 3816, 70],
 		["2se2023", 3890, 68],
 		["se2024", 4804, 67],
@@ -37,7 +38,7 @@ describe("Test extracting schedule", () => {
 	test("error finding key in script tags", () => {
 		const html = fs.readFileSync("tests/data/schedule/schedule_x1.html", "utf8");
 		expect(() => processSchedules(html)).toThrowError(
-			"'count_attendance' not found in script tags!",
+			"'card_type_id' not found in script tags!",
 		);
 	});
 

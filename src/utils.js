@@ -8,13 +8,13 @@ function extractDataFromScript(html) {
 		throw new Error("Script tags not found!");
 	}
 
-	// Find the script tag that includes "count_attendance"
+	// Find the script tag that includes "card_type_id"
 	const targetScriptTag = scriptTags
 		.reverse()
-		.find((tag) => tag.includes("count_attendance"));
+		.find((tag) => tag.includes("card_type_id"));
 
 	if (!targetScriptTag) {
-		throw new Error("'count_attendance' not found in script tags!");
+		throw new Error("'card_type_id' not found in script tags!");
 	}
 
 	// Extract the script content
