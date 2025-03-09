@@ -22,11 +22,10 @@ CREATE TABLE sel.schedule AS (
 CREATE TABLE sel.matches AS(
     SELECT match.id as match_id,
         CAST(match->>'$.attendance' AS INT) as attendance,
-        CAST(match->>'$.count_attendance' AS INT) as count_attendance,
         CAST(match->>'$.card_type_id' AS INT) as card_type_id,
         CAST(match->>'$.verified' AS INT) as verified,
         CAST(match->>'$.season' AS INT) as season,
-        CAST(match->>'$.has_telemetry' AS INT) as has_telemetry,
+        CAST(match->'$.has_telemetry' AS INT) as has_telemetry,
         match->>'$.name.pl' as name,
         match->>'$.shortname.pl' as shortname_pl,
         match->>'$.description.pl' as description_pl,
@@ -38,7 +37,6 @@ CREATE TABLE sel.matches AS(
             '%Y-%m-%d %H:%M'
         ) AS datetime,
         match->>'$.datetime_schedule' as datetime_schedule,
-        CAST(match->>'$.datetime_has_hour' AS INT) as datetime_has_hour,
         CAST(match->>'$.round' AS INT) as round,
         CAST(match->>'$.status.id' AS INT) as status_id,
         match->>'$.status.name.pl' as status_name_pl,
@@ -49,9 +47,9 @@ CREATE TABLE sel.matches AS(
         match->>'$.match_type.shortname.pl' as match_type_shortname_pl,
         match->>'$.match_type.name.pl' as match_type_name_pl,
         match->>'$.match_type.name.en' as match_type_name_en,
-        CAST(match->>'$.match_type.team_competition' AS INT) as team_competition,
-        CAST(match->>'$.match_type.has_home_away' AS INT) as has_home_away,
-        CAST(match->>'$.match_type.has_rounds' AS INT) as has_rounds,
+        CAST(match->'$.match_type.team_competition' AS INT) as team_competition,
+        CAST(match->'$.match_type.has_home_away' AS INT) as has_home_away,
+        CAST(match->'$.match_type.has_rounds' AS INT) as has_rounds,
         CAST(match->>'$.match_subtype.id' AS INT) as match_subtype_id,
         match->>'$.match_subtype.name.pl' as match_subtype_name_pl,
         match->>'$.match_subtype.name.en' as match_subtype_name_en,
@@ -130,11 +128,12 @@ CREATE TABLE sel.lineup AS(
         l.starts,
         l.starts_regular,
         l.starts_additional,
-        l.rider_replacement,
+        CAST(l.rider_replacement AS INT) as rider_replacement,
         l->>'$.average_order' as average_order,
         CAST(l->>'$.warning_heat_order' AS DOUBLE) as warning_heat_order,
         l->>'$.position' as position,
-        l.status,
+        CAST(l.status AS INT) as "status",
+        CAST(l.affiliation_id AS INT) as affiliation_id
         FROM lineup
 );
 -- create heats table
@@ -151,7 +150,7 @@ CREATE TABLE sel.heats AS(
     )
     SELECT m.match.id as match_id,
         h.id as heat_id,
-        h.canceled,
+        CAST(h.canceled AS INT) as canceled,
         h.no as heat_no,
         h.restart_id,
         CAST(h->>'$.home_heat_score' AS INT) as home_heat_score,
@@ -161,14 +160,14 @@ CREATE TABLE sel.heats AS(
         CAST(r->>'$.rider_id' AS INT) as rider_id,
         CAST(r->>'$.rider_no' AS INT) as rider_no,
         r->>'$.helmet' as helmet,
-        CAST(r->>'$.joker' AS INT) as joker,
+        CAST(r->'$.joker' AS INT) as joker,
         r->>'$.gate' as gate,
         r->>'$.score' as score,
         CASE
             WHEN r->>'score' ~ '^[0-9]+$' THEN CAST(r->>'$.score' AS INT)
             ELSE 0
         END AS points,
-        CAST(r->>'$.bonus' AS INT) as bonus,
+        CAST(r->'$.bonus' AS INT) as bonus,
         CAST(r->>'$.substitute_id' AS INT) as substitute_id,
         CAST(r->>'$.substitute_no' AS INT) as substitute_no,
         CAST(r->>'$.warning' AS INT) as warning -- home_heat_score
@@ -217,7 +216,14 @@ CREATE TABLE sel.telemetry AS(
         heat_no
 );
 
--- TODO: check the schema (compare with matches) and define the table if needed
--- example
--- create table schedules as select * from read_json_auto('data/schedules.jsonl');
--- create table sel.schedules as select * from schedules;
+-- Primary Keys
+ALTER TABLE sel.schedule ADD CONSTRAINT PK_schedule_id PRIMARY KEY (id);
+ALTER TABLE sel.matches ADD CONSTRAINT PK_matches_id PRIMARY KEY (match_id);
+ALTER TABLE sel.lineup ADD CONSTRAINT PK_lineup_match_lineup PRIMARY KEY (match_id, lineup_id);
+ALTER TABLE sel.telemetry ADD CONSTRAINT PK_telemetry_match_rider_heat PRIMARY KEY (match_id, rider_id, heat_id);
+-- Unique Indexes
+CREATE UNIQUE INDEX heat_rider_idx ON sel.heats(heat_id, rider_id);
+CREATE UNIQUE INDEX matches_id_idx ON sel.matches(match_id);
+CREATE UNIQUE INDEX lineup_id_idx ON sel.lineup(match_id, lineup_id);
+CREATE UNIQUE INDEX lineup_match_rider_idx ON sel.lineup(match_id, rider_id);
+CREATE UNIQUE INDEX heats_match_rider_idx ON sel.heats(match_id, heat_id, rider_id);
