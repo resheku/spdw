@@ -164,7 +164,11 @@ CREATE TABLE sel.heats AS(
         r->>'$.gate' as gate,
         r->>'$.score' as score,
         CASE
-            WHEN r->>'score' ~ '^[0-9]+$' THEN CAST(r->>'$.score' AS INT)
+            WHEN score ~ '^[0-9]+$' THEN
+                CASE
+                    WHEN CAST(joker AS INT) = 1 THEN CAST(CAST(score AS DOUBLE) / 2 AS INT)
+                    ELSE CAST(score AS INT)
+                END
             ELSE 0
         END AS points,
         CAST(r->'$.bonus' AS INT) as bonus,
