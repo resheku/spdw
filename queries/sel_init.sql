@@ -160,7 +160,7 @@ CREATE TABLE sel.heats AS(
         CAST(r->>'$.rider_id' AS INT) as rider_id,
         CAST(r->>'$.rider_no' AS INT) as rider_no,
         r->>'$.helmet' as helmet,
-        CAST(r->>'$.joker' AS INT) as joker,
+        CAST(r->'$.joker' AS INT) as joker,
         r->>'$.gate' as gate,
         r->>'$.score' as score,
         CASE
@@ -171,7 +171,7 @@ CREATE TABLE sel.heats AS(
                 END
             ELSE 0
         END AS points,
-        CAST(r->>'$.bonus' AS INT) as bonus,
+        CAST(r->'$.bonus' AS INT) as bonus,
         CAST(r->>'$.substitute_id' AS INT) as substitute_id,
         CAST(r->>'$.substitute_no' AS INT) as substitute_no,
         CAST(r->>'$.warning' AS INT) as warning -- home_heat_score
