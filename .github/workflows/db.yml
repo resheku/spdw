@@ -24,7 +24,7 @@ jobs:
               with:
                 aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
                 aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                aws-region: ${{ secrets.AWS_REGION }}
+                aws-region: ap-northeast-1
             - name: db export directory
               run: mkdir -p parquet && ls -lah parquet/*
             - name: db export
@@ -33,8 +33,7 @@ jobs:
               env:
                 BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
                 ENDPOINT: ${{ secrets.AWS_ENDPOINT_URL }}
-                REGION: ${{ secrets.AWS_REGION }}
               run: |
                 aws s3 cp --recursive parquet/ s3://$BUCKET \
-                  --region $REGION \
+                  --region ap-northeast-1 \
                   --endpoint-url $ENDPOINT
