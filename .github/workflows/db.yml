@@ -32,7 +32,8 @@ jobs:
                 AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                 AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                 AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-                AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
+                ENDPOINT: ${{ secrets.ENDPOINT_URL }}
                 BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
               run: |
-                aws s3 cp --recursive parquet/ s3://$BUCKET
+                aws s3 cp --recursive parquet/ s3://$BUCKET \
+                    --endpoint-url $ENDPOINT
