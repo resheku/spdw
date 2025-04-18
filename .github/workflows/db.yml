@@ -30,4 +30,11 @@ jobs:
             - name: db export
               run: duckdb sel.db -c "EXPORT DATABASE 'parquet' (FORMAT parquet);"
             - name: db upload
-              run: aws s3 cp --recursive parquet/ s3://${{ secrets.AWS_BUCKET_NAME }} --endpoint-url https://${{ secrets.AWS_ENDPOINT_URL }}
+              env:
+                BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
+                ENDPOINT: ${{ secrets.AWS_ENDPOINT_URL }}
+                REGION: ${{ secrets.AWS_REGION }}
+              run: |
+                aws s3 cp --recursive parquet/ s3://$BUCKET \
+                  --region $REGION \
+                  --endpoint-url $ENDPOINT
