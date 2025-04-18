@@ -19,21 +19,16 @@ jobs:
                   ref: ${{ env.DATA_BRANCH }}
             - name: install duckdb
               uses: opt-nc/setup-duckdb-action@v1.0.8
-            - name: Configure AWS Credentials
-              uses: aws-actions/configure-aws-credentials@v4.1.0
-              with:
-                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                aws-region: ap-northeast-1
             - name: db export directory
               run: mkdir -p parquet && ls -lah parquet/*
             - name: db export
               run: duckdb sel.db -c "EXPORT DATABASE 'parquet' (FORMAT parquet);"
             - name: db upload
               env:
+                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+                AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
                 BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
-                ENDPOINT: ${{ secrets.AWS_ENDPOINT_URL }}
               run: |
-                aws s3 cp --recursive parquet/ s3://$BUCKET \
-                  --region ap-northeast-1 \
-                  --endpoint-url $ENDPOINT
+                aws s3 cp --recursive parquet/ s3://$BUCKET
