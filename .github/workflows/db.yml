@@ -34,8 +34,7 @@ jobs:
                 AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                 AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                 AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-                ENDPOINT: ${{ secrets.ENDPOINT_URL }}
-                BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
               run: |
                 aws --version
-                echo "The endpoint is $ENDPOINT"
+                aws s3 cp --recursive parquet/ s3://spdw \
+                  --endpoint-url https://gtgmratvjqxfdxdrwaez.supabase.co/storage/v1/s3
