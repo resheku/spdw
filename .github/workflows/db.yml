@@ -15,7 +15,7 @@ jobs:
         runs-on: ubuntu-latest
         permissions:
           contents: read
-          actions: write
+          actions: read
         steps:
             - name: checkout data branch
               uses: actions/checkout@v4
@@ -36,6 +36,9 @@ jobs:
                 AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                 AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                 AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+                AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
+                BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
               run: |
                 aws --version
                 aws configure list
+                aws s3 cp --recursive parquet/ s3://$BUCKET
