@@ -11,6 +11,7 @@ env:
 
 jobs:
     data:
+        environment: spdw-sel
         runs-on: ubuntu-latest
         permissions:
           contents: read
@@ -37,6 +38,4 @@ jobs:
                 AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
               run: |
                 aws --version
-                echo ${ENDPOINT_URL}
-                aws s3 cp --recursive parquet/ s3://spdw \
-                  --endpoint-url https://gtgmratvjqxfdxdrwaez.supabase.co/storage/v1/s3
+                aws configure list
