@@ -38,4 +38,4 @@ jobs:
                 BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
               run: |
                 aws --version
-                echo ${ENDPOINT_URL}
+                echo "The endpoint is $ENDPOINT_URL"
