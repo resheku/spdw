@@ -13,7 +13,8 @@ jobs:
     data:
         runs-on: ubuntu-latest
         permissions:
-            contents: write
+          contents: read
+          actions: write
         steps:
             - name: checkout data branch
               uses: actions/checkout@v4
@@ -36,5 +37,6 @@ jobs:
                 AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
               run: |
                 aws --version
+                echo ${ENDPOINT_URL}
                 aws s3 cp --recursive parquet/ s3://spdw \
                   --endpoint-url https://gtgmratvjqxfdxdrwaez.supabase.co/storage/v1/s3
