@@ -38,4 +38,4 @@ jobs:
                 BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
               run: |
                 aws --version
-                aws s3 cp --recursive parquet/ s3://$BUCKET --endpoint-url $ENDPOINT_URL
+                echo ${ENDPOINT_URL}
