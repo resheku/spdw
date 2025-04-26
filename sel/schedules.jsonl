@@ -128966,7 +128966,7 @@
   "postponed_first_card_id": null,
   "status_id": 1,
   "season": 2025,
-  "verified": 0,
+  "verified": 1,
   "match_type_id": 1,
   "match_subtype_id": 1,
   "track_id": 20,
@@ -129067,7 +129067,7 @@
   "postponed_first_card_id": null,
   "status_id": 1,
   "season": 2025,
-  "verified": 0,
+  "verified": 1,
   "match_type_id": 1,
   "match_subtype_id": 1,
   "track_id": 12,
@@ -129168,7 +129168,7 @@
   "postponed_first_card_id": null,
   "status_id": 1,
   "season": 2025,
-  "verified": 0,
+  "verified": 1,
   "match_type_id": 1,
   "match_subtype_id": 1,
   "track_id": 25,
@@ -129258,13 +129258,7 @@
     "id": 25,
     "city": "Wrocław"
   },
-  "fortuna_odd": {
-    "card_id": 5764,
-    "x1": "1.05",
-    "x0": "22.00",
-    "x2": "10.50",
-    "url": "https://www.efortuna.pl/zaklady-bukmacherskie/zuzel/ekstraliga-polska/wroclaw-zielona-gora-MPL178079575"
-  }
+  "fortuna_odd": null
 }
 {
   "id": 5765,
@@ -129275,7 +129269,7 @@
   "postponed_first_card_id": null,
   "status_id": 1,
   "season": 2025,
-  "verified": 0,
+  "verified": 1,
   "match_type_id": 1,
   "match_subtype_id": 1,
   "track_id": 19,
@@ -129365,22 +129359,16 @@
     "id": 19,
     "city": "Gorzów"
   },
-  "fortuna_odd": {
-    "card_id": 5765,
-    "x1": "3.16",
-    "x0": "16.00",
-    "x2": "1.40",
-    "url": "https://www.efortuna.pl/zaklady-bukmacherskie/zuzel/ekstraliga-polska/gorzow-w-torun-MPL178079572"
-  }
+  "fortuna_odd": null
 }
 {
   "id": 5766,
-  "attendance": 0,
+  "attendance": 8000,
   "card_type_id": 1,
   "broadcaster_schedule_id": 2,
   "postponed_card_id": null,
   "postponed_first_card_id": null,
-  "status_id": 0,
+  "status_id": 1,
   "season": 2025,
   "verified": 0,
   "match_type_id": 1,
@@ -129404,14 +129392,14 @@
   "stub": 0,
   "url": null,
   "status": {
-    "id": 0,
+    "id": 1,
     "name": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
+      "pl": "Rozegrany",
+      "en": "Raced"
     },
     "shortname": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
+      "pl": "Rozegrany",
+      "en": "Raced"
     }
   },
   "broadcaster_schedule": {
@@ -129423,7 +129411,7 @@
       "no": 1,
       "card_id": 5766,
       "team_id": 5,
-      "match_score": null,
+      "match_score": 39,
       "match_tlt_score": null,
       "team_shortcut": "ZIE"
     },
@@ -129431,7 +129419,7 @@
       "no": 2,
       "card_id": 5766,
       "team_id": 2,
-      "match_score": null,
+      "match_score": 51,
       "match_tlt_score": null,
       "team_shortcut": "GRU"
     }
@@ -129472,108 +129460,13 @@
     "id": 24,
     "city": "Zielona Góra"
   },
-  "fortuna_odd": null
-}
-{
-  "id": 5767,
-  "attendance": 0,
-  "card_type_id": 1,
-  "broadcaster_schedule_id": 2,
-  "postponed_card_id": null,
-  "postponed_first_card_id": null,
-  "status_id": 0,
-  "season": 2025,
-  "verified": 0,
-  "match_type_id": 1,
-  "match_subtype_id": 1,
-  "track_id": 16,
-  "name": {
-    "pl": "INNPRO ROW Rybnik - KLUB SPORTOWY Toruń",
-    "en": "INNPRO ROW Rybnik - KLUB SPORTOWY Toruń"
-  },
-  "shortname": {
-    "pl": "RYB - TOR",
-    "en": "RYB - TOR"
-  },
-  "description": {
-    "pl": null,
-    "en": null
-  },
-  "datetime_schedule": 1745596800000,
-  "round": 3,
-  "city": null,
-  "stub": 0,
-  "url": null,
-  "status": {
-    "id": 0,
-    "name": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
-    },
-    "shortname": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
-    }
-  },
-  "broadcaster_schedule": {
-    "id": 2,
-    "title": "Eleven Sports 1"
-  },
-  "card_teams": [
-    {
-      "no": 1,
-      "card_id": 5767,
-      "team_id": 7,
-      "match_score": null,
-      "match_tlt_score": null,
-      "team_shortcut": "RYB"
-    },
-    {
-      "no": 2,
-      "card_id": 5767,
-      "team_id": 1,
-      "match_score": null,
-      "match_tlt_score": null,
-      "team_shortcut": "TOR"
-    }
-  ],
-  "match_type": {
-    "id": 1,
-    "shortname": {
-      "pl": "PGEE",
-      "en": "PGEE"
-    },
-    "name": {
-      "pl": "Ekstraliga",
-      "en": "Polish Speedway Extraleague"
-    },
-    "has_home_away": true,
-    "team_competition": true
-  },
-  "match_subtype": {
-    "id": 1,
-    "name": {
-      "pl": "Część zasadnicza",
-      "en": "Main Round"
-    },
-    "shortname": {
-      "pl": "Część zasadnicza",
-      "en": "MR"
-    },
-    "description": {
-      "pl": "",
-      "en": ""
-    },
-    "has_knockout_table": 0,
-    "position": 1
-  },
-  "postponed": null,
-  "postponed_first": null,
-  "track": {
-    "id": 16,
-    "city": "Rybnik"
-  },
-  "fortuna_odd": null
+  "fortuna_odd": {
+    "card_id": 5766,
+    "x1": "1.85",
+    "x0": "11.50",
+    "x2": "2.15",
+    "url": "https://www.efortuna.pl/zaklady-bukmacherskie/zuzel/ekstraliga-polska/zielona-gora-grudziadz-MPL178079580"
+  }
 }
 {
   "id": 5768,
@@ -129674,7 +129567,13 @@
     "id": 25,
     "city": "Wrocław"
   },
-  "fortuna_odd": null
+  "fortuna_odd": {
+    "card_id": 5768,
+    "x1": "1.67",
+    "x0": "13.00",
+    "x2": "2.40",
+    "url": "https://www.efortuna.pl/zaklady-bukmacherskie/zuzel/ekstraliga-polska/wroclaw-lublin-MPL178079578"
+  }
 }
 {
   "id": 5769,
@@ -129775,7 +129674,13 @@
     "id": 22,
     "city": "Częstochowa"
   },
-  "fortuna_odd": null
+  "fortuna_odd": {
+    "card_id": 5769,
+    "x1": "1.55",
+    "x0": "14.00",
+    "x2": "2.70",
+    "url": "https://www.efortuna.pl/zaklady-bukmacherskie/zuzel/ekstraliga-polska/czestochowa-gorzow-w--MPL178079576"
+  }
 }
 {
   "id": 5770,
@@ -130185,7 +130090,7 @@
   "id": 5774,
   "attendance": 0,
   "card_type_id": 1,
-  "broadcaster_schedule_id": 6,
+  "broadcaster_schedule_id": 2,
   "postponed_card_id": null,
   "postponed_first_card_id": null,
   "status_id": 0,
@@ -130195,18 +130100,18 @@
   "match_subtype_id": 1,
   "track_id": 25,
   "name": {
-    "pl": "BETARD SPARTA Wrocław - STAL Gorzów",
-    "en": "BETARD SPARTA Wrocław - STAL Gorzów"
+    "pl": "BETARD SPARTA Wrocław - GEZET STAL Gorzów",
+    "en": "BETARD SPARTA Wrocław - GEZET STAL Gorzów"
   },
   "shortname": {
     "pl": "WRO - GOR",
     "en": "WRO - GOR"
   },
   "description": {
-    "pl": "",
-    "en": ""
+    "pl": null,
+    "en": null
   },
-  "datetime_schedule": 1746741600000,
+  "datetime_schedule": 1746806400000,
   "round": 5,
   "city": null,
   "stub": 0,
@@ -130223,8 +130128,8 @@
     }
   },
   "broadcaster_schedule": {
-    "id": 6,
-    "title": "Eleven Sports"
+    "id": 2,
+    "title": "Eleven Sports 1"
   },
   "card_teams": [
     {
@@ -130286,7 +130191,7 @@
   "id": 5775,
   "attendance": 0,
   "card_type_id": 1,
-  "broadcaster_schedule_id": 6,
+  "broadcaster_schedule_id": 2,
   "postponed_card_id": null,
   "postponed_first_card_id": null,
   "status_id": 0,
@@ -130304,10 +130209,10 @@
     "en": "GRU - LUB"
   },
   "description": {
-    "pl": "",
-    "en": ""
+    "pl": null,
+    "en": null
   },
-  "datetime_schedule": 1746741600000,
+  "datetime_schedule": 1746815400000,
   "round": 5,
   "city": null,
   "stub": 0,
@@ -130324,8 +130229,8 @@
     }
   },
   "broadcaster_schedule": {
-    "id": 6,
-    "title": "Eleven Sports"
+    "id": 2,
+    "title": "Eleven Sports 1"
   },
   "card_teams": [
     {
@@ -130408,7 +130313,7 @@
     "pl": null,
     "en": null
   },
-  "datetime_schedule": 1746914400000,
+  "datetime_schedule": 1746984600000,
   "round": 5,
   "city": null,
   "stub": 0,
@@ -130488,7 +130393,7 @@
   "id": 5777,
   "attendance": 0,
   "card_type_id": 1,
-  "broadcaster_schedule_id": 11,
+  "broadcaster_schedule_id": 26,
   "postponed_card_id": null,
   "postponed_first_card_id": null,
   "status_id": 0,
@@ -130498,18 +130403,18 @@
   "match_subtype_id": 1,
   "track_id": 24,
   "name": {
-    "pl": "STELMET FALUBAZ Zielona Góra - KS APATOR Toruń",
-    "en": "STELMET FALUBAZ Zielona Góra - KS APATOR Toruń"
+    "pl": "STELMET FALUBAZ Zielona Góra - PRES GRUPA DEWELOPERSKA Toruń",
+    "en": "STELMET FALUBAZ Zielona Góra - PRES GRUPA DEWELOPERSKA Toruń"
   },
   "shortname": {
     "pl": "ZIE - TOR",
     "en": "ZIE - TOR"
   },
   "description": {
-    "pl": "",
-    "en": ""
+    "pl": null,
+    "en": null
   },
-  "datetime_schedule": 1746914400000,
+  "datetime_schedule": 1746975600000,
   "round": 5,
   "city": null,
   "stub": 0,
@@ -130526,8 +130431,8 @@
     }
   },
   "broadcaster_schedule": {
-    "id": 11,
-    "title": "CANAL+ Sport"
+    "id": 26,
+    "title": "CANAL+ Sport 5"
   },
   "card_teams": [
     {
@@ -133060,7 +132965,7 @@
       "card_id": 5805,
       "team_id": 1,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "TOR"
     },
     {
@@ -133068,7 +132973,7 @@
       "card_id": 5805,
       "team_id": 7,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "RYB"
     }
   ],
@@ -133161,7 +133066,7 @@
       "card_id": 5806,
       "team_id": 8,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "GOR"
     },
     {
@@ -133169,7 +133074,7 @@
       "card_id": 5806,
       "team_id": 9,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "CZE"
     }
   ],
@@ -133262,7 +133167,7 @@
       "card_id": 5807,
       "team_id": 2,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 51,
       "team_shortcut": "GRU"
     },
     {
@@ -133270,7 +133175,7 @@
       "card_id": 5807,
       "team_id": 5,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 39,
       "team_shortcut": "ZIE"
     }
   ],
@@ -133363,7 +133268,7 @@
       "card_id": 5808,
       "team_id": 14,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "LUB"
     },
     {
@@ -133371,7 +133276,7 @@
       "card_id": 5808,
       "team_id": 3,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "WRO"
     }
   ],
@@ -135567,6 +135472,107 @@
   "track": {
     "id": 22,
     "city": "Częstochowa"
+  },
+  "fortuna_odd": null
+}
+{
+  "id": 6246,
+  "attendance": 0,
+  "card_type_id": 1,
+  "broadcaster_schedule_id": 2,
+  "postponed_card_id": null,
+  "postponed_first_card_id": null,
+  "status_id": 0,
+  "season": 2025,
+  "verified": 0,
+  "match_type_id": 1,
+  "match_subtype_id": 1,
+  "track_id": 16,
+  "name": {
+    "pl": "INNPRO ROW Rybnik - PRES GRUPA DEWELOPERSKA Toruń",
+    "en": "INNPRO ROW Rybnik - PRES GRUPA DEWELOPERSKA Toruń"
+  },
+  "shortname": {
+    "pl": "RYB - TOR",
+    "en": "RYB - TOR"
+  },
+  "description": {
+    "pl": null,
+    "en": null
+  },
+  "datetime_schedule": 1745949600000,
+  "round": 3,
+  "city": null,
+  "stub": 0,
+  "url": null,
+  "status": {
+    "id": 0,
+    "name": {
+      "pl": "Oczekujący",
+      "en": "Upcoming"
+    },
+    "shortname": {
+      "pl": "Oczekujący",
+      "en": "Upcoming"
+    }
+  },
+  "broadcaster_schedule": {
+    "id": 2,
+    "title": "Eleven Sports 1"
+  },
+  "card_teams": [
+    {
+      "no": 1,
+      "card_id": 6246,
+      "team_id": 7,
+      "match_score": null,
+      "match_tlt_score": null,
+      "team_shortcut": "RYB"
+    },
+    {
+      "no": 2,
+      "card_id": 6246,
+      "team_id": 1,
+      "match_score": null,
+      "match_tlt_score": null,
+      "team_shortcut": "TOR"
+    }
+  ],
+  "match_type": {
+    "id": 1,
+    "shortname": {
+      "pl": "PGEE",
+      "en": "PGEE"
+    },
+    "name": {
+      "pl": "Ekstraliga",
+      "en": "Polish Speedway Extraleague"
+    },
+    "has_home_away": true,
+    "team_competition": true
+  },
+  "match_subtype": {
+    "id": 1,
+    "name": {
+      "pl": "Część zasadnicza",
+      "en": "Main Round"
+    },
+    "shortname": {
+      "pl": "Część zasadnicza",
+      "en": "MR"
+    },
+    "description": {
+      "pl": "",
+      "en": ""
+    },
+    "has_knockout_table": 0,
+    "position": 1
+  },
+  "postponed": null,
+  "postponed_first": null,
+  "track": {
+    "id": 16,
+    "city": "Rybnik"
   },
   "fortuna_odd": null
 }
