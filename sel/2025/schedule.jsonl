@@ -714,7 +714,7 @@
   "postponed_first_card_id": null,
   "status_id": 1,
   "season": 2025,
-  "verified": 0,
+  "verified": 1,
   "match_type_id": 1,
   "match_subtype_id": 1,
   "track_id": 24,
@@ -815,7 +815,7 @@
   "postponed_first_card_id": null,
   "status_id": 1,
   "season": 2025,
-  "verified": 0,
+  "verified": 1,
   "match_type_id": 1,
   "match_subtype_id": 1,
   "track_id": 25,
@@ -916,7 +916,7 @@
   "postponed_first_card_id": null,
   "status_id": 1,
   "season": 2025,
-  "verified": 0,
+  "verified": 1,
   "match_type_id": 1,
   "match_subtype_id": 1,
   "track_id": 22,
@@ -1010,12 +1010,12 @@
 }
 {
   "id": 5770,
-  "attendance": 0,
+  "attendance": 7992,
   "card_type_id": 1,
   "broadcaster_schedule_id": 2,
   "postponed_card_id": null,
   "postponed_first_card_id": null,
-  "status_id": 0,
+  "status_id": 1,
   "season": 2025,
   "verified": 0,
   "match_type_id": 1,
@@ -1039,14 +1039,14 @@
   "stub": 0,
   "url": null,
   "status": {
-    "id": 0,
+    "id": 1,
     "name": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
+      "pl": "Rozegrany",
+      "en": "Raced"
     },
     "shortname": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
+      "pl": "Rozegrany",
+      "en": "Raced"
     }
   },
   "broadcaster_schedule": {
@@ -1058,7 +1058,7 @@
       "no": 1,
       "card_id": 5770,
       "team_id": 14,
-      "match_score": null,
+      "match_score": 63,
       "match_tlt_score": null,
       "team_shortcut": "LUB"
     },
@@ -1066,7 +1066,7 @@
       "no": 2,
       "card_id": 5770,
       "team_id": 7,
-      "match_score": null,
+      "match_score": 27,
       "match_tlt_score": null,
       "team_shortcut": "RYB"
     }
@@ -1107,16 +1107,22 @@
     "id": 12,
     "city": "Lublin"
   },
-  "fortuna_odd": null
+  "fortuna_odd": {
+    "card_id": 5770,
+    "x1": "1.00",
+    "x0": "22.00",
+    "x2": "20.00",
+    "url": "https://www.efortuna.pl/zaklady-bukmacherskie/zuzel/ekstraliga-polska/lublin-rybnik-MPL178079586"
+  }
 }
 {
   "id": 5771,
-  "attendance": 0,
+  "attendance": 12500,
   "card_type_id": 1,
   "broadcaster_schedule_id": 2,
   "postponed_card_id": null,
   "postponed_first_card_id": null,
-  "status_id": 0,
+  "status_id": 1,
   "season": 2025,
   "verified": 0,
   "match_type_id": 1,
@@ -1140,14 +1146,14 @@
   "stub": 0,
   "url": null,
   "status": {
-    "id": 0,
+    "id": 1,
     "name": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
+      "pl": "Rozegrany",
+      "en": "Raced"
     },
     "shortname": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
+      "pl": "Rozegrany",
+      "en": "Raced"
     }
   },
   "broadcaster_schedule": {
@@ -1159,7 +1165,7 @@
       "no": 1,
       "card_id": 5771,
       "team_id": 1,
-      "match_score": null,
+      "match_score": 47,
       "match_tlt_score": null,
       "team_shortcut": "TOR"
     },
@@ -1167,7 +1173,7 @@
       "no": 2,
       "card_id": 5771,
       "team_id": 9,
-      "match_score": null,
+      "match_score": 43,
       "match_tlt_score": null,
       "team_shortcut": "CZE"
     }
@@ -1208,7 +1214,13 @@
     "id": 17,
     "city": "Toruń"
   },
-  "fortuna_odd": null
+  "fortuna_odd": {
+    "card_id": 5771,
+    "x1": "1.03",
+    "x0": "20.00",
+    "x2": "13.00",
+    "url": "https://www.efortuna.pl/zaklady-bukmacherskie/zuzel/ekstraliga-polska/torun-czestochowa-MPL178079587"
+  }
 }
 {
   "id": 5772,
@@ -1820,7 +1832,7 @@
   "id": 5778,
   "attendance": 0,
   "card_type_id": 1,
-  "broadcaster_schedule_id": 6,
+  "broadcaster_schedule_id": 2,
   "postponed_card_id": null,
   "postponed_first_card_id": null,
   "status_id": 0,
@@ -1830,18 +1842,18 @@
   "match_subtype_id": 1,
   "track_id": 17,
   "name": {
-    "pl": "KS APATOR Toruń - BAYERSYSTEM GKM Grudziądz",
-    "en": "KS APATOR Toruń - BAYERSYSTEM GKM Grudziądz"
+    "pl": "PRES GRUPA DEWELOPERSKA Toruń - BAYERSYSTEM GKM Grudziądz",
+    "en": "PRES GRUPA DEWELOPERSKA Toruń - BAYERSYSTEM GKM Grudziądz"
   },
   "shortname": {
     "pl": "TOR - GRU",
     "en": "TOR - GRU"
   },
   "description": {
-    "pl": "",
-    "en": ""
+    "pl": null,
+    "en": null
   },
-  "datetime_schedule": 1747951200000,
+  "datetime_schedule": 1748025000000,
   "round": 6,
   "city": null,
   "stub": 0,
@@ -1858,8 +1870,8 @@
     }
   },
   "broadcaster_schedule": {
-    "id": 6,
-    "title": "Eleven Sports"
+    "id": 2,
+    "title": "Eleven Sports 1"
   },
   "card_teams": [
     {
@@ -1921,7 +1933,7 @@
   "id": 5779,
   "attendance": 0,
   "card_type_id": 1,
-  "broadcaster_schedule_id": 6,
+  "broadcaster_schedule_id": 2,
   "postponed_card_id": null,
   "postponed_first_card_id": null,
   "status_id": 0,
@@ -1939,10 +1951,10 @@
     "en": "RYB - WRO"
   },
   "description": {
-    "pl": "",
-    "en": ""
+    "pl": null,
+    "en": null
   },
-  "datetime_schedule": 1747951200000,
+  "datetime_schedule": 1748016000000,
   "round": 6,
   "city": null,
   "stub": 0,
@@ -1959,8 +1971,8 @@
     }
   },
   "broadcaster_schedule": {
-    "id": 6,
-    "title": "Eleven Sports"
+    "id": 2,
+    "title": "Eleven Sports 1"
   },
   "card_teams": [
     {
@@ -2040,10 +2052,10 @@
     "en": "CZE - ZIE"
   },
   "description": {
-    "pl": "",
-    "en": ""
+    "pl": null,
+    "en": null
   },
-  "datetime_schedule": 1748124000000,
+  "datetime_schedule": 1748194200000,
   "round": 6,
   "city": null,
   "stub": 0,
@@ -2133,18 +2145,18 @@
   "match_subtype_id": 1,
   "track_id": 19,
   "name": {
-    "pl": "STAL Gorzów - ORLEN OIL MOTOR Lublin",
-    "en": "STAL Gorzów - ORLEN OIL MOTOR Lublin"
+    "pl": "GEZET STAL Gorzów - ORLEN OIL MOTOR Lublin",
+    "en": "GEZET STAL Gorzów - ORLEN OIL MOTOR Lublin"
   },
   "shortname": {
     "pl": "GOR - LUB",
     "en": "GOR - LUB"
   },
   "description": {
-    "pl": "",
-    "en": ""
+    "pl": null,
+    "en": null
   },
-  "datetime_schedule": 1748124000000,
+  "datetime_schedule": 1748185200000,
   "round": 6,
   "city": null,
   "stub": 0,
@@ -3887,7 +3899,7 @@
       "card_id": 5798,
       "team_id": 9,
       "match_score": null,
-      "match_tlt_score": 0,
+      "match_tlt_score": 43,
       "team_shortcut": "CZE"
     },
     {
@@ -3895,7 +3907,7 @@
       "card_id": 5798,
       "team_id": 1,
       "match_score": null,
-      "match_tlt_score": 0,
+      "match_tlt_score": 47,
       "team_shortcut": "TOR"
     }
   ],
@@ -3988,7 +4000,7 @@
       "card_id": 5799,
       "team_id": 7,
       "match_score": null,
-      "match_tlt_score": 0,
+      "match_tlt_score": 27,
       "team_shortcut": "RYB"
     },
     {
@@ -3996,7 +4008,7 @@
       "card_id": 5799,
       "team_id": 14,
       "match_score": null,
-      "match_tlt_score": 0,
+      "match_tlt_score": 63,
       "team_shortcut": "LUB"
     }
   ],
@@ -4089,7 +4101,7 @@
       "card_id": 5803,
       "team_id": 3,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "WRO"
     },
     {
@@ -4097,7 +4109,7 @@
       "card_id": 5803,
       "team_id": 2,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "GRU"
     }
   ],
@@ -4190,7 +4202,7 @@
       "card_id": 5804,
       "team_id": 5,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "ZIE"
     },
     {
@@ -4198,7 +4210,7 @@
       "card_id": 5804,
       "team_id": 8,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "GOR"
     }
   ],
@@ -6810,7 +6822,7 @@
   "postponed_first_card_id": null,
   "status_id": 1,
   "season": 2025,
-  "verified": 0,
+  "verified": 1,
   "match_type_id": 1,
   "match_subtype_id": 1,
   "track_id": 16,
@@ -6900,11 +6912,5 @@
     "id": 16,
     "city": "Rybnik"
   },
-  "fortuna_odd": {
-    "card_id": 6246,
-    "x1": "5.10",
-    "x0": "17.50",
-    "x2": "1.20",
-    "url": "https://www.efortuna.pl/zaklady-bukmacherskie/zuzel/ekstraliga-polska/rybnik-torun-MPL178079577"
-  }
+  "fortuna_odd": null
 }
