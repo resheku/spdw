@@ -131634,7 +131634,7 @@
       "card_id": 5790,
       "team_id": 3,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "WRO"
     },
     {
@@ -131642,7 +131642,7 @@
       "card_id": 5790,
       "team_id": 7,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "RYB"
     }
   ],
@@ -131735,7 +131735,7 @@
       "card_id": 5791,
       "team_id": 14,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "LUB"
     },
     {
@@ -131743,7 +131743,7 @@
       "card_id": 5791,
       "team_id": 8,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "GOR"
     }
   ],
@@ -131836,7 +131836,7 @@
       "card_id": 5792,
       "team_id": 2,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "GRU"
     },
     {
@@ -131844,7 +131844,7 @@
       "card_id": 5792,
       "team_id": 1,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "TOR"
     }
   ],
@@ -131937,7 +131937,7 @@
       "card_id": 5793,
       "team_id": 5,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "ZIE"
     },
     {
@@ -131945,7 +131945,7 @@
       "card_id": 5793,
       "team_id": 9,
       "match_score": null,
-      "match_tlt_score": null,
+      "match_tlt_score": 0,
       "team_shortcut": "CZE"
     }
   ],
@@ -135458,13 +135458,13 @@
   "fortuna_odd": null
 }
 {
-  "id": 6267,
+  "id": 6301,
   "attendance": 0,
   "card_type_id": 1,
-  "broadcaster_schedule_id": 3,
-  "postponed_card_id": null,
-  "postponed_first_card_id": null,
-  "status_id": 2,
+  "broadcaster_schedule_id": 2,
+  "postponed_card_id": 6267,
+  "postponed_first_card_id": 6267,
+  "status_id": 0,
   "season": 2025,
   "verified": 0,
   "match_type_id": 1,
@@ -135482,30 +135482,30 @@
     "pl": null,
     "en": null
   },
-  "datetime_schedule": 1747589400000,
+  "datetime_schedule": 1748541600000,
   "round": 5,
   "city": null,
   "stub": 0,
   "url": null,
   "status": {
-    "id": 2,
+    "id": 0,
     "name": {
-      "pl": "Odwołany",
-      "en": "Cancelled"
+      "pl": "Oczekujący",
+      "en": "Upcoming"
     },
     "shortname": {
-      "pl": "Odwołany",
-      "en": "Cancelled"
+      "pl": "Oczekujący",
+      "en": "Upcoming"
     }
   },
   "broadcaster_schedule": {
-    "id": 3,
-    "title": "Eleven Sports 2"
+    "id": 2,
+    "title": "Eleven Sports 1"
   },
   "card_teams": [
     {
       "no": 1,
-      "card_id": 6267,
+      "card_id": 6301,
       "team_id": 2,
       "match_score": null,
       "match_tlt_score": null,
@@ -135513,7 +135513,7 @@
     },
     {
       "no": 2,
-      "card_id": 6267,
+      "card_id": 6301,
       "team_id": 14,
       "match_score": null,
       "match_tlt_score": null,
@@ -135550,8 +135550,16 @@
     "has_knockout_table": 0,
     "position": 1
   },
-  "postponed": null,
-  "postponed_first": null,
+  "postponed": {
+    "id": 6267,
+    "datetime": 1747589400000,
+    "datetime_schedule": 1747589400000
+  },
+  "postponed_first": {
+    "id": 6267,
+    "datetime": 1747589400000,
+    "datetime_schedule": 1747589400000
+  },
   "track": {
     "id": 20,
     "city": "Grudziądz"
