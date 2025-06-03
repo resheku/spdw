@@ -36,6 +36,12 @@ env:
   MATCH_URL: https://ekstraliga.pl/en/se/match
   DATA_BRANCH: sel
   CODE_BRANCH: main
+  # Default values for scheduled runs (same as workflow_dispatch defaults)
+  DEFAULT_START: '2025'
+  DEFAULT_END: '2025'
+  DEFAULT_SCHEDULE_CACHE: 'false'
+  DEFAULT_MATCH_CACHE: 'false'
+  DEFAULT_FORCE: 'false'
 
 jobs:
   schedules:
@@ -55,21 +61,21 @@ jobs:
           ref: ${{ env.CODE_BRANCH }}
           path: ${{ env.CODE_BRANCH }}
       - name: schedule fetch
-        if: ${{ github.event.inputs.schedule_cache == 'false' }}
+        if: ${{ github.event.inputs.schedule_cache == 'false' || github.event_name == 'schedule' && env.DEFAULT_SCHEDULE_CACHE == 'false' }}
         run: bash $CODE_BRANCH/scripts/schedule_fetch.sh
         env:
-          START: ${{ github.event.inputs.start }}
-          END: ${{ github.event.inputs.end }}
+          START: ${{ github.event.inputs.start || env.DEFAULT_START }}
+          END: ${{ github.event.inputs.end || env.DEFAULT_END }}
       - name: schedule process
         run: bash $CODE_BRANCH/scripts/schedule_process.sh
         env:
-          START: ${{ github.event.inputs.start }}
-          END: ${{ github.event.inputs.end }}
+          START: ${{ github.event.inputs.start || env.DEFAULT_START }}
+          END: ${{ github.event.inputs.end || env.DEFAULT_END }}
       - name: schedule commit
         id: commit
         run: bash $CODE_BRANCH/scripts/schedule_commit.sh
         env:
-          FORCE: ${{ github.event.inputs.force }}
+          FORCE: ${{ github.event.inputs.force || env.DEFAULT_FORCE }}
   match:
     runs-on: ubuntu-latest
     permissions:
@@ -88,16 +94,16 @@ jobs:
           ref: ${{ env.CODE_BRANCH }}
           path: ${{ env.CODE_BRANCH }}
       - name: schedule force changes
-        if: ${{ github.event.inputs.force == 'true' }}
+        if: ${{ github.event.inputs.force == 'true' || github.event_name == 'schedule' && env.DEFAULT_FORCE == 'true' }}
         run: bash $CODE_BRANCH/scripts/schedule_force_changes.sh
         env:
-          START: ${{ github.event.inputs.start }}
-          END: ${{ github.event.inputs.end }}
+          START: ${{ github.event.inputs.start || env.DEFAULT_START }}
+          END: ${{ github.event.inputs.end || env.DEFAULT_END }}
       - name: schedule changes
-        if: ${{ github.event.inputs.force == 'false' }}
+        if: ${{ github.event.inputs.force == 'false' || github.event_name == 'schedule' && env.DEFAULT_FORCE == 'false' }}
         run: bash $CODE_BRANCH/scripts/schedule_changes.sh
       - name: match fetch
-        if: ${{ github.event.inputs.match_cache == 'false' }}
+        if: ${{ github.event.inputs.match_cache == 'false' || github.event_name == 'schedule' && env.DEFAULT_MATCH_CACHE == 'false' }}
         run: bash $CODE_BRANCH/scripts/match_fetch.sh
       - name: match process
         run: bash $CODE_BRANCH/scripts/match_process.sh
