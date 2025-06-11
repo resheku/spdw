@@ -2019,107 +2019,6 @@
   "fortuna_odd": null
 }
 {
-  "id": 5782,
-  "attendance": 0,
-  "card_type_id": 1,
-  "broadcaster_schedule_id": 2,
-  "postponed_card_id": null,
-  "postponed_first_card_id": null,
-  "status_id": 2,
-  "season": 2025,
-  "verified": 0,
-  "match_type_id": 1,
-  "match_subtype_id": 1,
-  "track_id": 25,
-  "name": {
-    "pl": "BETARD SPARTA Wrocław - KRONO-PLAST WŁÓKNIARZ Częstochowa",
-    "en": "BETARD SPARTA Wrocław - KRONO-PLAST WŁÓKNIARZ Częstochowa"
-  },
-  "shortname": {
-    "pl": "WRO - CZE",
-    "en": "WRO - CZE"
-  },
-  "description": {
-    "pl": null,
-    "en": null
-  },
-  "datetime_schedule": 1748629800000,
-  "round": 7,
-  "city": null,
-  "stub": 0,
-  "url": null,
-  "status": {
-    "id": 2,
-    "name": {
-      "pl": "Odwołany",
-      "en": "Cancelled"
-    },
-    "shortname": {
-      "pl": "Odwołany",
-      "en": "Cancelled"
-    }
-  },
-  "broadcaster_schedule": {
-    "id": 2,
-    "title": "Eleven Sports 1"
-  },
-  "card_teams": [
-    {
-      "no": 1,
-      "card_id": 5782,
-      "team_id": 3,
-      "match_score": null,
-      "match_tlt_score": null,
-      "team_shortcut": "WRO"
-    },
-    {
-      "no": 2,
-      "card_id": 5782,
-      "team_id": 9,
-      "match_score": null,
-      "match_tlt_score": null,
-      "team_shortcut": "CZE"
-    }
-  ],
-  "match_type": {
-    "id": 1,
-    "shortname": {
-      "pl": "PGEE",
-      "en": "PGEE"
-    },
-    "name": {
-      "pl": "Ekstraliga",
-      "en": "Polish Speedway Extraleague"
-    },
-    "has_home_away": true,
-    "team_competition": true
-  },
-  "match_subtype": {
-    "id": 1,
-    "name": {
-      "pl": "Część zasadnicza",
-      "en": "Main Round"
-    },
-    "shortname": {
-      "pl": "Część zasadnicza",
-      "en": "MR"
-    },
-    "description": {
-      "pl": "",
-      "en": ""
-    },
-    "has_knockout_table": 0,
-    "position": 1
-  },
-  "postponed": null,
-  "postponed_first": null,
-  "track": {
-    "id": 25,
-    "city": "Wrocław"
-  },
-  "fortuna_odd": null
-}
-{
   "id": 5783,
   "attendance": 10000,
   "card_type_id": 1,
@@ -6916,11 +6815,114 @@
     "id": 19,
     "city": "Gorzów"
   },
-  "fortuna_odd": {
-    "card_id": 6341,
-    "x1": "5.10",
-    "x0": "16.00",
-    "x2": "1.20",
-    "url": "https://www.efortuna.pl/zaklady-bukmacherskie/zuzel/ekstraliga-polska/gorzow-w-lublin-MPL186907962"
-  }
+  "fortuna_odd": null
+}
+{
+  "id": 6358,
+  "attendance": 0,
+  "card_type_id": 1,
+  "broadcaster_schedule_id": 2,
+  "postponed_card_id": 5782,
+  "postponed_first_card_id": 5782,
+  "status_id": 0,
+  "season": 2025,
+  "verified": 0,
+  "match_type_id": 1,
+  "match_subtype_id": 1,
+  "track_id": 25,
+  "name": {
+    "pl": "BETARD SPARTA Wrocław - KRONO-PLAST WŁÓKNIARZ Częstochowa",
+    "en": "BETARD SPARTA Wrocław - KRONO-PLAST WŁÓKNIARZ Częstochowa"
+  },
+  "shortname": {
+    "pl": "WRO - CZE",
+    "en": "WRO - CZE"
+  },
+  "description": {
+    "pl": null,
+    "en": null
+  },
+  "datetime_schedule": 1751567400000,
+  "round": 7,
+  "city": null,
+  "stub": 0,
+  "url": null,
+  "status": {
+    "id": 0,
+    "name": {
+      "pl": "Oczekujący",
+      "en": "Upcoming"
+    },
+    "shortname": {
+      "pl": "Oczekujący",
+      "en": "Upcoming"
+    }
+  },
+  "broadcaster_schedule": {
+    "id": 2,
+    "title": "Eleven Sports 1"
+  },
+  "card_teams": [
+    {
+      "no": 1,
+      "card_id": 6358,
+      "team_id": 3,
+      "match_score": null,
+      "match_tlt_score": null,
+      "team_shortcut": "WRO"
+    },
+    {
+      "no": 2,
+      "card_id": 6358,
+      "team_id": 9,
+      "match_score": null,
+      "match_tlt_score": null,
+      "team_shortcut": "CZE"
+    }
+  ],
+  "match_type": {
+    "id": 1,
+    "shortname": {
+      "pl": "PGEE",
+      "en": "PGEE"
+    },
+    "name": {
+      "pl": "Ekstraliga",
+      "en": "Polish Speedway Extraleague"
+    },
+    "has_home_away": true,
+    "team_competition": true
+  },
+  "match_subtype": {
+    "id": 1,
+    "name": {
+      "pl": "Część zasadnicza",
+      "en": "Main Round"
+    },
+    "shortname": {
+      "pl": "Część zasadnicza",
+      "en": "MR"
+    },
+    "description": {
+      "pl": "",
+      "en": ""
+    },
+    "has_knockout_table": 0,
+    "position": 1
+  },
+  "postponed": {
+    "id": 5782,
+    "datetime": 1748629800000,
+    "datetime_schedule": 1748629800000
+  },
+  "postponed_first": {
+    "id": 5782,
+    "datetime": 1748629800000,
+    "datetime_schedule": 1748629800000
+  },
+  "track": {
+    "id": 25,
+    "city": "Wrocław"
+  },
+  "fortuna_odd": null
 }
