@@ -3534,114 +3534,13 @@
   "fortuna_odd": null
 }
 {
-  "id": 5798,
-  "attendance": 0,
-  "card_type_id": 1,
-  "broadcaster_schedule_id": 2,
-  "postponed_card_id": null,
-  "postponed_first_card_id": null,
-  "status_id": 2,
-  "season": 2025,
-  "verified": 0,
-  "match_type_id": 1,
-  "match_subtype_id": 1,
-  "track_id": 22,
-  "name": {
-    "pl": "KRONO-PLAST WŁÓKNIARZ Częstochowa - PRES GRUPA DEWELOPERSKA Toruń",
-    "en": "KRONO-PLAST WŁÓKNIARZ Częstochowa - PRES GRUPA DEWELOPERSKA Toruń"
-  },
-  "shortname": {
-    "pl": "CZE - TOR",
-    "en": "CZE - TOR"
-  },
-  "description": {
-    "pl": null,
-    "en": null
-  },
-  "datetime_schedule": 1752258600000,
-  "round": 11,
-  "city": null,
-  "stub": 0,
-  "url": null,
-  "status": {
-    "id": 2,
-    "name": {
-      "pl": "Odwołany",
-      "en": "Cancelled"
-    },
-    "shortname": {
-      "pl": "Odwołany",
-      "en": "Cancelled"
-    }
-  },
-  "broadcaster_schedule": {
-    "id": 2,
-    "title": "Eleven Sports 1"
-  },
-  "card_teams": [
-    {
-      "no": 1,
-      "card_id": 5798,
-      "team_id": 9,
-      "match_score": null,
-      "match_tlt_score": 43,
-      "team_shortcut": "CZE"
-    },
-    {
-      "no": 2,
-      "card_id": 5798,
-      "team_id": 1,
-      "match_score": null,
-      "match_tlt_score": 47,
-      "team_shortcut": "TOR"
-    }
-  ],
-  "match_type": {
-    "id": 1,
-    "shortname": {
-      "pl": "PGEE",
-      "en": "PGEE"
-    },
-    "name": {
-      "pl": "Ekstraliga",
-      "en": "Polish Speedway Extraleague"
-    },
-    "has_home_away": true,
-    "team_competition": true
-  },
-  "match_subtype": {
-    "id": 1,
-    "name": {
-      "pl": "Część zasadnicza",
-      "en": "Main Round"
-    },
-    "shortname": {
-      "pl": "Część zasadnicza",
-      "en": "MR"
-    },
-    "description": {
-      "pl": "",
-      "en": ""
-    },
-    "has_knockout_table": 0,
-    "position": 1
-  },
-  "postponed": null,
-  "postponed_first": null,
-  "track": {
-    "id": 22,
-    "city": "Częstochowa"
-  },
-  "fortuna_odd": null
-}
-{
   "id": 5799,
-  "attendance": 0,
+  "attendance": 4900,
   "card_type_id": 1,
   "broadcaster_schedule_id": 2,
   "postponed_card_id": null,
   "postponed_first_card_id": null,
-  "status_id": 0,
+  "status_id": 1,
   "season": 2025,
   "verified": 0,
   "match_type_id": 1,
@@ -3665,14 +3564,14 @@
   "stub": 0,
   "url": null,
   "status": {
-    "id": 0,
+    "id": 1,
     "name": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
+      "pl": "Rozegrany",
+      "en": "Raced"
     },
     "shortname": {
-      "pl": "Oczekujący",
-      "en": "Upcoming"
+      "pl": "Rozegrany",
+      "en": "Raced"
     }
   },
   "broadcaster_schedule": {
@@ -3684,16 +3583,16 @@
       "no": 1,
       "card_id": 5799,
       "team_id": 7,
-      "match_score": null,
-      "match_tlt_score": 27,
+      "match_score": 32,
+      "match_tlt_score": 59,
       "team_shortcut": "RYB"
     },
     {
       "no": 2,
       "card_id": 5799,
       "team_id": 14,
-      "match_score": null,
-      "match_tlt_score": 63,
+      "match_score": 58,
+      "match_tlt_score": 121,
       "team_shortcut": "LUB"
     }
   ],
@@ -6923,6 +6822,115 @@
   "track": {
     "id": 25,
     "city": "Wrocław"
+  },
+  "fortuna_odd": null
+}
+{
+  "id": 6433,
+  "attendance": 0,
+  "card_type_id": 1,
+  "broadcaster_schedule_id": 2,
+  "postponed_card_id": 5798,
+  "postponed_first_card_id": 5798,
+  "status_id": 0,
+  "season": 2025,
+  "verified": 0,
+  "match_type_id": 1,
+  "match_subtype_id": 1,
+  "track_id": 22,
+  "name": {
+    "pl": "KRONO-PLAST WŁÓKNIARZ Częstochowa - PRES GRUPA DEWELOPERSKA Toruń",
+    "en": "KRONO-PLAST WŁÓKNIARZ Częstochowa - PRES GRUPA DEWELOPERSKA Toruń"
+  },
+  "shortname": {
+    "pl": "CZE - TOR",
+    "en": "CZE - TOR"
+  },
+  "description": {
+    "pl": null,
+    "en": null
+  },
+  "datetime_schedule": 1753722000000,
+  "round": 11,
+  "city": null,
+  "stub": 0,
+  "url": null,
+  "status": {
+    "id": 0,
+    "name": {
+      "pl": "Oczekujący",
+      "en": "Upcoming"
+    },
+    "shortname": {
+      "pl": "Oczekujący",
+      "en": "Upcoming"
+    }
+  },
+  "broadcaster_schedule": {
+    "id": 2,
+    "title": "Eleven Sports 1"
+  },
+  "card_teams": [
+    {
+      "no": 1,
+      "card_id": 6433,
+      "team_id": 9,
+      "match_score": null,
+      "match_tlt_score": null,
+      "team_shortcut": "CZE"
+    },
+    {
+      "no": 2,
+      "card_id": 6433,
+      "team_id": 1,
+      "match_score": null,
+      "match_tlt_score": null,
+      "team_shortcut": "TOR"
+    }
+  ],
+  "match_type": {
+    "id": 1,
+    "shortname": {
+      "pl": "PGEE",
+      "en": "PGEE"
+    },
+    "name": {
+      "pl": "Ekstraliga",
+      "en": "Polish Speedway Extraleague"
+    },
+    "has_home_away": true,
+    "team_competition": true
+  },
+  "match_subtype": {
+    "id": 1,
+    "name": {
+      "pl": "Część zasadnicza",
+      "en": "Main Round"
+    },
+    "shortname": {
+      "pl": "Część zasadnicza",
+      "en": "MR"
+    },
+    "description": {
+      "pl": "",
+      "en": ""
+    },
+    "has_knockout_table": 0,
+    "position": 1
+  },
+  "postponed": {
+    "id": 5798,
+    "datetime": 1752258600000,
+    "datetime_schedule": 1752258600000
+  },
+  "postponed_first": {
+    "id": 5798,
+    "datetime": 1752258600000,
+    "datetime_schedule": 1752258600000
+  },
+  "track": {
+    "id": 22,
+    "city": "Częstochowa"
   },
   "fortuna_odd": null
 }
