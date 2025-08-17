@@ -56,3 +56,49 @@ jobs:
                 aws --version
                 aws s3 cp --recursive parquet/ s3://$BUCKET
                 aws s3 cp sel.db s3://$BUCKET
+
+            - name: db migration
+              env:
+                POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+                POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+                POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+                POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+                POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+              run: |
+                # Run the DuckDB migration
+                duckdb sel.db -f $CODE_BRANCH/queries/postgres.sql
+            - name: db indexes
+              env:
+                POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+                POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+                POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+                POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+                POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+              run: |
+                # Run the index creation directly with psql
+                PGPASSWORD="$POSTGRES_PASSWORD" psql \
+                  -h "$POSTGRES_HOST" \
+                  -p "$POSTGRES_PORT" \
+                  -d "$POSTGRES_DB" \
+                  -U "$POSTGRES_USER" \
+                  -f $CODE_BRANCH/queries/postgres_indexes.sql
+
+                echo "✅ Indexes created successfully!"
+
+            - name: db policies
+              env:
+                POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+                POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+                POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+                POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+                POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+              run: |
+                # Run the index creation directly with psql
+                PGPASSWORD="$POSTGRES_PASSWORD" psql \
+                  -h "$POSTGRES_HOST" \
+                  -p "$POSTGRES_PORT" \
+                  -d "$POSTGRES_DB" \
+                  -U "$POSTGRES_USER" \
+                  -f $CODE_BRANCH/queries/postgres_rls.sql
+
+                echo "✅ policies created successfully!"
