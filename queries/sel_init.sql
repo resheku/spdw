@@ -225,9 +225,15 @@ ALTER TABLE sel.schedule ADD CONSTRAINT PK_schedule_id PRIMARY KEY (id);
 ALTER TABLE sel.matches ADD CONSTRAINT PK_matches_id PRIMARY KEY (match_id);
 ALTER TABLE sel.lineup ADD CONSTRAINT PK_lineup_match_lineup PRIMARY KEY (match_id, lineup_id);
 ALTER TABLE sel.telemetry ADD CONSTRAINT PK_telemetry_match_rider_heat PRIMARY KEY (match_id, rider_id, heat_id);
--- Unique Indexes
 CREATE UNIQUE INDEX heat_rider_idx ON sel.heats(heat_id, rider_id);
 CREATE UNIQUE INDEX matches_id_idx ON sel.matches(match_id);
 CREATE UNIQUE INDEX lineup_id_idx ON sel.lineup(match_id, lineup_id);
 CREATE UNIQUE INDEX lineup_match_rider_idx ON sel.lineup(match_id, rider_id);
 CREATE UNIQUE INDEX heats_match_rider_idx ON sel.heats(match_id, heat_id, rider_id);
+
+
+-- Data version table for cache control
+CREATE TABLE IF NOT EXISTS sel.data_version (
+    version_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO sel.data_version DEFAULT VALUES;
