@@ -1,10 +1,9 @@
 name: sel db
 
 on:
-    workflow_run:
-        workflows: ["sel data"]
+    repository_dispatch:
         types:
-            - completed
+            - sel_data_completed
     workflow_dispatch:
 env:
   DATA_BRANCH: sel
