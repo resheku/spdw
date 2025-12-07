@@ -58,6 +58,7 @@ ranked_heats as (
         and coalesce(h.substitute_id, h.rider_id) = t.rider_id
     where h.score is not null
         and h.score != '-'
+        and m.match_subtype_id != '7'
     order by h.match_id, h.heat_no, h.gate, h.canceled desc, score desc
 )
 select 
