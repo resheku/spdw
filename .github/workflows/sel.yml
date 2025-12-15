@@ -1,47 +1,48 @@
 name: sel
 
 on:
-  schedule:
-    # Run at 20:45 UTC (22:45 Warsaw time during summer)
-    - cron: '45 20 * * *'
+  # schedule:
+  #   # Run at 20:45 UTC (22:45 Warsaw time during summer)
+  #   - cron: '45 20 * * *'
   workflow_dispatch:
     inputs:
       start:
-        description: 'Start season'
+        description: "Start season"
         required: true
-        default: '2025'
+        default: "2025"
         type: string
       end:
-        description: 'Last season'
+        description: "Last season"
         required: true
-        default: '2025'
+        default: "2025"
         type: string
       schedule_cache:
-        description: 'Use cached schedule'
+        description: "Use cached schedule"
         required: true
         default: false
         type: boolean
       match_cache:
-        description: 'Use cached match'
+        description: "Use cached match"
         required: true
         default: false
         type: boolean
       force:
-        description: 'Force recompute'
+        description: "Force recompute"
         required: true
         default: false
         type: boolean
 env:
   SCHEDULE_URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
   MATCH_URL: https://ekstraliga.pl/en/se/match
-  DATA_BRANCH: sel
+  DATA_REPO: spdw-data
+  DATA_BRANCH: main
   CODE_BRANCH: main
   # Default values for scheduled runs (same as workflow_dispatch defaults)
-  DEFAULT_START: '2025'
-  DEFAULT_END: '2025'
-  DEFAULT_SCHEDULE_CACHE: 'false'
-  DEFAULT_MATCH_CACHE: 'false'
-  DEFAULT_FORCE: 'false'
+  DEFAULT_START: "2025"
+  DEFAULT_END: "2025"
+  DEFAULT_SCHEDULE_CACHE: "false"
+  DEFAULT_MATCH_CACHE: "false"
+  DEFAULT_FORCE: "false"
 
 jobs:
   schedules:
@@ -51,9 +52,10 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: checkout data branch
+      - name: checkout data repository
         uses: actions/checkout@v4
         with:
+          repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
       - name: checkout code
         uses: actions/checkout@v4
@@ -83,9 +85,10 @@ jobs:
     needs: schedules
     if: needs.schedules.outputs.changes == '1'
     steps:
-      - name: checkout data-store
+      - name: checkout data repository
         uses: actions/checkout@v4
         with:
+          repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
           fetch-depth: 0
       - name: checkout code

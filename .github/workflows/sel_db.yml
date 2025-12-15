@@ -1,109 +1,111 @@
 name: sel db
 
 on:
-    repository_dispatch:
-        types:
-            - sel_data_completed
-    workflow_dispatch:
+  # repository_dispatch:
+  #   types:
+  #     - sel_data_completed
+  workflow_dispatch:
 env:
-  DATA_BRANCH: sel
+  DATA_REPO: spdw-data
+  DATA_BRANCH: main
   CODE_BRANCH: main
-  DDB_VERSION: 1.3.2
+  DDB_VERSION: 1.4.3
 
 jobs:
-    data:
-        environment: spdw-sel
-        runs-on: ubuntu-latest
-        permissions:
-          contents: read
-          actions: read
-        steps:
-            - name: checkout data branch
-              uses: actions/checkout@v4
-              with:
-                  ref: ${{ env.DATA_BRANCH }}
-            - name: checkout code
-              uses: actions/checkout@v4
-              with:
-                ref: ${{ env.CODE_BRANCH }}
-                path: ${{ env.CODE_BRANCH }}
-            - name: Cache DuckDB CLI
-              id: cache-duckdb
-              uses: actions/cache@v4
-              with:
-                path: ./duckdb_cli-linux-amd64-${{ env.DDB_VERSION }}.zip
-                key: duckdb-cli-v${{ env.DDB_VERSION }}
-            - name: Download DuckDB CLI if not cached
-              if: steps.cache-duckdb.outputs.cache-hit != 'true'
-              run: |
-                curl -L --retry 3 --retry-delay 5 -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip https://github.com/duckdb/duckdb/releases/download/v${DDB_VERSION}/duckdb_cli-linux-amd64.zip
-            - name: Install DuckDB CLI
-              run: |
-                unzip -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip
-                chmod +x duckdb
-                sudo mv duckdb /usr/local/bin/
-            - name: Verify DuckDB install
-              run: duckdb --version
-            - name: db export
-              run: |
-                mkdir -p parquet
-                duckdb sel.db -c "EXPORT DATABASE 'parquet' (FORMAT parquet);"
-                ls -lah parquet
-            - name: db upload
-              env:
-                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
-                AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
-                BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
-                AWS_REQUEST_CHECKSUM_CALCULATION: ${{ vars.AWS_REQUEST_CHECKSUM_CALCULATION }}
-              run: |
-                aws --version
-                aws s3 cp --recursive parquet/ s3://$BUCKET
-                aws s3 cp sel.db s3://$BUCKET
+  data:
+    environment: spdw-sel
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - name: checkout data repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.DATA_REPO }}
+          ref: ${{ env.DATA_BRANCH }}
+      - name: checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CODE_BRANCH }}
+          path: ${{ env.CODE_BRANCH }}
+      - name: Cache DuckDB CLI
+        id: cache-duckdb
+        uses: actions/cache@v4
+        with:
+          path: ./duckdb_cli-linux-amd64-${{ env.DDB_VERSION }}.zip
+          key: duckdb-cli-v${{ env.DDB_VERSION }}
+      - name: Download DuckDB CLI if not cached
+        if: steps.cache-duckdb.outputs.cache-hit != 'true'
+        run: |
+          curl -L --retry 3 --retry-delay 5 -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip https://github.com/duckdb/duckdb/releases/download/v${DDB_VERSION}/duckdb_cli-linux-amd64.zip
+      - name: Install DuckDB CLI
+        run: |
+          unzip -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip
+          chmod +x duckdb
+          sudo mv duckdb /usr/local/bin/
+      - name: Verify DuckDB install
+        run: duckdb --version
+      - name: db export
+        run: |
+          mkdir -p parquet
+          duckdb sel.db -c "EXPORT DATABASE 'parquet' (FORMAT parquet);"
+          ls -lah parquet
+      - name: db upload
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
+          BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
+          AWS_REQUEST_CHECKSUM_CALCULATION: ${{ vars.AWS_REQUEST_CHECKSUM_CALCULATION }}
+        run: |
+          aws --version
+          aws s3 cp --recursive parquet/ s3://$BUCKET
+          aws s3 cp sel.db s3://$BUCKET
 
-            - name: db migration
-              env:
-                POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
-                POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
-                POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-                POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-                POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-              run: |
-                # Run the DuckDB migration
-                duckdb sel.db -f $CODE_BRANCH/queries/postgres.sql
-            - name: db indexes
-              env:
-                POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
-                POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
-                POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-                POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-                POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-              run: |
-                # Run the index creation directly with psql
-                PGPASSWORD="$POSTGRES_PASSWORD" psql \
-                  -h "$POSTGRES_HOST" \
-                  -p "$POSTGRES_PORT" \
-                  -d "$POSTGRES_DB" \
-                  -U "$POSTGRES_USER" \
-                  -f $CODE_BRANCH/queries/postgres_indexes.sql
+      - name: db migration
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          # Run the DuckDB migration
+          duckdb sel.db -f $CODE_BRANCH/queries/postgres.sql
+      - name: db indexes
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          # Run the index creation directly with psql
+          PGPASSWORD="$POSTGRES_PASSWORD" psql \
+            -h "$POSTGRES_HOST" \
+            -p "$POSTGRES_PORT" \
+            -d "$POSTGRES_DB" \
+            -U "$POSTGRES_USER" \
+            -f $CODE_BRANCH/queries/postgres_indexes.sql
 
-                echo "✅ Indexes created successfully!"
+          echo "✅ Indexes created successfully!"
 
-            - name: db policies
-              env:
-                POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
-                POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
-                POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-                POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-                POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-              run: |
-                # Run the index creation directly with psql
-                PGPASSWORD="$POSTGRES_PASSWORD" psql \
-                  -h "$POSTGRES_HOST" \
-                  -p "$POSTGRES_PORT" \
-                  -d "$POSTGRES_DB" \
-                  -U "$POSTGRES_USER" \
-                  -f $CODE_BRANCH/queries/postgres_rls.sql
+      - name: db policies
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          # Run the index creation directly with psql
+          PGPASSWORD="$POSTGRES_PASSWORD" psql \
+            -h "$POSTGRES_HOST" \
+            -p "$POSTGRES_PORT" \
+            -d "$POSTGRES_DB" \
+            -U "$POSTGRES_USER" \
+            -f $CODE_BRANCH/queries/postgres_rls.sql
 
-                echo "✅ policies created successfully!"
+          echo "✅ policies created successfully!"
