@@ -1,14 +1,14 @@
 name: sel data
 
 on:
-  workflow_run:
-    workflows: ["sel"]
-    types:
-      - completed
+  # workflow_run:
+  #   workflows: ["sel"]
+  #   types:
+  #     - completed
   workflow_dispatch:
     inputs:
       force:
-        description: 'Force commit'
+        description: "Force commit"
         required: true
         default: false
         type: boolean
@@ -64,16 +64,16 @@ jobs:
         run: bash $CODE_BRANCH/scripts/data_commit.sh
         env:
           FORCE: ${{ github.event.inputs.force }}
-      - name: trigger sel_db workflow
-        if: steps.commit.outputs.changes == '1'
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            await github.rest.repos.createDispatchEvent({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              event_type: 'sel_data_completed'
-            });
+      # - name: trigger sel_db workflow
+      #   if: steps.commit.outputs.changes == '1'
+      #   uses: actions/github-script@v7
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     script: |
+      #       await github.rest.repos.createDispatchEvent({
+      #         owner: context.repo.owner,
+      #         repo: context.repo.repo,
+      #         event_type: 'sel_data_completed'
+      #       });
       - name: data check
         run: duckdb sel.db -echo -column -f $CODE_BRANCH/queries/test.sql
