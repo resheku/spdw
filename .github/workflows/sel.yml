@@ -34,7 +34,7 @@ on:
 env:
   SCHEDULE_URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
   MATCH_URL: https://ekstraliga.pl/en/se/match
-  DATA_REPO: spdw-data
+  DATA_REPO: ${{ github.repository_owner }}/spdw-data
   DATA_BRANCH: main
   CODE_BRANCH: main
   # Default values for scheduled runs (same as workflow_dispatch defaults)

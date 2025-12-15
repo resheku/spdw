@@ -6,7 +6,7 @@ on:
   #     - sel_data_completed
   workflow_dispatch:
 env:
-  DATA_REPO: spdw-data
+  DATA_REPO: ${{ github.repository_owner }}/spdw-data
   DATA_BRANCH: main
   CODE_BRANCH: main
   DDB_VERSION: 1.4.3
