@@ -32,12 +32,12 @@ on:
         default: false
         type: boolean
 env:
-  SCHEDULE_URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
+  SCHEDULE_URL: https://ekstraliga.pl/en/se/fixtures-and-results/m2e
   MATCH_URL: https://ekstraliga.pl/en/se/match
   DATA_REPO: ${{ github.repository_owner }}/spdw-data
   DATA_BRANCH: main
   CODE_BRANCH: main
-  LEAGUE: sel
+  LEAGUE: sel2
   # Default values for scheduled runs (same as workflow_dispatch defaults)
   DEFAULT_START: "2025"
   DEFAULT_END: "2025"
