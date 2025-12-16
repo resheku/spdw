@@ -1,8 +1,11 @@
 #!/bin/bash
 
-rm -f sel/schedules.jsonl
-for file in sel/*/schedule.jsonl; do
-    cat "$file" >>sel/schedules.jsonl
+# Collect schedules for sel and sel2
+for league in sel sel2; do
+    rm -f ${league}/schedules.jsonl
+    for file in ${league}/*/schedule.jsonl; do
+        cat "$file" >>${league}/schedules.jsonl
+    done
 done
 
 # rm matches.jsonl

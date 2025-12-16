@@ -2,7 +2,7 @@
 
 git config user.name "Automated"
 git config user.email "actions@users.noreply.github.com"
-git add sel.db sel/
+git add sel.db sel/ sel2/
 
 # Check for changes in JSON files if FORCE is not true
 if [ "$FORCE" = "true" ]; then

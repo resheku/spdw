@@ -1,7 +1,9 @@
 attach 'sel.db' as sel;
 
-create table schedule as(select * from read_json_auto('sel/schedules.jsonl'));
-create table matches as(select * from read_json_auto('sel/matches.jsonl'));
+-- create table schedule as(select * from read_json_auto('sel/schedules.jsonl'));
+create table schedule as(select * from read_json_auto('sel*/*/schedule.jsonl'));
+-- create table matches as(select * from read_json_auto('sel/matches.jsonl'));
+create table matches as(select * from read_json_auto('*/matches.jsonl', sample_size=-1, union_by_name=true));
 
 -- schedule
 CREATE TABLE sel.schedule AS (

@@ -15,7 +15,7 @@ on:
 env:
   DATA_REPO: ${{ github.repository_owner }}/spdw-data
   DATA_BRANCH: main
-  CODE_BRANCH: main
+  CODE_BRANCH: spdw-data
   DDB_VERSION: 1.4.3
 
 jobs:
@@ -31,6 +31,7 @@ jobs:
         with:
           repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
+          token: ${{ secrets.DATA_REPO_PAT }}
       - name: checkout code
         uses: actions/checkout@v4
         with:
@@ -53,10 +54,12 @@ jobs:
           sudo mv duckdb /usr/local/bin/
       - name: Verify DuckDB install
         run: duckdb --version
-      - name: data collect
-        run: bash $CODE_BRANCH/scripts/data_collect.sh
+      # - name: data collect
+      #   run: bash $CODE_BRANCH/scripts/data_collect.sh
       - name: data linkage
-        run: python3 $CODE_BRANCH/sel_telemetry.py
+        run: |
+          python3 $CODE_BRANCH/sel_telemetry.py "sel/*/match/json/*.json" "sel/matches.jsonl"
+          python3 $CODE_BRANCH/sel_telemetry.py "sel2/*/match/json/*.json" "sel2/matches.jsonl"
       - name: create database sel.db
         run: rm -f sel.db && duckdb < $CODE_BRANCH/queries/sel_init.sql
       - name: data sel stats
