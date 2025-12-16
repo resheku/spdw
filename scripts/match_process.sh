@@ -4,6 +4,7 @@ if [ -f CHANGES ]; then
     while IFS= read -r line; do
         id=$(echo "$line" | jq -r '.id')
         season=$(echo "$line" | jq -r '.season')
+        echo "${LEAGUE} ${season} ${id}"
         mkdir -p "$LEAGUE/$season/match/json"
         FILE="$LEAGUE/$season/match/html/$id.html"
         if [ -f "$FILE" ]; then
