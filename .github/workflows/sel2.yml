@@ -126,4 +126,5 @@ jobs:
         id: commit
         run: bash $CODE_BRANCH/scripts/match_commit.sh
         env:
+          FORCE: ${{ github.event.inputs.force || env.DEFAULT_FORCE }}
           LEAGUE: ${{ env.LEAGUE }}
