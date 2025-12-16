@@ -22,15 +22,3 @@ for file in $(git diff --name-only --diff-filter=A HEAD^ HEAD); do
         jq -c 'select(.status.id == 1)' "$file" | tee -a CHANGES
     fi
 done
-
-# If no schedule changes found, process all schedule files
-if ! git diff --name-only --diff-filter=AM HEAD^ HEAD | grep -q "${LEAGUE}/.*/schedule.jsonl"; then
-    echo ""
-    echo "No schedule changes in diff - processing all matches"
-    for file in ${LEAGUE}/*/schedule.jsonl; do
-        if [[ -e "$file" ]]; then
-            echo "$file"
-            jq -c 'select(.status.id == 1)' "$file" | tee -a CHANGES
-        fi
-    done
-fi
