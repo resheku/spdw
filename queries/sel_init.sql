@@ -1,241 +1,271 @@
 attach 'sel.db' as sel;
 
--- create table schedule as(select * from read_json_auto('sel/schedules.jsonl'));
-create table schedule as(select * from read_json_auto('sel*/*/schedule.jsonl'));
--- create table matches as(select * from read_json_auto('sel/matches.jsonl'));
-create table matches as(select * from read_json_auto('*/matches.jsonl', sample_size=-1, union_by_name=true));
+create table _matches as(select * from read_json_auto('sel*/matches.jsonl', sample_size=-1, union_by_name=true));
 
 -- schedule
-CREATE TABLE sel.schedule AS (
-    SELECT
+CREATE TABLE
+    sel.schedule (
+        id INTEGER PRIMARY KEY,
+        status_id TEXT,
+        season INT,
+        verified INT,
+        name TEXT,
+        status_name TEXT,
+        league TEXT
+    );
+
+INSERT INTO
+    sel.schedule (
         id,
         status_id,
         season,
         verified,
-        schedule->>'$.name.en' as name,
-        schedule->>'$.status.name.en' as status_name
-    FROM schedule
-);
+        name,
+        status_name,
+        league
+    )
+select distinct
+    id,
+    status_id,
+    season,
+    verified,
+    name->>'$.en' as name,
+    status->>'$.name.en' as status_name,
+    match_type->>'$.name.en' as league
+FROM
+    "sel*/*/schedule.jsonl"
+order by
+    id;
+
+
 -- matches
---   card_teams
---       no
---       card_id
---       position
-CREATE TABLE sel.matches AS(
-    SELECT match.id as match_id,
-        CAST(match->>'$.attendance' AS INT) as attendance,
-        CAST(match->>'$.card_type_id' AS INT) as card_type_id,
-        CAST(match->>'$.verified' AS INT) as verified,
-        CAST(match->>'$.season' AS INT) as season,
-        CAST(match->'$.has_telemetry' AS INT) as has_telemetry,
-        match->>'$.name.pl' as name,
-        match->>'$.shortname.pl' as shortname_pl,
-        match->>'$.description.pl' as description_pl,
-        strftime(
-            timezone(
-                'Europe/Warsaw',
-                to_timestamp(match.datetime_schedule / 1000)
+create table
+    sel.matches as (
+        with
+            matches as (
+                select distinct
+                    unnest (match)
+                from
+                    _matches
+            )
+        select distinct
+            id as match_id,
+            attendance,
+            card_type_id,
+            verified,
+            season,
+            has_telemetry,
+            name->>'$.en' as name,
+            shortname->>'$.en' as shortname,
+            description->>'$.en' as description,
+            strftime (
+                timezone (
+                    'Europe/Warsaw',
+                    to_timestamp (datetime_schedule / 1000)
+                ),
+                '%Y-%m-%d %H:%M'
+            ) AS datetime,
+            datetime_schedule,
+            round,
+            status->>'$.id' as status_id,
+            status->>'$.name.en' as status_name,
+            broadcaster_schedule->>'$.id' as broadcaster_schedule_id,
+            broadcaster_schedule->>'$.title' as broadcaster_schedule_title,
+            match_type->>'$.id' as match_type_id,
+            match_type->>'$.shortname.en' as match_type_shortname,
+            match_type->>'$.name.en' as match_type_name,
+            match_type->>'$.team_competition' as team_competition,
+            match_type->>'$.has_home_away' as has_home_away,
+            match_type->>'$.has_rounds' as has_rounds,
+            match_subtype->>'$.id' as match_subtype_id,
+            match_subtype->>'$.name.en' as match_subtype_name,
+            match_subtype->>'$.shortname.en' as match_subtype_shortname,
+            postponed,
+            postponed_first,
+            track->>'$.id' as track_id,
+            track->>'$.city' as track_city,
+            track->>'$.fullname' as track_fullname,
+            track_commissioner->>'$.id' as track_commissioner_id,
+            track_commissioner->>'$.name' as track_commissioner_name,
+            track_commissioner->>'$.surname' as track_commissioner_surname,
+            referee->>'$.id' as referee_id,
+            referee->>'$.name' as referee_name,
+            referee->>'$.surname' as referee_surname,
+            card_teams->>'$[0].match_score' as home_match_score,
+            card_teams->>'$[0].match_tlt_score' as home_match_tlt_score,
+            card_teams->>'$[0].team_id' as home_team_id,
+            card_teams->>'$[0].team_shortcut' as home_team_shortcut,
+            card_teams->>'$[0].team_title' as home_team_title,
+            card_teams->>'$[0].coach_id' as home_coach_id,
+            card_teams->>'$[0].coach' as home_coach,
+            card_teams->>'$[0].manager_id' as home_manager_id,
+            card_teams->>'$[0].manager' as home_manager,
+            card_teams->>'$[0].team_manager_id' as home_team_manager_id,
+            card_teams->>'$[0].team_manager' as home_team_manager,
+            card_teams->>'$[1].match_score' as away_match_score,
+            card_teams->>'$[1].match_tlt_score' as away_match_tlt_score,
+            card_teams->>'$[1].team_id' as away_team_id,
+            card_teams->>'$[1].team_shortcut' as away_team_shortcut,
+            card_teams->>'$[1].team_title' as away_team_title,
+            card_teams->>'$[1].coach_id' as away_coach_id,
+            card_teams->>'$[1].coach' as away_coach,
+            card_teams->>'$[1].manager_id' as away_manager_id,
+            card_teams->>'$[1].manager' as away_manager,
+            card_teams->>'$[1].team_manager_id' as away_team_manager_id,
+            card_teams->>'$[1].team_manager' as away_team_manager,
+        from
+            matches
+        order by
+            match_id
+    );
+
+-- -- lineups
+create table
+    sel.lineup as (
+        with
+            lineup as (
+                select
+                    unnest (lineups, recursive := true)
+                from
+                    _matches
+            )
+        select distinct
+            card_id as match_id,
+            id as lineup_id,
+            protocol_id,
+            type,
+            team_id,
+            team_no,
+            no,
+            id_1 as rider_id,
+            name as rider_name,
+            surname as rider_surname,
+            points,
+            points_regular,
+            bonuses,
+            bonuses_regular,
+            starts,
+            starts_regular,
+            CAST(rider_replacement AS BIGINT) as rider_replacement,
+            warning_heat_order,
+        from
+            lineup
+        order by
+            match_id,
+            no
+    );
+
+
+-- -- create heats table
+create table
+    sel.heats as (
+        with
+            heats as (
+                select distinct
+                    match.id as match_id,
+                    unnest (heats, recursive := true)
+                from
+                    _matches
             ),
-            '%Y-%m-%d %H:%M'
-        ) AS datetime,
-        match->>'$.datetime_schedule' as datetime_schedule,
-        CAST(match->>'$.round' AS INT) as round,
-        CAST(match->>'$.status.id' AS INT) as status_id,
-        match->>'$.status.name.pl' as status_name_pl,
-        match->>'$.status.name.en' as status_name_en,
-        CAST(match->>'$.broadcaster_schedule.id' AS INT) as broadcaster_schedule_id,
-        match->>'$.broadcaster_schedule.title' as broadcaster_schedule_title,
-        CAST(match->>'$.match_type.id' AS INT) as match_type_id,
-        match->>'$.match_type.shortname.pl' as match_type_shortname_pl,
-        match->>'$.match_type.name.pl' as match_type_name_pl,
-        match->>'$.match_type.name.en' as match_type_name_en,
-        CAST(match->'$.match_type.team_competition' AS INT) as team_competition,
-        CAST(match->'$.match_type.has_home_away' AS INT) as has_home_away,
-        CAST(match->'$.match_type.has_rounds' AS INT) as has_rounds,
-        CAST(match->>'$.match_subtype.id' AS INT) as match_subtype_id,
-        match->>'$.match_subtype.name.pl' as match_subtype_name_pl,
-        match->>'$.match_subtype.name.en' as match_subtype_name_en,
-        match->>'$.match_subtype.shortname.pl' as match_subtype_shortname_pl,
-        match->>'$.match_subtype.shortname.en' as match_subtype_shortname_en,
-        match->>'$.postponed' as postponed,
-        match->>'$.postponed_first' as postponed_first,
-        CAST(match->>'$.track_id' AS INT) as track_id,
-        match->>'$.track.city' as track_city,
-        match->>'$.track.fullname' as track_fullname,
-        CAST(match->>'$.track_commissioner.id' AS INT) as track_commissioner_id,
-        match->>'$.track_commissioner.name' as track_commissioner_name,
-        match->>'$.track_commissioner.surname' as track_commissioner_surname,
-        CAST(match->>'$.referee.id' AS INT) as referee_id,
-        match->>'$.referee.name' as referee_name,
-        match->>'$.referee.surname' as referee_surname,
-        CAST(match->>'$.card_teams[0].match_score' AS INT) as home_match_score,
-        CAST(
-            match->>'$.card_teams[0].match_tlt_score' AS INT
-        ) as home_match_tlt_score,
-        CAST(match->>'$.card_teams[0].team_id' AS INT) as home_team_id,
-        match->>'$.card_teams[0].team_shortcut' as home_team_shortcut,
-        match->>'$.card_teams[0].team_title' as home_team_title,
-        CAST(match->>'$.card_teams[0].coach_id' AS INT) as home_coach_id,
-        match->>'$.card_teams[0].coach' as home_coach,
-        CAST(match->>'$.card_teams[0].manager_id' AS INT) as home_manager_id,
-        match->>'$.card_teams[0].manager' as home_manager,
-        CAST(
-            match->>'$.card_teams[0].team_manager_id' AS INT
-        ) as home_team_manager_id,
-        match->>'$.card_teams[0].team_manager' as home_team_manager,
-        CAST(match->>'$.card_teams[1].match_score' AS INT) as away_match_score,
-        CAST(
-            match->>'$.card_teams[1].match_tlt_score' AS INT
-        ) as away_match_tlt_score,
-        CAST(match->>'$.card_teams[1].team_id' AS INT) as away_team_id,
-        match->>'$.card_teams[1].team_shortcut' as away_team_shortcut,
-        match->>'$.card_teams[1].team_title' as away_team_title,
-        CAST(match->>'$.card_teams[1].coach_id' AS INT) as away_coach_id,
-        match->>'$.card_teams[1].coach' as away_coach,
-        CAST(match->>'$.card_teams[1].manager_id' AS INT) as away_manager_id,
-        match->>'$.card_teams[1].manager' as away_manager,
-        CAST(
-            match->>'$.card_teams[1].team_manager_id' AS INT
-        ) as away_team_manager_id,
-        match->>'$.card_teams[1].team_manager' as away_team_manager
-    FROM matches
-);
--- lineups
--- user_id -- same as rider_id
--- scores_regular
---         score
---         joker
---         bonus
---         lineup_id
---     scores_additional
-CREATE TABLE sel.lineup AS(
-    WITH lineup AS (
-        SELECT unnest(lineups) as l
-        FROM matches
-    )
-    SELECT l.card_id as match_id,
-        l.id as lineup_id,
-        l.protocol_id,
-        l.type,
-        l.team_id,
-        l.no,
-        l.team_no,
-        CAST(l->>'$.rider.id' AS INT) as rider_id,
-        l->>'$.rider.name' as rider_name,
-        l->>'$.rider.surname' as rider_surname,
-        l.points,
-        l.points_regular,
-        l.bonuses,
-        l.bonuses_regular,
-        l.starts,
-        l.starts_regular,
-        l.starts_additional,
-        CAST(l.rider_replacement AS INT) as rider_replacement,
-        l->>'$.average_order' as average_order,
-        CAST(l->>'$.warning_heat_order' AS DOUBLE) as warning_heat_order,
-        l->>'$.position' as position,
-        CAST(l.status AS INT) as "status",
-        CAST(l.affiliation_id AS INT) as affiliation_id
-        FROM lineup
-);
--- create heats table
-CREATE TABLE sel.heats AS(
-    WITH heat AS (
-        SELECT match.id as match_id,
-            unnest(heats) as h
-        FROM matches
-    ),
-    results AS (
-        SELECT match.id as match_id,
-            unnest(heats->'$[*].results[*]') as r
-        FROM matches
-    )
-    SELECT m.match.id as match_id,
-        h.id as heat_id,
-        CAST(h.canceled AS INT) as canceled,
-        h.no as heat_no,
-        h.restart_id,
-        CAST(h->>'$.home_heat_score' AS INT) as home_heat_score,
-        CAST(h->>'$.away_heat_score' AS INT) as away_heat_score,
-        CAST(h->>'$.home_match_score' AS INT) as home_match_score,
-        CAST(h->>'$.away_match_score' AS INT) as away_match_score,
-        CAST(r->>'$.rider_id' AS INT) as rider_id,
-        CAST(r->>'$.rider_no' AS INT) as rider_no,
-        r->>'$.helmet' as helmet,
-        CAST(r->'$.joker' AS INT) as joker,
-        r->>'$.gate' as gate,
-        r->>'$.score' as score,
-        CASE
-            WHEN score ~ '^[0-9]+$' THEN
-                CASE
-                    WHEN CAST(joker AS INT) = 1 THEN CAST(CAST(score AS DOUBLE) / 2 AS INT)
-                    ELSE CAST(score AS INT)
-                END
-            ELSE 0
-        END AS points,
-        CAST(r->'$.bonus' AS INT) as bonus,
-        CAST(r->>'$.substitute_id' AS INT) as substitute_id,
-        CAST(r->>'$.substitute_no' AS INT) as substitute_no,
-        CAST(r->>'$.warning' AS INT) as warning -- home_heat_score
-    FROM heat
-        JOIN matches m ON heat.match_id = m.match.id
-        JOIN results ON r.heat_id = h.id
-    order by m.match.id,
-        h.no,
-        h.id,
-        h.restart_id,
-        r.gate
-);
--- telemetry
---     general
---       rider_id
---       no
---       name
---       surname
---       team_shortcut
---       best_reaction
---       best_reaction_heat_no
---       best_time
---       best_time_heat_no
---       best_max_speed
---       best_max_speed_heat_no
-CREATE TABLE sel.telemetry AS(
-    WITH details AS (
-        SELECT match.id as match_id,
-            unnest(telemetry->'$[*].details[*]') as d
-        FROM matches
-    )
-    SELECT DISTINCT details.match_id,
-        CAST(d->>'$.rider_id' AS INT) as rider_id,
-        CAST(d->>'$.heat_id' AS INT) as heat_id,
-        CAST(d->>'$.heat_no' AS INT) as heat_no,
-        CAST(d->>'$.distance' AS DOUBLE) as distance,
-        CAST(d->>'$.time' AS DOUBLE) as heat_time,
-        CAST(d->>'$.reaction' AS DOUBLE) as reaction,
-        CAST(d->>'$.max_speed' AS DOUBLE) as max_speed,
-        CAST(d->>'$.l1_time' AS DOUBLE) as l1_time,
-        CAST(d->>'$.l2_time' AS DOUBLE) as l2_time,
-        CAST(d->>'$.l3_time' AS DOUBLE) as l3_time,
-        CAST(d->>'$.l4_time' AS DOUBLE) as l4_time
-    FROM details
-    ORDER BY details.match_id,
-        heat_no
+            results as (
+                select
+                    * exclude (results),
+                    unnest (results, recursive := true),
+                from
+                    heats
+            )
+        select
+            match_id,
+            heat_id,
+            canceled,
+            no as heat_no,
+            restart_id,
+            home_heat_score,
+            away_heat_score,
+            home_match_score,
+            away_match_score,
+            rider_id,
+            rider_no,
+            -- name as rider_name,
+            -- surname as rider_surname,
+            substitute_id,
+            substitute_no,
+            -- name_3 as substitute_name,
+            -- surname_4 as substitute_surname,
+            helmet,
+            joker,
+            gate,
+            score,
+            case
+                when score ~ '^[0-9]+$' then case
+                    when joker::int = 1 then (score::double / 2)::int
+                    else score::int
+                end
+                else 0
+            end as points,
+            bonus,
+            warning,
+        from
+            results
+        order by
+            match_id,
+            heat_no,
+            heat_id,
+            restart_id,
+            gate
+    );
+    
+-- -- telemetry
+create table sel.telemetry as (
+    with
+        telemetry as (
+            select
+                match.id as match_id,
+                unnest(telemetry, recursive := true),
+            from
+                _matches
+        ),
+        details as (
+            select
+                * exclude (details),
+                unnest(details, recursive := true)
+            from
+                telemetry
+        )
+    select distinct
+        match_id,
+        rider_id,
+        heat_id,
+        heat_no,
+        distance::double as distance,
+        time::double as heat_time,
+        reaction::double as reaction,
+        max_speed::double as max_speed,
+        l1_time::double as l1_time,
+        l2_time::double as l2_time,
+        l3_time::double as l3_time,
+        l4_time::double as l4_time
+    from
+        details
+    order by
+        match_id,
+        heat_no,
+        heat_id,
+        rider_id
 );
 
+
 -- Primary Keys
-ALTER TABLE sel.schedule ADD CONSTRAINT PK_schedule_id PRIMARY KEY (id);
 ALTER TABLE sel.matches ADD CONSTRAINT PK_matches_id PRIMARY KEY (match_id);
 ALTER TABLE sel.lineup ADD CONSTRAINT PK_lineup_match_lineup PRIMARY KEY (match_id, lineup_id);
 ALTER TABLE sel.telemetry ADD CONSTRAINT PK_telemetry_match_rider_heat PRIMARY KEY (match_id, rider_id, heat_id);
 CREATE UNIQUE INDEX heat_rider_idx ON sel.heats(heat_id, rider_id);
-CREATE UNIQUE INDEX matches_id_idx ON sel.matches(match_id);
-CREATE UNIQUE INDEX lineup_id_idx ON sel.lineup(match_id, lineup_id);
 CREATE UNIQUE INDEX lineup_match_rider_idx ON sel.lineup(match_id, rider_id);
 CREATE UNIQUE INDEX heats_match_rider_idx ON sel.heats(match_id, heat_id, rider_id);
 
 
 -- Data version table for cache control
-CREATE TABLE IF NOT EXISTS sel.data_version (
-    version_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-INSERT INTO sel.data_version DEFAULT VALUES;
+-- CREATE TABLE IF NOT EXISTS sel.data_version (
+--     version_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- );
+-- INSERT INTO sel.data_version DEFAULT VALUES;
