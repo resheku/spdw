@@ -45,7 +45,8 @@ ranked_heats as (
         coalesce(h.substitute_id, h.rider_id) as rider,
         h.points,
         row_number() over (partition by h.match_id, h.heat_no, coalesce(h.substitute_id, h.rider_id) order by case when h.score ~ '^[0-9]+$' then 1 else 2 end, h.heat_id) as rn,
-        t.max_speed
+        t.max_speed,
+        s.league
     from heats h
     left join matches m on m.match_id = h.match_id
     left join lineup l on h.match_id = l.match_id and coalesce(h.substitute_id, h.rider_id) = l.rider_id
@@ -56,6 +57,7 @@ ranked_heats as (
     left join telemetry t
         on m.season = t.season
         and coalesce(h.substitute_id, h.rider_id) = t.rider_id
+    left join schedule s on s.id = m.match_id
     where h.score is not null
         and h.score != '-'
         and m.match_subtype_id != 7
@@ -82,8 +84,9 @@ select
     cast(count(*) filter (where score = 'W') as int) AS "X",
     cast(count(*) filter (where score = 'U') as int) AS "F",
     cast(coalesce(sum(warn), 0) as int) as Warn,
-    max_speed as "Max Speed"
+    max_speed as "Max Speed",
+    league as League
 from ranked_heats
 where rn = 1 
-group by season, rider, concat(rider_name, ' ', rider_surname), team_shortcut, max_speed
+group by season, rider, concat(rider_name, ' ', rider_surname), team_shortcut, max_speed, league
 order by average desc, points desc, heats desc, concat(rider_name, ' ', rider_surname);
