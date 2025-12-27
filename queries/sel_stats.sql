@@ -12,19 +12,23 @@ with warn_subquery as (
 telemetry as (
     select
         m.season,
+        s.league,
         t.rider_id,
         round(max(t.max_speed), 2) as max_speed
     from
         sel.telemetry t
         join sel.matches m on t.match_id = m.match_id
+        join sel.schedule s on s.id = m.match_id
     where
         t.max_speed is not null
         and t.max_speed != 0
     group by
         m.season,
+        s.league,
         t.rider_id
     order by
         m.season,
+        s.league,
         t.rider_id
 ),
 ranked_heats as (
@@ -54,10 +58,11 @@ ranked_heats as (
         on h.match_id = w.match_id
         and coalesce(h.substitute_id, h.rider_id) = w.rider_id
         and h.heat_id = w.heat_id
+    left join schedule s on s.id = m.match_id
     left join telemetry t
         on m.season = t.season
+        and s.league = t.league
         and coalesce(h.substitute_id, h.rider_id) = t.rider_id
-    left join schedule s on s.id = m.match_id
     where h.score is not null
         and h.score != '-'
         and m.match_subtype_id != 7
