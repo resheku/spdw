@@ -21,11 +21,13 @@ env:
 
 jobs:
   process_data:
+    environment: spdw-sel
     runs-on: ubuntu-latest
     outputs:
       changes: ${{ steps.commit.outputs.changes }}
     permissions:
       contents: write
+      actions: read
     steps:
       - name: checkout data repository
         uses: actions/checkout@v4
@@ -50,26 +52,6 @@ jobs:
         run: bash $CODE_BRANCH/scripts/data_commit.sh
         env:
           FORCE: ${{ github.event.inputs.force }}
-
-  db_sync:
-    needs: process_data
-    environment: spdw-sel
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      actions: read
-    steps:
-      - name: checkout data repository
-        uses: actions/checkout@v4
-        with:
-          repository: ${{ env.DATA_REPO }}
-          ref: ${{ env.DATA_BRANCH }}
-
-      - name: checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ env.CODE_BRANCH }}
-          path: ${{ env.CODE_BRANCH }}
 
       - name: Cache DuckDB CLI
         id: cache-duckdb
@@ -106,7 +88,6 @@ jobs:
           mkdir -p parquet
           duckdb sel.db -c "EXPORT DATABASE 'parquet' (FORMAT parquet);"
           ls -lah parquet
-
       - name: Upload to S3
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
