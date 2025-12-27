@@ -31,7 +31,7 @@ select distinct
     verified,
     name->>'$.en' as name,
     status->>'$.name.en' as status_name,
-    match_type->>'$.name.en' as league
+    match_type->>'$.shortname.en' as league
 FROM
     "sel*/*/schedule.jsonl"
 order by
@@ -46,58 +46,58 @@ CREATE TABLE
         card_type_id BIGINT,
         verified BIGINT,
         season BIGINT,
-        has_telemetry INTEGER,
+        has_telemetry BOOLEAN,
         name VARCHAR,
         shortname VARCHAR,
         description VARCHAR,
         datetime VARCHAR,
         datetime_schedule BIGINT,
         round BIGINT,
-        status_id VARCHAR,
+        status_id BIGINT,
         status_name VARCHAR,
-        broadcaster_schedule_id VARCHAR,
+        broadcaster_schedule_id BIGINT,
         broadcaster_schedule_title VARCHAR,
-        match_type_id VARCHAR,
+        match_type_id BIGINT,
         match_type_shortname VARCHAR,
         match_type_name VARCHAR,
-        team_competition VARCHAR,
-        has_home_away VARCHAR,
-        has_rounds VARCHAR,
-        match_subtype_id VARCHAR,
+        team_competition BOOLEAN,
+        has_home_away BOOLEAN,
+        has_rounds BOOLEAN,
+        match_subtype_id BIGINT,
         match_subtype_name VARCHAR,
         match_subtype_shortname VARCHAR,
-        postponed JSON,
-        postponed_first JSON,
-        track_id VARCHAR,
+        postponed VARCHAR,
+        postponed_first VARCHAR,
+        track_id BIGINT,
         track_city VARCHAR,
         track_fullname VARCHAR,
-        track_commissioner_id VARCHAR,
+        track_commissioner_id BIGINT,
         track_commissioner_name VARCHAR,
         track_commissioner_surname VARCHAR,
-        referee_id VARCHAR,
+        referee_id BIGINT,
         referee_name VARCHAR,
         referee_surname VARCHAR,
-        home_match_score VARCHAR,
-        home_match_tlt_score VARCHAR,
-        home_team_id VARCHAR,
+        home_match_score BIGINT,
+        home_match_tlt_score BIGINT,
+        home_team_id BIGINT,
         home_team_shortcut VARCHAR,
         home_team_title VARCHAR,
-        home_coach_id VARCHAR,
+        home_coach_id BIGINT,
         home_coach VARCHAR,
-        home_manager_id VARCHAR,
+        home_manager_id BIGINT,
         home_manager VARCHAR,
-        home_team_manager_id VARCHAR,
+        home_team_manager_id BIGINT,
         home_team_manager VARCHAR,
-        away_match_score VARCHAR,
-        away_match_tlt_score VARCHAR,
-        away_team_id VARCHAR,
+        away_match_score BIGINT,
+        away_match_tlt_score BIGINT,
+        away_team_id BIGINT,
         away_team_shortcut VARCHAR,
         away_team_title VARCHAR,
-        away_coach_id VARCHAR,
+        away_coach_id BIGINT,
         away_coach VARCHAR,
-        away_manager_id VARCHAR,
+        away_manager_id BIGINT,
         away_manager VARCHAR,
-        away_team_manager_id VARCHAR,
+        away_team_manager_id BIGINT,
         away_team_manager VARCHAR
     );
 
@@ -493,7 +493,7 @@ CREATE UNIQUE INDEX heats_match_rider_idx ON sel.heats(match_id, heat_id, rider_
 
 
 -- Data version table for cache control
--- CREATE TABLE IF NOT EXISTS sel.data_version (
---     version_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
--- INSERT INTO sel.data_version DEFAULT VALUES;
+CREATE TABLE IF NOT EXISTS sel.data_version (
+    version_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO sel.data_version DEFAULT VALUES;

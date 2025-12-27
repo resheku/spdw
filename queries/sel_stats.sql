@@ -66,7 +66,7 @@ ranked_heats as (
 select 
     season as "Season",
     concat(rider_name, ' ', rider_surname) as Name,
-    team_shortcut as Team,
+    string_agg(distinct team_shortcut, '/' order by team_shortcut) as Team,
     round((sum(points)+sum(bonus)) / count(*), 3) as Average,
     cast(count(distinct match_id) as int) as Match, 
     cast(count(*) as int) as Heats , 
@@ -84,9 +84,9 @@ select
     cast(count(*) filter (where score = 'W') as int) AS "X",
     cast(count(*) filter (where score = 'U') as int) AS "F",
     cast(coalesce(sum(warn), 0) as int) as Warn,
-    max_speed as "Max Speed",
+    max(max_speed) as "Max Speed",
     league as League
 from ranked_heats
 where rn = 1 
-group by season, rider, concat(rider_name, ' ', rider_surname), team_shortcut, max_speed, league
+group by season, rider, concat(rider_name, ' ', rider_surname), league
 order by average desc, points desc, heats desc, concat(rider_name, ' ', rider_surname);
