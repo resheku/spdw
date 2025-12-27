@@ -1,6 +1,9 @@
 name: sel data
 
 on:
+  schedule:
+    # Run at 21:07 UTC (23:07 Warsaw time during summer)
+    - cron: "07 21 * * *"
   workflow_dispatch:
     inputs:
       force:
