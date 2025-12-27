@@ -1,10 +1,6 @@
 name: sel data
 
 on:
-  # workflow_run:
-  #   workflows: ["sel"]
-  #   types:
-  #     - completed
   workflow_dispatch:
     inputs:
       force:
@@ -12,68 +8,155 @@ on:
         required: true
         default: false
         type: boolean
+      rebuild_db:
+        description: "Force full database rebuild"
+        required: true
+        default: false
+        type: boolean
 env:
-  DATA_BRANCH: sel
-  CODE_BRANCH: main
-  DDB_VERSION: 1.3.2
+  DATA_REPO: ${{ github.repository_owner }}/spdw-data
+  DATA_BRANCH: main
+  CODE_BRANCH: spdw-data
+  DDB_VERSION: 1.4.3
 
 jobs:
   process_data:
+    environment: spdw-sel
     runs-on: ubuntu-latest
     outputs:
       changes: ${{ steps.commit.outputs.changes }}
     permissions:
       contents: write
+      actions: read
     steps:
-      - name: checkout data branch
+      - name: checkout data repository
         uses: actions/checkout@v4
         with:
+          repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
+          token: ${{ secrets.DATA_REPO_PAT }}
+
       - name: checkout code
         uses: actions/checkout@v4
         with:
           ref: ${{ env.CODE_BRANCH }}
           path: ${{ env.CODE_BRANCH }}
+
+      - name: data linkage
+        run: |
+          python3 $CODE_BRANCH/sel_telemetry.py "sel/*/match/json/*.json" "sel/matches.jsonl"
+          python3 $CODE_BRANCH/sel_telemetry.py "sel2/*/match/json/*.json" "sel2/matches.jsonl"
+
+      - name: data commit
+        id: commit
+        run: bash $CODE_BRANCH/scripts/data_commit.sh
+        env:
+          FORCE: ${{ github.event.inputs.force }}
+
       - name: Cache DuckDB CLI
         id: cache-duckdb
         uses: actions/cache@v4
         with:
           path: ./duckdb_cli-linux-amd64-${{ env.DDB_VERSION }}.zip
           key: duckdb-cli-v${{ env.DDB_VERSION }}
+
       - name: Download DuckDB CLI if not cached
         if: steps.cache-duckdb.outputs.cache-hit != 'true'
         run: |
           curl -L --retry 3 --retry-delay 5 -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip https://github.com/duckdb/duckdb/releases/download/v${DDB_VERSION}/duckdb_cli-linux-amd64.zip
+
       - name: Install DuckDB CLI
         run: |
           unzip -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip
           chmod +x duckdb
           sudo mv duckdb /usr/local/bin/
+
       - name: Verify DuckDB install
         run: duckdb --version
-      - name: data collect
-        run: bash $CODE_BRANCH/scripts/data_collect.sh
-      - name: data linkage
-        run: python3 $CODE_BRANCH/sel_telemetry.py
+
       - name: create database sel.db
         run: rm -f sel.db && duckdb < $CODE_BRANCH/queries/sel_init.sql
+
       - name: data sel stats
         run: duckdb sel.db -f $CODE_BRANCH/queries/sel_stats.sql
-      - name: data commit
-        id: commit
-        run: bash $CODE_BRANCH/scripts/data_commit.sh
-        env:
-          FORCE: ${{ github.event.inputs.force }}
-      # - name: trigger sel_db workflow
-      #   if: steps.commit.outputs.changes == '1'
-      #   uses: actions/github-script@v7
-      #   with:
-      #     github-token: ${{ secrets.GITHUB_TOKEN }}
-      #     script: |
-      #       await github.rest.repos.createDispatchEvent({
-      #         owner: context.repo.owner,
-      #         repo: context.repo.repo,
-      #         event_type: 'sel_data_completed'
-      #       });
+
       - name: data check
         run: duckdb sel.db -echo -column -f $CODE_BRANCH/queries/test.sql
+
+      - name: Export to Parquet
+        run: |
+          mkdir -p parquet
+          duckdb sel.db -c "EXPORT DATABASE 'parquet' (FORMAT parquet);"
+          ls -lah parquet
+      - name: Upload to S3
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ENDPOINT_URL: ${{ secrets.AWS_ENDPOINT_URL }}
+          BUCKET: ${{ secrets.AWS_BUCKET_NAME }}
+          AWS_REQUEST_CHECKSUM_CALCULATION: ${{ vars.AWS_REQUEST_CHECKSUM_CALCULATION }}
+        run: |
+          aws --version
+          aws s3 cp --recursive parquet/ s3://$BUCKET
+          aws s3 cp sel.db s3://$BUCKET
+
+      - name: db migration
+        if: github.event.inputs.rebuild_db == 'true'
+        id: full_sync
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          echo "Running full database migration..."
+          duckdb sel.db -f $CODE_BRANCH/queries/postgres.sql
+
+      - name: db incremental sync
+        if: github.event.inputs.rebuild_db != 'true'
+        id: incremental_sync
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          echo "Running incremental database sync..."
+          duckdb sel.db -f $CODE_BRANCH/queries/postgres_incremental.sql
+
+      - name: Create database indexes
+        if: github.event.inputs.rebuild_db == 'true'
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          PGPASSWORD="$POSTGRES_PASSWORD" psql \
+            -h "$POSTGRES_HOST" \
+            -p "$POSTGRES_PORT" \
+            -d "$POSTGRES_DB" \
+            -U "$POSTGRES_USER" \
+            -f $CODE_BRANCH/queries/postgres_indexes.sql
+          echo "✅ Indexes created successfully!"
+
+      - name: db policies
+        if: github.event.inputs.rebuild_db == 'true'
+        env:
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        run: |
+          PGPASSWORD="$POSTGRES_PASSWORD" psql \
+            -h "$POSTGRES_HOST" \
+            -p "$POSTGRES_PORT" \
+            -d "$POSTGRES_DB" \
+            -U "$POSTGRES_USER" \
+            -f $CODE_BRANCH/queries/postgres_rls.sql
+          echo "✅ policies created successfully!"

@@ -87,6 +87,18 @@ def update_heat_id_in_telemetry(match_data):
         details = process_heat_results(heat, match_data)
         if details and check_for_bad_data(details, match_data, heat_count):
             process_heat_results(heat, match_data)
+
+    # Remove telemetry details that don't have a heat_id (unmatched/duplicate data)
+    for telemetry in match_data["telemetry"]:
+        if discarded := [
+            d for d in telemetry["details"] if "heat_id" not in d
+        ]:
+            rider_id = telemetry["general"]["rider_id"]
+            print(f"Discarding {len(discarded)} unmatched telemetry detail(s) for rider {rider_id}:")
+            for d in discarded:
+                print(f"  {d}")
+        telemetry["details"] = [d for d in telemetry["details"] if "heat_id" in d]
+
     return match_data
 
 
@@ -123,8 +135,8 @@ if __name__ == "__main__":
             new_match_data = update_heat_id_in_telemetry(match_data)
             for item in new_match_data["telemetry"]:
                 for detail in item["details"]:
-                    isinstance(detail["heat_id"], int)
-                    assert "heat_id" in detail
+                    assert "heat_id" in detail, f"Missing heat_id in detail: {detail}"
+                    assert isinstance(detail["heat_id"], int)
             data.append(new_match_data)
 
     with open(args.output_path, "w") as f:

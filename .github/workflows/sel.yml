@@ -1,47 +1,49 @@
 name: sel
 
 on:
-  schedule:
-    # Run at 20:45 UTC (22:45 Warsaw time during summer)
-    - cron: '45 20 * * *'
+  # schedule:
+  #   # Run at 20:45 UTC (22:45 Warsaw time during summer)
+  #   - cron: '45 20 * * *'
   workflow_dispatch:
     inputs:
       start:
-        description: 'Start season'
+        description: "Start season"
         required: true
-        default: '2025'
+        default: "2025"
         type: string
       end:
-        description: 'Last season'
+        description: "Last season"
         required: true
-        default: '2025'
+        default: "2025"
         type: string
       schedule_cache:
-        description: 'Use cached schedule'
+        description: "Use cached schedule"
         required: true
         default: false
         type: boolean
       match_cache:
-        description: 'Use cached match'
+        description: "Use cached match"
         required: true
         default: false
         type: boolean
       force:
-        description: 'Force recompute'
+        description: "Force recompute"
         required: true
         default: false
         type: boolean
 env:
   SCHEDULE_URL: https://ekstraliga.pl/en/se/fixtures-and-results/pgee
   MATCH_URL: https://ekstraliga.pl/en/se/match
-  DATA_BRANCH: sel
+  DATA_REPO: ${{ github.repository_owner }}/spdw-data
+  DATA_BRANCH: main
   CODE_BRANCH: main
+  LEAGUE: sel
   # Default values for scheduled runs (same as workflow_dispatch defaults)
-  DEFAULT_START: '2025'
-  DEFAULT_END: '2025'
-  DEFAULT_SCHEDULE_CACHE: 'false'
-  DEFAULT_MATCH_CACHE: 'false'
-  DEFAULT_FORCE: 'false'
+  DEFAULT_START: "2025"
+  DEFAULT_END: "2025"
+  DEFAULT_SCHEDULE_CACHE: "false"
+  DEFAULT_MATCH_CACHE: "false"
+  DEFAULT_FORCE: "false"
 
 jobs:
   schedules:
@@ -51,10 +53,12 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: checkout data branch
+      - name: checkout data repository
         uses: actions/checkout@v4
         with:
+          repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
+          token: ${{ secrets.DATA_REPO_PAT }}
       - name: checkout code
         uses: actions/checkout@v4
         with:
@@ -71,11 +75,13 @@ jobs:
         env:
           START: ${{ github.event.inputs.start || env.DEFAULT_START }}
           END: ${{ github.event.inputs.end || env.DEFAULT_END }}
+          LEAGUE: ${{ env.LEAGUE }}
       - name: schedule commit
         id: commit
         run: bash $CODE_BRANCH/scripts/schedule_commit.sh
         env:
           FORCE: ${{ github.event.inputs.force || env.DEFAULT_FORCE }}
+          LEAGUE: ${{ env.LEAGUE }}
   match:
     runs-on: ubuntu-latest
     permissions:
@@ -83,10 +89,12 @@ jobs:
     needs: schedules
     if: needs.schedules.outputs.changes == '1'
     steps:
-      - name: checkout data-store
+      - name: checkout data repository
         uses: actions/checkout@v4
         with:
+          repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
+          token: ${{ secrets.DATA_REPO_PAT }}
           fetch-depth: 0
       - name: checkout code
         uses: actions/checkout@v4
@@ -99,14 +107,23 @@ jobs:
         env:
           START: ${{ github.event.inputs.start || env.DEFAULT_START }}
           END: ${{ github.event.inputs.end || env.DEFAULT_END }}
+          LEAGUE: ${{ env.LEAGUE }}
       - name: schedule changes
         if: ${{ github.event.inputs.force == 'false' || github.event_name == 'schedule' && env.DEFAULT_FORCE == 'false' }}
         run: bash $CODE_BRANCH/scripts/schedule_changes.sh
+        env:
+          LEAGUE: ${{ env.LEAGUE }}
       - name: match fetch
         if: ${{ github.event.inputs.match_cache == 'false' || github.event_name == 'schedule' && env.DEFAULT_MATCH_CACHE == 'false' }}
         run: bash $CODE_BRANCH/scripts/match_fetch.sh
+        env:
+          LEAGUE: ${{ env.LEAGUE }}
       - name: match process
         run: bash $CODE_BRANCH/scripts/match_process.sh
+        env:
+          LEAGUE: ${{ env.LEAGUE }}
       - name: match commit
         id: commit
         run: bash $CODE_BRANCH/scripts/match_commit.sh
+        env:
+          LEAGUE: ${{ env.LEAGUE }}

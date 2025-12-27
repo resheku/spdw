@@ -2,7 +2,7 @@
 
 git config user.name "Automated"
 git config user.email "actions@users.noreply.github.com"
-git add sel/
+git add ${LEAGUE}/
 
 # Check for changes in JSON files if FORCE is not true
 if [ "$FORCE" = "true" ]; then
@@ -18,7 +18,7 @@ else
 fi
 
 timestamp=$(date -u)
-git commit -m "Schedule: ${timestamp}" && echo "changes=1" >"$GITHUB_OUTPUT"
+git commit -m "Schedule ${LEAGUE}: ${timestamp}" && echo "changes=1" >"$GITHUB_OUTPUT"
 # commit_status=$?
 
 git push

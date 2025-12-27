@@ -36,7 +36,7 @@ env:
   MATCH_URL: https://ekstraliga.pl/en/se/match
   DATA_REPO: ${{ github.repository_owner }}/spdw-data
   DATA_BRANCH: main
-  CODE_BRANCH: main
+  CODE_BRANCH: spdw-data
   LEAGUE: sel2
   # Default values for scheduled runs (same as workflow_dispatch defaults)
   DEFAULT_START: "2025"
@@ -126,4 +126,5 @@ jobs:
         id: commit
         run: bash $CODE_BRANCH/scripts/match_commit.sh
         env:
+          FORCE: ${{ github.event.inputs.force || env.DEFAULT_FORCE }}
           LEAGUE: ${{ env.LEAGUE }}
