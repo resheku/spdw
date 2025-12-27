@@ -33,43 +33,23 @@ jobs:
           repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
           token: ${{ secrets.DATA_REPO_PAT }}
+
       - name: checkout code
         uses: actions/checkout@v4
         with:
           ref: ${{ env.CODE_BRANCH }}
           path: ${{ env.CODE_BRANCH }}
-      - name: Cache DuckDB CLI
-        id: cache-duckdb
-        uses: actions/cache@v4
-        with:
-          path: ./duckdb_cli-linux-amd64-${{ env.DDB_VERSION }}.zip
-          key: duckdb-cli-v${{ env.DDB_VERSION }}
-      - name: Download DuckDB CLI if not cached
-        if: steps.cache-duckdb.outputs.cache-hit != 'true'
-        run: |
-          curl -L --retry 3 --retry-delay 5 -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip https://github.com/duckdb/duckdb/releases/download/v${DDB_VERSION}/duckdb_cli-linux-amd64.zip
-      - name: Install DuckDB CLI
-        run: |
-          unzip -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip
-          chmod +x duckdb
-          sudo mv duckdb /usr/local/bin/
-      - name: Verify DuckDB install
-        run: duckdb --version
+
       - name: data linkage
         run: |
           python3 $CODE_BRANCH/sel_telemetry.py "sel/*/match/json/*.json" "sel/matches.jsonl"
           python3 $CODE_BRANCH/sel_telemetry.py "sel2/*/match/json/*.json" "sel2/matches.jsonl"
-      - name: create database sel.db
-        run: rm -f sel.db && duckdb < $CODE_BRANCH/queries/sel_init.sql
-      - name: data sel stats
-        run: duckdb sel.db -f $CODE_BRANCH/queries/sel_stats.sql
+
       - name: data commit
         id: commit
         run: bash $CODE_BRANCH/scripts/data_commit.sh
         env:
           FORCE: ${{ github.event.inputs.force }}
-      - name: data check
-        run: duckdb sel.db -echo -column -f $CODE_BRANCH/queries/test.sql
 
   db_sync:
     needs: process_data
@@ -84,28 +64,42 @@ jobs:
         with:
           repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
+
       - name: checkout code
         uses: actions/checkout@v4
         with:
           ref: ${{ env.CODE_BRANCH }}
           path: ${{ env.CODE_BRANCH }}
+
       - name: Cache DuckDB CLI
         id: cache-duckdb
         uses: actions/cache@v4
         with:
           path: ./duckdb_cli-linux-amd64-${{ env.DDB_VERSION }}.zip
           key: duckdb-cli-v${{ env.DDB_VERSION }}
+
       - name: Download DuckDB CLI if not cached
         if: steps.cache-duckdb.outputs.cache-hit != 'true'
         run: |
           curl -L --retry 3 --retry-delay 5 -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip https://github.com/duckdb/duckdb/releases/download/v${DDB_VERSION}/duckdb_cli-linux-amd64.zip
+
       - name: Install DuckDB CLI
         run: |
           unzip -o duckdb_cli-linux-amd64-${DDB_VERSION}.zip
           chmod +x duckdb
           sudo mv duckdb /usr/local/bin/
+
       - name: Verify DuckDB install
         run: duckdb --version
+
+      - name: create database sel.db
+        run: rm -f sel.db && duckdb < $CODE_BRANCH/queries/sel_init.sql
+
+      - name: data sel stats
+        run: duckdb sel.db -f $CODE_BRANCH/queries/sel_stats.sql
+
+      - name: data check
+        run: duckdb sel.db -echo -column -f $CODE_BRANCH/queries/test.sql
 
       - name: Export to Parquet
         run: |
