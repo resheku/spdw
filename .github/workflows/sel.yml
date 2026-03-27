@@ -9,12 +9,12 @@ on:
       start:
         description: "Start season"
         required: true
-        default: "2025"
+        default: "2007"
         type: string
       end:
         description: "Last season"
         required: true
-        default: "2025"
+        default: "2026"
         type: string
       schedule_cache:
         description: "Use cached schedule"
@@ -39,8 +39,8 @@ env:
   CODE_BRANCH: main
   LEAGUE: sel
   # Default values for scheduled runs (same as workflow_dispatch defaults)
-  DEFAULT_START: "2025"
-  DEFAULT_END: "2025"
+  DEFAULT_START: "2007"
+  DEFAULT_END: "2026"
   DEFAULT_SCHEDULE_CACHE: "false"
   DEFAULT_MATCH_CACHE: "false"
   DEFAULT_FORCE: "false"
