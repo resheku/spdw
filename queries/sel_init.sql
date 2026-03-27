@@ -1,6 +1,6 @@
 attach 'sel.db' as sel;
 
-create table matches as(select * from read_json_auto('sel*/matches.jsonl', sample_size=-1, union_by_name=true));
+create or replace table matches as(select * from read_json_auto('sel*/matches.jsonl', sample_size=-1, union_by_name=true));
 
 -- schedule
 CREATE TABLE
@@ -497,3 +497,5 @@ CREATE TABLE IF NOT EXISTS sel.data_version (
     version_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO sel.data_version DEFAULT VALUES;
+
+DROP TABLE matches;

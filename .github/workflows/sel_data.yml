@@ -20,7 +20,7 @@ env:
   DATA_REPO: ${{ github.repository_owner }}/spdw-data
   DATA_BRANCH: main
   CODE_BRANCH: spdw-data
-  DDB_VERSION: 1.4.3
+  DDB_VERSION: 1.5.1
 
 jobs:
   process_data:
@@ -33,14 +33,14 @@ jobs:
       actions: read
     steps:
       - name: checkout data repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
           token: ${{ secrets.DATA_REPO_PAT }}
 
       - name: checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ env.CODE_BRANCH }}
           path: ${{ env.CODE_BRANCH }}
@@ -58,7 +58,7 @@ jobs:
 
       - name: Cache DuckDB CLI
         id: cache-duckdb
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ./duckdb_cli-linux-amd64-${{ env.DDB_VERSION }}.zip
           key: duckdb-cli-v${{ env.DDB_VERSION }}

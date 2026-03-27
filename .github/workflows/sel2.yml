@@ -54,13 +54,13 @@ jobs:
       contents: write
     steps:
       - name: checkout data repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
           token: ${{ secrets.DATA_REPO_PAT }}
       - name: checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ env.CODE_BRANCH }}
           path: ${{ env.CODE_BRANCH }}
@@ -90,14 +90,14 @@ jobs:
     if: needs.schedules.outputs.changes == '1'
     steps:
       - name: checkout data repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ env.DATA_REPO }}
           ref: ${{ env.DATA_BRANCH }}
           token: ${{ secrets.DATA_REPO_PAT }}
           fetch-depth: 0
       - name: checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ env.CODE_BRANCH }}
           path: ${{ env.CODE_BRANCH }}
