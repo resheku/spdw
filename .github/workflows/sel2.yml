@@ -48,6 +48,7 @@ env:
 jobs:
   schedules:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     outputs:
       changes: ${{ steps.commit.outputs.changes }}
     permissions:
@@ -84,6 +85,7 @@ jobs:
           LEAGUE: ${{ env.LEAGUE }}
   match:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
     needs: schedules

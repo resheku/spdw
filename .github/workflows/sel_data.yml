@@ -26,6 +26,7 @@ jobs:
   process_data:
     environment: spdw-sel
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     outputs:
       changes: ${{ steps.commit.outputs.changes }}
     permissions:
