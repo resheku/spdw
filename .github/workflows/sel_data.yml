@@ -51,12 +51,14 @@ jobs:
           python3 $CODE_BRANCH/sel_telemetry.py "sel/*/match/json/*.json" "sel/matches.jsonl"
           python3 $CODE_BRANCH/sel_telemetry.py "sel2/*/match/json/*.json" "sel2/matches.jsonl"
 
-      - name: Set up Python dependencies
-        run: pip install statsmodels pandas
+      - name: Install Python dependencies
+        run: |
+          pip install uv
+          uv sync --project $CODE_BRANCH
 
       - name: speed model
         run: |
-          python3 $CODE_BRANCH/speed_model.py "sel/matches.jsonl" "sel/speed_model.json"
+          uv run --project $CODE_BRANCH python $CODE_BRANCH/speed_model.py "sel/matches.jsonl" "sel/speed_model.json"
 
       - name: data commit
         id: commit
