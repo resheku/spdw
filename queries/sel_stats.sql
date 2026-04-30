@@ -140,5 +140,6 @@ SELECT
     CASE
         WHEN total_cnt <= 1 THEN NULL
         ELSE SQRT((total_sum_sq - total_sum * total_sum / total_cnt) / (total_cnt - 1))
-    END AS track_stddev_asof
+    END AS track_stddev_asof,
+    total_cnt AS n_obs
 FROM running;

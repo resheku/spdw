@@ -119,9 +119,9 @@ SELECT
     CURRENT_TIMESTAMP as last_updated,
     'incremental' as sync_type;
 
--- Fully replace track_stats_historical (running window stats depend on all history)
-DROP TABLE IF EXISTS pg.track_stats_historical;
-CREATE TABLE pg.track_stats_historical AS SELECT * FROM sel.track_stats_historical;
+-- Fully replace spdw_telemetry_stats (running window stats depend on all history)
+DROP TABLE IF EXISTS pg.spdw_telemetry_stats;
+CREATE TABLE pg.spdw_telemetry_stats AS SELECT * FROM sel.spdw_telemetry_stats;
 
 COMMIT;
 
