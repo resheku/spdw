@@ -99,8 +99,8 @@ order by average desc, points desc, heats desc, concat(rider_name, ' ', rider_su
 -- Track stats historical (as-of race date)
 -- One row per match_id: track mean and stddev computed from all telemetry
 -- at the same track_city with datetime_schedule <= this match's datetime_schedule.
-DROP TABLE IF EXISTS track_stats_historical;
-CREATE TABLE track_stats_historical AS
+DROP TABLE IF EXISTS spdw_telemetry_stats;
+CREATE TABLE spdw_telemetry_stats AS
 WITH match_telemetry AS (
     -- Aggregate per match: sum and sum-of-squares of max_speed for efficient running stats
     SELECT
