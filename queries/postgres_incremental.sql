@@ -112,6 +112,11 @@ WHERE (s."Season", s."Name") IN (
     SELECT s2."Season", s2."Name" FROM sel.stats s2 INNER JOIN pg.stats p2 ON s2."Season" = p2."Season" AND s2."Name" = p2."Name"
 );
 
+-- Fully replace spdw_telemetry_stats (running window stats depend on all history;
+-- any new match shifts the cumulative mean/stddev for later matches at the same track)
+DROP TABLE IF EXISTS pg.spdw_telemetry_stats;
+CREATE TABLE pg.spdw_telemetry_stats AS SELECT * FROM sel.spdw_telemetry_stats;
+
 -- Update data_version with timestamp
 DROP TABLE IF EXISTS pg.data_version;
 CREATE TABLE pg.data_version AS 
@@ -120,4 +125,3 @@ SELECT
     'incremental' as sync_type;
 
 COMMIT;
-
