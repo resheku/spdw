@@ -95,3 +95,51 @@ from ranked_heats
 where rn = 1 
 group by season, rider, concat(rider_name, ' ', rider_surname), league
 order by average desc, points desc, heats desc, concat(rider_name, ' ', rider_surname);
+
+-- Track stats historical (as-of race date)
+-- One row per match_id: track mean and stddev computed from all telemetry
+-- at the same track_id with datetime_schedule <= this match's datetime_schedule.
+DROP TABLE IF EXISTS spdw_telemetry_stats;
+CREATE TABLE spdw_telemetry_stats AS
+WITH match_telemetry AS (
+    -- Aggregate per match: sum and sum-of-squares of max_speed for efficient running stats
+    SELECT
+        m.match_id,
+        m.track_id,
+        m.datetime_schedule,
+        COUNT(t.max_speed)              AS cnt,
+        SUM(t.max_speed)                AS sum_speed,
+        SUM(t.max_speed * t.max_speed)  AS sum_sq_speed
+    FROM sel.telemetry t
+    JOIN sel.matches m ON t.match_id = m.match_id
+    WHERE t.max_speed IS NOT NULL
+      AND t.max_speed > 0
+      AND m.datetime_schedule IS NOT NULL
+    GROUP BY m.match_id, m.track_id, m.datetime_schedule
+),
+running AS (
+    -- Cumulative window: include all matches at the same track up to and including
+    -- the current match's scheduled datetime (RANGE semantics so ties are included).
+    SELECT
+        match_id,
+        track_id,
+        SUM(cnt)          OVER w AS total_cnt,
+        SUM(sum_speed)    OVER w AS total_sum,
+        SUM(sum_sq_speed) OVER w AS total_sum_sq
+    FROM match_telemetry
+    WINDOW w AS (
+        PARTITION BY track_id
+        ORDER BY datetime_schedule
+        RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    )
+)
+SELECT
+    match_id,
+    track_id,
+    total_sum / total_cnt AS track_mean_asof,
+    CASE
+        WHEN total_cnt <= 1 THEN NULL
+        ELSE SQRT((total_sum_sq - total_sum * total_sum / total_cnt) / (total_cnt - 1))
+    END AS track_stddev_asof,
+    total_cnt AS n_obs
+FROM running;
