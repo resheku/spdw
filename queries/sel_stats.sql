@@ -106,7 +106,6 @@ WITH match_telemetry AS (
     SELECT
         m.match_id,
         m.track_id,
-        m.track_city,
         m.datetime_schedule,
         COUNT(t.max_speed)              AS cnt,
         SUM(t.max_speed)                AS sum_speed,
@@ -116,7 +115,7 @@ WITH match_telemetry AS (
     WHERE t.max_speed IS NOT NULL
       AND t.max_speed > 0
       AND m.datetime_schedule IS NOT NULL
-    GROUP BY m.match_id, m.track_id, m.track_city, m.datetime_schedule
+    GROUP BY m.match_id, m.track_id, m.datetime_schedule
 ),
 running AS (
     -- Cumulative window: include all matches at the same track up to and including
@@ -124,7 +123,6 @@ running AS (
     SELECT
         match_id,
         track_id,
-        track_city,
         SUM(cnt)          OVER w AS total_cnt,
         SUM(sum_speed)    OVER w AS total_sum,
         SUM(sum_sq_speed) OVER w AS total_sum_sq
@@ -138,7 +136,6 @@ running AS (
 SELECT
     match_id,
     track_id,
-    track_city,
     total_sum / total_cnt AS track_mean_asof,
     CASE
         WHEN total_cnt <= 1 THEN NULL
