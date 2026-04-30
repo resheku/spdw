@@ -98,13 +98,14 @@ order by average desc, points desc, heats desc, concat(rider_name, ' ', rider_su
 
 -- Track stats historical (as-of race date)
 -- One row per match_id: track mean and stddev computed from all telemetry
--- at the same track_city with datetime_schedule <= this match's datetime_schedule.
+-- at the same track_id with datetime_schedule <= this match's datetime_schedule.
 DROP TABLE IF EXISTS spdw_telemetry_stats;
 CREATE TABLE spdw_telemetry_stats AS
 WITH match_telemetry AS (
     -- Aggregate per match: sum and sum-of-squares of max_speed for efficient running stats
     SELECT
         m.match_id,
+        m.track_id,
         m.track_city,
         m.datetime_schedule,
         COUNT(t.max_speed)              AS cnt,
@@ -115,26 +116,28 @@ WITH match_telemetry AS (
     WHERE t.max_speed IS NOT NULL
       AND t.max_speed > 0
       AND m.datetime_schedule IS NOT NULL
-    GROUP BY m.match_id, m.track_city, m.datetime_schedule
+    GROUP BY m.match_id, m.track_id, m.track_city, m.datetime_schedule
 ),
 running AS (
     -- Cumulative window: include all matches at the same track up to and including
     -- the current match's scheduled datetime (RANGE semantics so ties are included).
     SELECT
         match_id,
+        track_id,
         track_city,
         SUM(cnt)          OVER w AS total_cnt,
         SUM(sum_speed)    OVER w AS total_sum,
         SUM(sum_sq_speed) OVER w AS total_sum_sq
     FROM match_telemetry
     WINDOW w AS (
-        PARTITION BY track_city
+        PARTITION BY track_id
         ORDER BY datetime_schedule
         RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
     )
 )
 SELECT
     match_id,
+    track_id,
     track_city,
     total_sum / total_cnt AS track_mean_asof,
     CASE
